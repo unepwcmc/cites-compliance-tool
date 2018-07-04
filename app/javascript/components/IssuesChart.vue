@@ -101,14 +101,14 @@
 
 export default {
   props: ['values'],
-  data: () => {
+  data () {
     return {
       min: 0,
       max: 200
     };
   },
   methods: {
-    normaliseValue(value) {
+    normaliseValue (value) {
       return 100 - ((value / this.max) * 100);
     }
   }
