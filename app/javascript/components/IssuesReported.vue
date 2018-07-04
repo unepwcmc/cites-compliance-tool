@@ -22,7 +22,7 @@
 <script>
 export default {
   props: ['year', 'value'],
-  data: () => {
+  data () {
     return {};
   }
 };
