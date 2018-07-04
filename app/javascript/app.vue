@@ -31,6 +31,7 @@
     <div class="container is-fluid is-marginless tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
+          <issues-reported year="2016" value="123"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
         </div>
@@ -45,8 +46,12 @@
 </template>
 
 <script>
+import IssuesReported from './components/IssuesReported';
+
 export default {
-  components: {},
+  components: {
+    IssuesReported
+  },
   data: function () {
     return {}
   }
