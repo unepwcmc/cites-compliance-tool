@@ -105,7 +105,7 @@ export default {
     return {
       min: 0,
       max: 200
-    };
+    }
   },
   methods: {
     normaliseValue (value) {
