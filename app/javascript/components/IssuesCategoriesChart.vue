@@ -48,14 +48,14 @@
 <script>
 export default {
   props: ['title', 'value'],
-  data: () => {
+  data () {
     return {
       max: 200,
       min: 0
     };
   },
   computed: {
-    scaledValue() {
+    scaledValue () {
       return (this.value / this.max) * 100;
     }
   }

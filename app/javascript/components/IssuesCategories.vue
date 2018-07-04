@@ -16,7 +16,7 @@ import IssuesCategoriesChart from './IssuesCategoriesChart';
 export default {
   components: {IssuesCategoriesChart},
   props: ['values'],
-  data: () => {
+  data () {
     return {};
   }
 };
