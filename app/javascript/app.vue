@@ -34,6 +34,7 @@
           <issues-reported year="2016" value="123"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
+          <issues-chart :values="chartValues"></issues-chart>
         </div>
       </div>
 
@@ -47,13 +48,32 @@
 
 <script>
 import IssuesReported from './components/IssuesReported'
+import IssuesChart from './components/IssuesChart'
 
 export default {
   components: {
-    IssuesReported
+    IssuesReported,
+    IssuesChart
   },
   data: function () {
-    return {}
+    return {
+      chartValues: [{
+        year: 2015,
+        issuesReported: 0,
+        countriesReported: 0,
+        countriesYetToReport: 0
+      }, {
+        year: 2016,
+        issuesReported: 200,
+        countriesReported: 200,
+        countriesYetToReport: 200
+      }, {
+        year: 2017,
+        issuesReported: 100,
+        countriesReported: 100,
+        countriesYetToReport: 100
+      }]
+    }
   }
 }
 </script>
