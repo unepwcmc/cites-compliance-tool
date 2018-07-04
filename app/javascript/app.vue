@@ -40,6 +40,7 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <issues-categories :values="categoryValues"></issues-categories>
         </div>
       </div>
     </div>
@@ -49,11 +50,13 @@
 <script>
 import IssuesReported from './components/IssuesReported'
 import IssuesChart from './components/IssuesChart'
+import IssuesCategories from './components/IssuesCategories'
 
 export default {
   components: {
     IssuesReported,
-    IssuesChart
+    IssuesChart,
+    IssuesCategories
   },
   data: function () {
     return {
@@ -72,6 +75,16 @@ export default {
         issuesReported: 100,
         countriesReported: 100,
         countriesYetToReport: 100
+      }],
+      categoryValues: [{
+        name: "Trade Suspensions",
+        value: 35
+      }, {
+        name: "Appendix 1 Trade",
+        value: 135
+      }, {
+        name: "Quotas",
+        value: 72
       }]
     }
   }
