@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import IssuesChart from './components/IssuesChart';
+import IssuesChart from './components/IssuesChart'
 
 export default {
   components: {
