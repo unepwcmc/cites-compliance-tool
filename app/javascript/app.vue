@@ -31,8 +31,10 @@
     <div class="container is-fluid is-marginless tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
+          <issues-reported year="2016" value="123"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
+          <issues-chart :values="chartValues"></issues-chart>
         </div>
       </div>
 
@@ -46,14 +48,34 @@
 </template>
 
 <script>
+import IssuesReported from './components/IssuesReported'
+import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
 
 export default {
   components: {
+    IssuesReported,
+    IssuesChart,
     IssuesCategories
   },
   data: function () {
     return {
+      chartValues: [{
+        year: 2015,
+        issuesReported: 0,
+        countriesReported: 0,
+        countriesYetToReport: 0
+      }, {
+        year: 2016,
+        issuesReported: 200,
+        countriesReported: 200,
+        countriesYetToReport: 200
+      }, {
+        year: 2017,
+        issuesReported: 100,
+        countriesReported: 100,
+        countriesYetToReport: 100
+      }],
       categoryValues: [{
         name: "Trade Suspensions",
         value: 35
