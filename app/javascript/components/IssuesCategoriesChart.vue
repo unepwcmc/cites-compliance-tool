@@ -52,14 +52,14 @@ export default {
     return {
       max: 200,
       min: 0
-    };
+    }
   },
   computed: {
     scaledValue () {
-      return (this.value / this.max) * 100;
+      return (this.value / this.max) * 100
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -11,15 +11,15 @@
 </template>
 
 <script>
-import IssuesCategoriesChart from './IssuesCategoriesChart';
+import IssuesCategoriesChart from './IssuesCategoriesChart'
 
 export default {
   components: {IssuesCategoriesChart},
   props: ['values'],
   data () {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style scoped>

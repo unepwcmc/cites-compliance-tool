@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import IssuesCategories from './components/IssuesCategories';
+import IssuesCategories from './components/IssuesCategories'
 
 export default {
   components: {
