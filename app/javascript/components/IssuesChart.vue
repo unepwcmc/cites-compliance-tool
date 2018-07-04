@@ -101,7 +101,7 @@
 
 export default {
   props: ['values'],
-  data: function () {
+  data: () => {
     return {
       min: 0,
       max: 200
@@ -112,7 +112,7 @@ export default {
       return 100 - ((value / this.max) * 100);
     }
   }
-}
+};
 </script>
 
 <style scoped>
