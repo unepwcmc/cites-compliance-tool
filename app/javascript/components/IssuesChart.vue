@@ -109,10 +109,10 @@ export default {
   },
   methods: {
     normaliseValue (value) {
-      return 100 - ((value / this.max) * 100);
+      return 100 - ((value / this.max) * 100)
     }
   }
-};
+}
 </script>
 
 <style scoped>
