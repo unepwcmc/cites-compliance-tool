@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import IssuesReported from './components/IssuesReported';
+import IssuesReported from './components/IssuesReported'
 
 export default {
   components: {
