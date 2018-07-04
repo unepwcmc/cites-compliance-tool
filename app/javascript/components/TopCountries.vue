@@ -10,13 +10,25 @@
         <a class="button level-item">Normal</a>
       </div>
     </header>
+
+    <div class="columns">
+      <div class="column">
+        <div id="map"></div>
+      </div>
+      <div class="column is-4">
+        Second column
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import d3 from 'd3'
+import topojson from 'topojson'
+
 export default {
   props: ['values'],
-  data() {
+  data () {
     return {};
   }
 };
@@ -42,5 +54,12 @@ h2 {
   font-size: 18px;
   font-weight: bold;
   line-height: 21px;
+}
+
+#map {
+  border: 1px solid black;
+  height: 300px;
+  position: relative;
+  width: 100%;
 }
 </style>

@@ -57,7 +57,7 @@ export default {
   components: {
     TopCountries
   },
-  data() {
+  data () {
     return {
       topCountriesValues: []
     };
