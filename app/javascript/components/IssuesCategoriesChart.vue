@@ -48,11 +48,11 @@
 <script>
 export default {
   props: ['title', 'value'],
-  data: function() {
+  data: () => {
     return {
       max: 200,
       min: 0
-    }
+    };
   },
   computed: {
     scaledValue() {
