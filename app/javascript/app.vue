@@ -43,7 +43,7 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :values="topCountriesValues"></top-countries>
+          <top-countries :countries="topCountries"></top-countries>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import TopCountries from './components/TopCountries';
+import TopCountries from './components/TopCountries'
 
 export default {
   components: {
@@ -59,10 +59,25 @@ export default {
   },
   data () {
     return {
-      topCountriesValues: []
-    };
+      topCountries: [{
+        name: 'United States of America',
+        key: 'USA'
+      }, {
+        name: 'Japan',
+        key: 'JPN'
+      }, {
+        name: 'Italy',
+        key: 'ITA'
+      }, {
+        name: 'Germany',
+        key: 'DEU'
+      }, {
+        name: 'Russia',
+        key: 'RUS'
+      }]
+    }
   }
-};
+}
 </script>
 
 <style>
