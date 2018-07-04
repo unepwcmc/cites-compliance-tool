@@ -22,8 +22,8 @@
 <script>
 export default {
   props: ['year', 'value'],
-  data: function () {
-    return {}
+  data: () => {
+    return {};
   }
 };
 </script>
