@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+ * Fixes variable column warnings
+ * https://github.com/jgthms/bulma/issues/1190#issuecomment-356672849
+ */
+$variable-columns: false;
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@import '../node_modules/bulma/bulma';
