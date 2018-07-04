@@ -38,6 +38,7 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <issues-categories :values="categoryValues"></issues-categories>
         </div>
       </div>
     </div>
@@ -45,10 +46,25 @@
 </template>
 
 <script>
+import IssuesCategories from './components/IssuesCategories';
+
 export default {
-  components: {},
+  components: {
+    IssuesCategories
+  },
   data: function () {
-    return {}
+    return {
+      categoryValues: [{
+        name: "Trade Suspensions",
+        value: 35
+      }, {
+        name: "Appendix 1 Trade",
+        value: 135
+      }, {
+        name: "Quotas",
+        value: 72
+      }]
+    }
   }
 }
 </script>
