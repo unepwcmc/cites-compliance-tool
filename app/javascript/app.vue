@@ -40,17 +40,29 @@
         <div class="tile is-12 is-parent">
         </div>
       </div>
+
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+          <top-countries :values="topCountriesValues"></top-countries>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import TopCountries from './components/TopCountries';
+
 export default {
-  components: {},
-  data: function () {
-    return {}
+  components: {
+    TopCountries
+  },
+  data() {
+    return {
+      topCountriesValues: []
+    };
   }
-}
+};
 </script>
 
 <style>
