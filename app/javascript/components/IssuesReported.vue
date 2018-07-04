@@ -23,9 +23,9 @@
 export default {
   props: ['year', 'value'],
   data () {
-    return {};
+    return {}
   }
-};
+}
 </script>
 
 <style scoped>
