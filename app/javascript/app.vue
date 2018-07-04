@@ -2,8 +2,8 @@
   <div id="app">
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-          UN Environment WCMC
+        <a class="navbar-item navbar-logo" href="#">
+          <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment WCMC">
         </a>
       </div>
 
@@ -67,10 +67,16 @@ html {
 <style scoped>
 .navbar {
   background: #00a0d1;
+  height: 65px;
 }
 
 .navbar-item, .navbar-link {
   color: #fff;
+}
+
+.navbar-logo img {
+  height: 36px;
+  max-height: none;
 }
 
 .tile-container {
