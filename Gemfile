@@ -42,8 +42,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'httparty'
 
-gem 'pry-byebug'
-
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
