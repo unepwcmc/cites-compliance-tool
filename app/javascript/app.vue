@@ -96,22 +96,40 @@ export default {
         value: 72
       }],
 
-      topCountries: [{
-        name: 'United States of America',
-        key: 'USA'
-      }, {
-        name: 'Japan',
-        key: 'JPN'
-      }, {
-        name: 'Italy',
-        key: 'ITA'
-      }, {
-        name: 'Germany',
-        key: 'DEU'
-      }, {
-        name: 'Russia',
-        key: 'RUS'
-      }]
+      topCountries: {
+        export: [{
+          name: 'United States of America',
+          key: 'US'
+        }, {
+          name: 'Japan',
+          key: 'JP'
+        }, {
+          name: 'Italy',
+          key: 'IT'
+        }, {
+          name: 'Germany',
+          key: 'DE'
+        }, {
+          name: 'Russia',
+          key: 'RU'
+        }],
+        import: [{
+          name: 'Great Britain',
+          key: 'GB'
+        }, {
+          name: 'Canada',
+          key: 'CA'
+        }, {
+          name: 'Australia',
+          key: 'AU'
+        }, {
+          name: 'Mexico',
+          key: 'MX'
+        }, {
+          name: 'Iceland',
+          key: 'IS'
+        }]
+      }
     }
   }
 }
