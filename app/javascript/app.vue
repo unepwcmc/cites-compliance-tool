@@ -46,6 +46,12 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <top-commodities :commodities="commodityValues"></top-commodities>
+        </div>
+      </div>
+      
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
           <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
         </div>
       </div>
@@ -59,12 +65,15 @@ import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
 import IssuesTaxonomies from './components/IssuesTaxonomies'
 
+import TopCommodities from './components/TopCommodities'
+
 export default {
   components: {
     IssuesReported,
     IssuesChart,
     IssuesCategories,
     IssuesTaxonomies
+    TopCommodities
   },
   data: function () {
     return {
@@ -94,6 +103,7 @@ export default {
         name: "Quotas",
         value: 72
       }],
+
       taxonomyValues: [{
         name: 'Mammals',
         value: 40,
@@ -126,6 +136,28 @@ export default {
         name: 'Timber',
         value: 150,
         percent: 75
+      }],
+
+      commodityValues: [{
+        name: 'Animalia',
+        value: 45,
+        percent: 75
+      }, {
+        name: 'Plantae',
+        value: 32,
+        percent: 60
+      }, {
+        name: 'Leather',
+        value: 15,
+        percent: 35
+      }, {
+        name: 'Skins',
+        value: 10,
+        percent: 20
+      }, {
+        name: 'Trophies',
+        value: 7,
+        percent: 10
       }]
     }
   }
