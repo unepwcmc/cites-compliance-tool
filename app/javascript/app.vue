@@ -58,6 +58,12 @@
       
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <top-countries :countries="topCountries"></top-countries>
+        </div>
+      </div>
+      
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
           <top-species :species="speciesValues"></top-species>
         </div>
       </div>
@@ -72,6 +78,7 @@ import IssuesCategories from './components/IssuesCategories'
 import IssuesTaxonomies from './components/IssuesTaxonomies'
 
 import TopCommodities from './components/TopCommodities'
+import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
 export default {
@@ -81,9 +88,10 @@ export default {
     IssuesCategories,
     IssuesTaxonomies,
     TopCommodities,
+    TopCountries,
     TopSpecies
   },
-  data: function () {
+  data () {
     return {
       chartValues: [{
         year: 2015,
@@ -101,6 +109,7 @@ export default {
         countriesReported: 100,
         countriesYetToReport: 100
       }],
+
       categoryValues: [{
         name: "Trade Suspensions",
         value: 35
@@ -111,6 +120,41 @@ export default {
         name: "Quotas",
         value: 72
       }],
+
+      topCountries: {
+        export: [{
+          name: 'United States of America',
+          key: 'US'
+        }, {
+          name: 'Japan',
+          key: 'JP'
+        }, {
+          name: 'Italy',
+          key: 'IT'
+        }, {
+          name: 'Germany',
+          key: 'DE'
+        }, {
+          name: 'Russia',
+          key: 'RU'
+        }],
+        import: [{
+          name: 'Great Britain',
+          key: 'GB'
+        }, {
+          name: 'Canada',
+          key: 'CA'
+        }, {
+          name: 'Australia',
+          key: 'AU'
+        }, {
+          name: 'Mexico',
+          key: 'MX'
+        }, {
+          name: 'Iceland',
+          key: 'IS'
+        }]
+      },
 
       speciesValues: [{
         name: 'Species 1',
