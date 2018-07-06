@@ -43,6 +43,12 @@
           <issues-categories :values="categoryValues"></issues-categories>
         </div>
       </div>
+
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+          <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,12 +57,14 @@
 import IssuesReported from './components/IssuesReported'
 import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
+import IssuesTaxonomies from './components/IssuesTaxonomies'
 
 export default {
   components: {
     IssuesReported,
     IssuesChart,
-    IssuesCategories
+    IssuesCategories,
+    IssuesTaxonomies
   },
   data: function () {
     return {
@@ -85,6 +93,39 @@ export default {
       }, {
         name: "Quotas",
         value: 72
+      }],
+      taxonomyValues: [{
+        name: 'Mammals',
+        value: 40,
+        percent: 20
+      }, {
+        name: 'Birds',
+        value: 60,
+        percent: 30
+      }, {
+        name: 'Reptiles',
+        value: 65,
+        percent: 35
+      }, {
+        name: 'Amphibians',
+        value: 50,
+        percent: 25
+      }, {
+        name: 'Fish',
+        value: 55,
+        percent: 28
+      }, {
+        name: 'Invertebrates',
+        value: 30,
+        percent: 15
+      }, {
+        name: 'Plants',
+        value: 90,
+        percent: 45
+      }, {
+        name: 'Timber',
+        value: 150,
+        percent: 75
       }]
     }
   }
