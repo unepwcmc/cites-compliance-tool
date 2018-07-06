@@ -46,7 +46,25 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <top-commodities :commodities="commodityValues"></top-commodities>
+        </div>
+      </div>
+      
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+          <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
+        </div>
+      </div>
+      
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
           <top-countries :countries="topCountries"></top-countries>
+        </div>
+      </div>
+      
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+          <top-species :species="speciesValues"></top-species>
         </div>
       </div>
     </div>
@@ -57,14 +75,21 @@
 import IssuesReported from './components/IssuesReported'
 import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
+import IssuesTaxonomies from './components/IssuesTaxonomies'
+
+import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
+import TopSpecies from './components/TopSpecies'
 
 export default {
   components: {
     IssuesReported,
     IssuesChart,
     IssuesCategories,
-    TopCountries
+    IssuesTaxonomies,
+    TopCommodities,
+    TopCountries,
+    TopSpecies
   },
   data () {
     return {
@@ -129,7 +154,85 @@ export default {
           name: 'Iceland',
           key: 'IS'
         }]
-      }
+      },
+
+      speciesValues: [{
+        name: 'Species 1',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 2',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 3',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 4',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 5',
+        transactions: 123,
+        appendix: 'II'
+      }],
+
+      taxonomyValues: [{
+        name: 'Mammals',
+        value: 40,
+        percent: 20
+      }, {
+        name: 'Birds',
+        value: 300,
+        percent: 100
+      }, {
+        name: 'Reptiles',
+        value: 65,
+        percent: 35
+      }, {
+        name: 'Amphibians',
+        value: 50,
+        percent: 25
+      }, {
+        name: 'Fish',
+        value: 0,
+        percent: 0
+      }, {
+        name: 'Invertebrates',
+        value: 30,
+        percent: 15
+      }, {
+        name: 'Plants',
+        value: 90,
+        percent: 45
+      }, {
+        name: 'Timber',
+        value: 150,
+        percent: 75
+      }],
+
+      commodityValues: [{
+        name: 'Animalia',
+        value: 45,
+        percent: 75
+      }, {
+        name: 'Plantae',
+        value: 32,
+        percent: 60
+      }, {
+        name: 'Leather',
+        value: 15,
+        percent: 35
+      }, {
+        name: 'Skins',
+        value: 10,
+        percent: 20
+      }, {
+        name: 'Trophies',
+        value: 7,
+        percent: 10
+      }]
     }
   }
 }
