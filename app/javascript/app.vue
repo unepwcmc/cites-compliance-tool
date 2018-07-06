@@ -43,6 +43,12 @@
           <issues-categories :values="categoryValues"></issues-categories>
         </div>
       </div>
+
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+          <top-species :species="speciesValues"></top-species>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -52,11 +58,14 @@ import IssuesReported from './components/IssuesReported'
 import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
 
+import TopSpecies from './components/TopSpecies'
+
 export default {
   components: {
     IssuesReported,
     IssuesChart,
-    IssuesCategories
+    IssuesCategories,
+    TopSpecies
   },
   data: function () {
     return {
@@ -85,6 +94,27 @@ export default {
       }, {
         name: "Quotas",
         value: 72
+      }],
+      speciesValues: [{
+        name: 'Species 1',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 2',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 3',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 4',
+        transactions: 123,
+        appendix: 'II'
+      }, {
+        name: 'Species 5',
+        transactions: 123,
+        appendix: 'II'
       }]
     }
   }
