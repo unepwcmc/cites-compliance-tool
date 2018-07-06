@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     barPercentage(value) {
-      return this.barMin + (value / 100) * (100 - this.barMin);
+      return this.barMin + (value / 100) * (100 - this.barMin)
     }
   }
 }
