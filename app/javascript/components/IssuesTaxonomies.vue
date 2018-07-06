@@ -12,18 +12,18 @@
           <li v-for="(taxonomy, index) in taxonomies" :key="index">
             <div class="issues-taxonomies-chart-bar" :style="{height: `${barPercentage(taxonomy.percent)}%`, backgroundColor: colours[index]}"></div>
             <div class="issues-taxonomies-chart-labels">
-              <span class="issues-taxonomies-chart-labels-index">
-                <strong :style="{color: textColours[index]}">{{index + 1}}</strong>
-              </span>
-
-              <span class="issues-taxonomies-chart-labels-value" :style="{top: `${100 - barPercentage(taxonomy.percent)}%`}">
-                <strong :style="{color: textColours[index]}">{{taxonomy.value}}<br>{{taxonomy.percent}}%</strong>
+              <span class="issues-taxonomies-chart-labels-value" :style="{bottom: `${barPercentage(taxonomy.percent)}%`}">
+                <strong>
+                  {{index + 1}}.
+                  <br>
+                  {{taxonomy.value}} ({{taxonomy.percent}}%)
+                </strong>
               </span>
             </div>
           </li>
         </ul>
       </div>
-      <div class="column is-6">
+      <div class="column is-5">
         <ul class="issues-taxonomies-list">
           <li class="level" v-for="(taxonomy, index) in taxonomies" :key="index">
             <div class="level-left">
@@ -64,12 +64,12 @@ export default {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#58bc8a', '#91c352', '#b4c92c', '#d5ec3a'],
       textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit'],
-      barMin: 30
+      barMax: 80
     }
   },
   methods: {
     barPercentage(value) {
-      return this.barMin + (value / 100) * (100 - this.barMin)
+      return (value / 100) * this.barMax
     }
   }
 }
@@ -156,24 +156,16 @@ h2 {
   position: relative;
 }
 
-.issues-taxonomies-chart-labels-index,
 .issues-taxonomies-chart-labels-value {
+  font-size: 14px;
+  margin-bottom: 5px;
   position: absolute;
   width: 100%;
   z-index: 2;
 }
 
-.issues-taxonomies-chart-labels-index {
-  bottom: 10px;
-  text-align: center;
-}
-
 .issues-taxonomies-chart-labels-value {
-  left: 50%;
   line-height: 1.3;
-  margin-top: 15px;
-  transform: translateX(-50%);
-  width: auto;
 }
 
 .issues-taxonomies-chart-bar {

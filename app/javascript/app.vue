@@ -100,8 +100,8 @@ export default {
         percent: 20
       }, {
         name: 'Birds',
-        value: 60,
-        percent: 30
+        value: 300,
+        percent: 100
       }, {
         name: 'Reptiles',
         value: 65,
@@ -112,8 +112,8 @@ export default {
         percent: 25
       }, {
         name: 'Fish',
-        value: 55,
-        percent: 28
+        value: 0,
+        percent: 0
       }, {
         name: 'Invertebrates',
         value: 30,
