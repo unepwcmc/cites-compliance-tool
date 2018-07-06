@@ -4,14 +4,6 @@
       <div class="level-left">
         <h2 class="level-item">Issues by taxonomy</h2>
       </div>
-      <div class="level-right">
-        <a class="button level-item is-dark issues-taxonomies-button-full-list">
-          <span>Full List</span>
-          <span class="icon is-small">
-            <i class="fas fa-angle-right"></i>
-          </span>
-        </a>
-      </div>
     </header>
 
     <div class="columns">
@@ -105,13 +97,6 @@ h2 {
   line-height: 21px;
 }
 
-.issues-taxonomies-button-full-list {
-  background-color: #3f5770;
-}
-.issues-taxonomies-button-full-list:hover {
-  background-color: #517091;
-}
-
 .issues-taxonomies-list,
 .issues-taxonomies-chart {
   display: flex;
@@ -165,10 +150,6 @@ h2 {
 
 .issues-taxonomies-list-dropdown.is-right .dropdown-menu {
   right: -30px;
-}
-
-.issues-taxonomies-button-full-list span:first-child {
-  padding-right: 20px;
 }
 
 .issues-taxonomies-chart li {
