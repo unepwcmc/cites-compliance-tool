@@ -57,8 +57,6 @@
 </template>
 
 <script>
-import d3 from 'd3'
-import topojson from 'topojson'
 import Datamap from 'datamaps'
 
 import iso2toiso3 from '../helpers/iso2-to-iso3'
