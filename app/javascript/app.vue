@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar main-navigation" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item navbar-logo" href="#">
           <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
@@ -9,7 +9,7 @@
 
       <div class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#">
+          <a class="navbar-item is-active" href="#">
             Dashboard
           </a>
           <a class="navbar-item" href="#">
@@ -20,6 +20,9 @@
         <div class="navbar-end">
           <a class="navbar-item" href="#">
             Download All
+            <span class="icon">
+              <i class="fas fa-download"></i>
+            </span>
           </a>
           <a class="navbar-item" href="#">
             Name
@@ -28,7 +31,46 @@
       </div>
     </nav>
 
-    <div class="container is-fluid is-marginless tile-container">
+    <nav class="navbar sub-navigation" role="navigation" aria-label="sub navigation">
+      <div class="container">
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <h2 class="navbar-item">Overview</h2>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item dropdown is-hoverable">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="year-select">
+                  <span>2016</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="year-select" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">
+                    2014
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    2015
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    2016
+                  </a>
+                  <a href="#" class="dropdown-item">
+                    2017
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
           <issues-reported year="2016" value="123"></issues-reported>
@@ -49,19 +91,19 @@
           <top-commodities :commodities="commodityValues"></top-commodities>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <top-countries :countries="topCountries"></top-countries>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <top-species :species="speciesValues"></top-species>
@@ -250,21 +292,79 @@ html {
 </style>
 
 <style scoped>
-.navbar {
+.main-navigation {
   background: #00a0d1;
+  font-family: Roboto;
+  font-size: 18px;
   height: 65px;
 }
 
-.navbar-item, .navbar-link {
+.main-navigation .navbar-brand {
+  margin-right: 40px;
+}
+
+.sub-navigation {
+  background: #fff;
+  color: #424242;
+  font-family: Roboto;
+  height: 65px;
+}
+
+.sub-navigation .navbar-menu {
+  margin-right: 0;
+}
+
+.sub-navigation > .navbar-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sub-navigation h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sub-navigation button {
+  font-weight: bold;
+}
+
+.sub-navigation button > span:first-child {
+  padding-right: 2.75em;
+}
+
+.main-navigation .navbar-item,
+.main-navigation .navbar-link {
   color: #fff;
 }
 
-.navbar-logo img {
+.main-navigation .navbar-item .icon {
+  align-items: flex-start;
+  padding-left: 20px;
+}
+
+.main-navigation .navbar-logo {
+  padding-left: 40px;
+}
+
+.main-navigation .navbar-logo img {
   height: 36px;
   max-height: none;
 }
 
+.main-navigation .navbar-menu .navbar-item {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.main-navigation .navbar-menu a.navbar-item:hover,
+.main-navigation .navbar-menu a.navbar-item.is-active,
+.main-navigation .navbar-menu .navbar-link:hover,
+.main-navigation .navbar-menu .navbar-link.is-active {
+  background: #fff;
+  color: #424242;
+}
+
 .tile-container {
-  padding: 20px;
+  padding: 20px 0 50px;
 }
 </style>

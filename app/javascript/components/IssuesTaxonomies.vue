@@ -23,7 +23,7 @@
           </li>
         </ul>
       </div>
-      <div class="column is-5">
+      <div class="column is-6">
         <ul class="issues-taxonomies-list">
           <li class="level" v-for="(taxonomy, index) in taxonomies" :key="index">
             <div class="level-left">
@@ -115,8 +115,8 @@ h2 {
   border: 1px solid #D7D7D7;
   flex: 1 1 50px;
   margin-bottom: 10px;
-  margin-left: 10px;
   padding: 0 0 0 15px;
+  width: 47%;
 }
 
 .issues-taxonomies-list li:nth-child(4n) {
