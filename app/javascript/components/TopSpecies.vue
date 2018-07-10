@@ -1,11 +1,11 @@
 <template>
-  <section class="top-species">
+  <section class="top-species tile-box">
     <header class="level">
       <div class="level-left">
-        <h2 class="level-item">Top 5 species</h2>
+        <h3 class="level-item">Top 5 species</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark top-species-button-full-list">
+        <a class="button level-item is-dark button-full-list">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -30,7 +30,7 @@
           <td>{{species.appendix}}</td>
           <td>
             <div class="level-item top-species-dropdown dropdown is-right is-hoverable">
-              <div class="dropdown-trigger">
+              <div class="dropdown-trigger icon-ellipsis">
                 <span class="icon is-large">
                   <i class="fas fa-lg fa-ellipsis-v"></i>
                 </span>
@@ -60,38 +60,11 @@ export default {
 }
 </script>
 
-<style scoped>
-.top-species {
-  box-sizing: border-box;
-  font-family: Roboto;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
-  padding: 20px 15px;
-}
+<style scoped lang="scss">
+@import '../../assets/stylesheets/application.scss';
 
 header {
   margin-bottom: 20px;
-}
-
-h2 {
-  color: #424242;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 21px;
-}
-
-.top-species-button-full-list {
-  background-color: #3f5770;
-}
-
-.top-species-button-full-list:hover {
-  background-color: #517091;
-}
-
-.top-species-button-full-list span:first-child {
-  padding-right: 20px;
 }
 
 .top-species-table {
@@ -114,11 +87,12 @@ h2 {
 }
 
 .top-species-table th {
+  font-weight: 500;
   padding-bottom: 10px;
 }
 
 .top-species-table tbody td {
-  border: solid #d7d7d7;
+  border: $tile-section-border;
   border-width: 1px 0;
 }
 
@@ -132,10 +106,6 @@ h2 {
 
 .top-species-dropdown {
   float: right;
-}
-
-.top-species-dropdown:hover {
-  cursor: pointer;
 }
 
 .top-species-dropdown.is-right .dropdown-menu {

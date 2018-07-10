@@ -14,12 +14,9 @@
  *= require_self
  */
 
-/*
- * Fixes variable column warnings
- * https://github.com/jgthms/bulma/issues/1190#issuecomment-356672849
- */
-$variable-columns: false;
+@import './colours.scss';
+@import './typography.scss';
+@import './icons.scss';
+@import './buttons.scss';
 
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-@import '../node_modules/bulma/bulma';
+@import './tiles.scss';

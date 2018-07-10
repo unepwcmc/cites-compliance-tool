@@ -1,68 +1,64 @@
 <template>
   <div id="app">
-    <nav class="navbar main-navigation" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item navbar-logo" href="#">
-          <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
-        </a>
-      </div>
+    <nav class="main-navigation" role="navigation" aria-label="main navigation">
+      <div class="level">
+        <div class="level-left">
+          <a class="level-item navbar-logo" href="#">
+            <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
+          </a>
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item is-active" href="#">
+          <a class="level-item is-active" href="#">
             Dashboard
           </a>
-          <a class="navbar-item" href="#">
+          <a class="level-item" href="#">
             Search
           </a>
         </div>
 
-        <div class="navbar-end">
-          <a class="navbar-item" href="#">
+        <div class="level-right">
+          <a class="level-item" href="#">
             Download All
             <span class="icon">
               <i class="fas fa-download"></i>
             </span>
           </a>
-          <a class="navbar-item" href="#">
+          <a class="level-item" href="#">
             Name
           </a>
         </div>
       </div>
     </nav>
 
-    <nav class="navbar sub-navigation" role="navigation" aria-label="sub navigation">
-      <div class="container">
-        <div class="navbar-menu">
-          <div class="navbar-start">
-            <h2 class="navbar-item">Overview</h2>
-          </div>
+    <nav class="sub-navigation" role="navigation" aria-label="sub navigation">
+      <div class="level">
+        <div class="level-left">
+          <h2 class="level-item">Overview</h2>
+        </div>
 
-          <div class="navbar-end">
-            <div class="navbar-item dropdown is-hoverable">
-              <div class="dropdown-trigger">
-                <button class="button" aria-haspopup="true" aria-controls="year-select">
-                  <span>2016</span>
-                  <span class="icon is-small">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="year-select" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">
-                    2014
-                  </a>
-                  <a href="#" class="dropdown-item">
-                    2015
-                  </a>
-                  <a href="#" class="dropdown-item">
-                    2016
-                  </a>
-                  <a href="#" class="dropdown-item">
-                    2017
-                  </a>
-                </div>
+        <div class="level-right">
+          <div class="level-item dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="year-select">
+                <span>2016</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="year-select" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  2014
+                </a>
+                <a href="#" class="dropdown-item">
+                  2015
+                </a>
+                <a href="#" class="dropdown-item">
+                  2016
+                </a>
+                <a href="#" class="dropdown-item">
+                  2017
+                </a>
               </div>
             </div>
           </div>
@@ -156,7 +152,7 @@ export default {
         name: "Trade Suspensions",
         value: 35
       }, {
-        name: "Appendix 1 Trade",
+        name: "Appendix I Trade",
         value: 135
       }, {
         name: "Quotas",
@@ -280,9 +276,68 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '../assets/stylesheets/application.scss';
+
 html {
-  background: #f3f3f3;
+  background-color: #f3f3f3;
+  overflow-x: auto;
+}
+
+body {
+  color: $body-font-colour;
+  font-family: $body-font;
+}
+
+/* Bulma overrides */
+
+@media screen and (max-width: 769px), print {
+  .level,
+  .level-left,
+  .level-right,
+  .tile:not(.is-child),
+  .columns:not(.is-desktop) {
+    display: flex;
+  }
+
+  .level-left+.level-right {
+    margin-top: inherit;
+  }
+
+  .level-left .level-item:not(:last-child),
+  .level-right .level-item:not(:last-child) {
+    margin-bottom: inherit;
+    margin-right: .75rem;
+  }
+
+  .level>.level-item:not(.is-narrow) {
+    flex-grow: 1;
+  }
+
+  .tile.is-4 {
+    flex: none;
+    width: 33.33333%;
+  }
+
+  .tile.is-8 {
+    flex: none;
+    width: 66.66667%;
+  }
+
+  .tile.is-12 {
+    flex: none;
+    width: 100%;
+  }
+
+  .column.is-5 {
+    flex: none;
+    width: 41.66667%;
+  }
+
+  .column.is-6 {
+    flex: none;
+    width: 50%;
+  }
 }
 
 /* Stops level elements being too wide */
@@ -291,59 +346,64 @@ html {
 }
 </style>
 
-<style scoped>
-.main-navigation {
-  background: #00a0d1;
-  font-family: Roboto;
-  font-size: 18px;
+<style scoped lang="scss">
+@import '../assets/stylesheets/application.scss';
+
+#app {
+  min-width: 960px;
+}
+
+nav .level {
   height: 65px;
 }
 
-.main-navigation .navbar-brand {
-  margin-right: 40px;
+nav .level-left,
+nav .level-right,
+nav .level-item {
+  height: 100%;
+}
+
+nav .level-item {
+  margin: 0 !important;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.main-navigation {
+  background: $blue-light;
+  font-size: 18px;
 }
 
 .sub-navigation {
   background: #fff;
   color: #424242;
-  font-family: Roboto;
   height: 65px;
-}
-
-.sub-navigation .navbar-menu {
-  margin-right: 0;
-}
-
-.sub-navigation > .navbar-item {
-  padding-left: 0;
-  padding-right: 0;
 }
 
 .sub-navigation h2 {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .sub-navigation button {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .sub-navigation button > span:first-child {
   padding-right: 2.75em;
 }
 
-.main-navigation .navbar-item,
+.main-navigation .level-item,
 .main-navigation .navbar-link {
   color: #fff;
 }
 
-.main-navigation .navbar-item .icon {
-  align-items: flex-start;
+.main-navigation .level-item .icon {
   padding-left: 20px;
 }
 
-.main-navigation .navbar-logo {
-  padding-left: 40px;
+.main-navigation .navbar-logo:hover {
+  background: none !important;
 }
 
 .main-navigation .navbar-logo img {
@@ -351,20 +411,18 @@ html {
   max-height: none;
 }
 
-.main-navigation .navbar-menu .navbar-item {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.main-navigation .navbar-menu a.navbar-item:hover,
-.main-navigation .navbar-menu a.navbar-item.is-active,
-.main-navigation .navbar-menu .navbar-link:hover,
-.main-navigation .navbar-menu .navbar-link.is-active {
+.main-navigation a.level-item:hover,
+.main-navigation a.level-item.is-active,
+.main-navigation .navbar-link:hover,
+.main-navigation .navbar-link.is-active {
   background: #fff;
   color: #424242;
 }
 
 .tile-container {
   padding: 20px 0 50px;
+  max-width: 960px;
+  overflow-x: hidden;
+  width: 960px;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <section class="top-commodities">
+  <section class="top-commodities tile-box">
     <header class="level">
       <div class="level-left">
-        <h2 class="level-item">Top 5 commodity</h2>
+        <h3 class="level-item">Top 5 commodity</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark top-commodities-button-full-list">
+        <a class="button level-item is-dark button-full-list">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -27,7 +27,7 @@
             </div>
             <div class="level-right">
               <div class="level-item top-commodities-list-dropdown dropdown is-right is-hoverable">
-                <div class="dropdown-trigger">
+                <div class="dropdown-trigger icon-ellipsis">
                   <span class="icon is-large">
                     <i class="fas fa-lg fa-ellipsis-v"></i>
                   </span>
@@ -73,33 +73,11 @@ export default {
 }
 </script>
 
-<style scoped>
-.top-commodities {
-  box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
-  padding: 20px 15px;
-}
+<style scoped lang="scss">
+@import '../../assets/stylesheets/application.scss';
 
 header {
   margin-bottom: 20px;
-}
-
-h2 {
-  color: #424242;
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 21px;
-}
-
-.top-commodities-button-full-list {
-  background-color: #3f5770;
-}
-.top-commodities-button-full-list:hover {
-  background-color: #517091;
 }
 
 .top-commodities-list,
@@ -110,7 +88,7 @@ h2 {
 }
 
 .top-commodities-list li {
-  border: 1px solid #D7D7D7;
+  border: $tile-section-border;
   flex-grow: 1;
   margin-bottom: 10px;
   padding: 0 0 0 15px;
@@ -140,16 +118,8 @@ h2 {
   margin-right: 5px;
 }
 
-.top-commodities-list-dropdown:hover {
-  cursor: pointer;
-}
-
 .top-commodities-list-dropdown.is-right .dropdown-menu {
   right: -30px;
-}
-
-.top-commodities-button-full-list span:first-child {
-  padding-right: 20px;
 }
 
 .top-commodities-chart li {

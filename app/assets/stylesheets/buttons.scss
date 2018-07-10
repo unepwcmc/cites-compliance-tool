@@ -1,0 +1,13 @@
+@import './colours.scss';
+
+.button-full-list {
+  background-color: $blue-medium !important;
+}
+
+.button-full-list:hover {
+  background-color: #517091 !important;
+}
+
+.button-full-list span:first-child {
+  padding-right: 20px;
+}

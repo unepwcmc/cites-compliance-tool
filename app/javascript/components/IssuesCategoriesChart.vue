@@ -3,7 +3,7 @@
     <h2>{{title}}</h2>
 
     <div class="dropdown is-right is-hoverable">
-      <div class="dropdown-trigger">
+      <div class="dropdown-trigger icon-ellipsis">
         <span class="icon is-large">
           <i class="fas fa-lg fa-ellipsis-v"></i>
         </span>
@@ -23,7 +23,7 @@
       SVG viewbox calculations as per
       https://markus.oberlehner.net/blog/pure-css-animated-svg-circle-chart/
       -->
-      <svg width="150" height="150" viewBox="0 0 33.83098862 33.83098862" xmlns="http://www.w3.org/2000/svg">
+      <svg width="200" height="200" viewBox="0 0 33.83098862 33.83098862" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="doughnutGradient" x1="0" x2="0" y1="0" y2="1">
             <stop offset="10%" stop-color="#039ed5"/>
@@ -36,7 +36,7 @@
         <circle class="circle-chart-circle" stroke="url(#doughnutGradient)" stroke-width="4" :stroke-dasharray="`${scaledValue},100`" stroke-linecap="round" fill="none" cx="50%" cy="50%" r="13.91549431" />
 
         <g class="circle-chart-label">
-          <text class="circle-chart-value" x="49%" y="52%" alignment-baseline="middle" text-anchor="middle" font-size="6">
+          <text class="circle-chart-value" x="49%" y="52%" alignment-baseline="middle" text-anchor="middle" font-size="5">
             {{value}}
           </text>
         </g>
@@ -62,18 +62,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import '../../assets/stylesheets/application.scss';
+
 .issues-categories-chart {
-  border: 1px solid rgba(66, 66, 66, 0.2);
+  border: $tile-section-border;
   border-radius: 2px;
-  background-color: #fff;
+  background-color: $white;
   padding: 15px;
   position: relative;
 }
 
 .issues-categories-chart h2 {
-  color: #424242;
-  font-family: Roboto;
   font-size: 16px;
   line-height: 19px;
 }
@@ -82,10 +82,6 @@ export default {
   position: absolute;
   right: 0;
   top: 0;
-}
-
-.issues-categories-chart .dropdown:hover {
-  cursor: pointer;
 }
 
 .issues-categories-chart .dropdown.is-right .dropdown-menu {
@@ -98,9 +94,7 @@ export default {
 }
 
 .issues-categories-chart-doughnut text {
-  color: #424242;
-  font-family: Roboto;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .circle-chart-circle {

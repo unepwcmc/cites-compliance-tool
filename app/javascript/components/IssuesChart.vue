@@ -1,6 +1,6 @@
 <template>
-  <section class="issues-chart">
-    <a class="icon" href="#">
+  <section class="issues-chart tile-box">
+    <a class="icon icon-download" href="#">
       <span class="fa-stack">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-download fa-stack-1x fa-inverse"></i>
@@ -115,14 +115,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .issues-chart {
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
   height: 380px;
   position: relative;
-  width: 100%;
 }
 
 .issues-chart-svg {
@@ -138,28 +134,11 @@ export default {
   overflow: visible;
 }
 
-.icon {
-  height: 37px;
+.icon-download {
   position: absolute;
-  right: 30px;
-  top: 24px;
-  width: 37px;
+  right: 15px;
+  top: 20px;
   z-index: 3;
-}
-
-.icon .fa-stack {
-  height: 100%;
-  width: 100%;
-}
-
-.icon .fa-circle {
-  color: #4d6b89;
-  height: 100%;
-  width: 100%;
-}
-
-.icon:hover .fa-circle {
-  color: #6285a7;
 }
 
 .panel-column {
@@ -214,13 +193,12 @@ export default {
   color: #424242;
   font-family: Roboto;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 500;
   line-height: 16px;
 }
 
 .issues-chart-panel p {
   margin-bottom: 10px;
-
 }
 
 .issues-chart-panel span {
@@ -231,7 +209,7 @@ export default {
   bottom: 15px;
   font-family: Roboto;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 500;
   position: absolute;
   text-align: center;
   width: 100%;

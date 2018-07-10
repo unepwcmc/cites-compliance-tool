@@ -1,8 +1,8 @@
 <template>
-  <section class="issues-taxonomies">
+  <section class="issues-taxonomies tile-box">
     <header class="level">
       <div class="level-left">
-        <h2 class="level-item">Issues by taxonomy</h2>
+        <h3 class="level-item">Issues by taxonomy</h3>
       </div>
     </header>
 
@@ -35,7 +35,7 @@
             </div>
             <div class="level-right">
               <div class="level-item issues-taxonomies-list-dropdown dropdown is-right is-hoverable">
-                <div class="dropdown-trigger">
+                <div class="dropdown-trigger icon-ellipsis">
                   <span class="icon is-large">
                     <i class="fas fa-lg fa-ellipsis-v"></i>
                   </span>
@@ -75,26 +75,11 @@ export default {
 }
 </script>
 
-<style scoped>
-.issues-taxonomies {
-  box-sizing: border-box;
-  font-family: Roboto;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
-  padding: 20px 15px;
-}
+<style scoped lang="scss">
+@import '../../assets/stylesheets/application.scss';
 
 header {
   margin-bottom: 20px;
-}
-
-h2 {
-  color: #424242;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 21px;
 }
 
 .issues-taxonomies-list,
@@ -112,11 +97,12 @@ h2 {
 }
 
 .issues-taxonomies-list li {
-  border: 1px solid #D7D7D7;
+  border: $tile-section-border;
   flex: 1 1 50px;
   margin-bottom: 10px;
+  margin-left: 2%;
   padding: 0 0 0 15px;
-  width: 47%;
+  width: 48%;
 }
 
 .issues-taxonomies-list li:nth-child(4n) {
@@ -142,10 +128,6 @@ h2 {
 
 .issues-taxonomies-list-name strong {
   margin-right: 5px;
-}
-
-.issues-taxonomies-list-dropdown:hover {
-  cursor: pointer;
 }
 
 .issues-taxonomies-list-dropdown.is-right .dropdown-menu {
