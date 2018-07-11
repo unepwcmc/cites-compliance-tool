@@ -3,10 +3,10 @@
     <div class="level-item">
       <div>
         <p class="issues-reported-stat">
-          {{value}}
+          {{values.value}}
         </p>
         <p class="issues-reported-label">
-          Issues currently reported in {{year}}
+          Issues currently reported in {{values.year}}
         </p>
         <a class="icon icon-download" href="#">
           <span class="fa-stack">
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ['year', 'value'],
+  props: ['values'],
   data () {
     return {}
   }
@@ -39,7 +39,7 @@ export default {
 
 .issues-reported-stat {
   color: $blue-dark;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: bold;
   line-height: 94px;
   text-align: center;
@@ -51,6 +51,5 @@ export default {
   line-height: 29px;
   margin: 10px 0 20px 0;
   text-align: center;
-  width: 200px;
 }
 </style>

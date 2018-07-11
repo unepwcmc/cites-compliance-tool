@@ -104,7 +104,7 @@ export default {
   data () {
     return {
       min: 0,
-      max: 200
+      max: 40000
     }
   },
   methods: {

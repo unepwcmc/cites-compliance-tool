@@ -69,7 +69,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported year="2016" value="123"></issues-reported>
+          <issues-reported :values="issuesReportedValues"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
           <issues-chart :values="chartValues"></issues-chart>
@@ -119,6 +119,11 @@ import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
+import dataExporters from './data/exporters'
+import dataImporters from './data/importers'
+import dataTaxonomy from './data/taxonomies'
+import dataCommodity from './data/commodities'
+
 export default {
   components: {
     IssuesReported,
@@ -131,67 +136,42 @@ export default {
   },
   data () {
     return {
+      issuesReportedValues: {
+        year: 2016,
+        value: 23286
+      },
+
       chartValues: [{
         year: 2015,
-        issuesReported: 0,
-        countriesReported: 0,
-        countriesYetToReport: 0
+        issuesReported: 34259,
+        countriesReported: 200,
+        countriesYetToReport: 7
       }, {
         year: 2016,
-        issuesReported: 200,
+        issuesReported: 23286,
         countriesReported: 200,
-        countriesYetToReport: 200
+        countriesYetToReport: 23
       }, {
         year: 2017,
-        issuesReported: 100,
+        issuesReported: 27932,
         countriesReported: 100,
-        countriesYetToReport: 100
+        countriesYetToReport: 15
       }],
 
       categoryValues: [{
         name: "Trade Suspensions",
-        value: 35
+        value: 7356
       }, {
         name: "Appendix I Trade",
-        value: 135
+        value: 17231
       }, {
         name: "Quotas",
-        value: 72
+        value: 10898
       }],
 
       topCountries: {
-        export: [{
-          name: 'United States of America',
-          key: 'US'
-        }, {
-          name: 'Japan',
-          key: 'JP'
-        }, {
-          name: 'Italy',
-          key: 'IT'
-        }, {
-          name: 'Germany',
-          key: 'DE'
-        }, {
-          name: 'Russia',
-          key: 'RU'
-        }],
-        import: [{
-          name: 'Great Britain',
-          key: 'GB'
-        }, {
-          name: 'Canada',
-          key: 'CA'
-        }, {
-          name: 'Australia',
-          key: 'AU'
-        }, {
-          name: 'Mexico',
-          key: 'MX'
-        }, {
-          name: 'Iceland',
-          key: 'IS'
-        }]
+        export: dataExporters.slice(0, 5),
+        import: dataImporters.slice(0, 5)
       },
 
       speciesValues: [{
@@ -216,61 +196,9 @@ export default {
         appendix: 'II'
       }],
 
-      taxonomyValues: [{
-        name: 'Mammals',
-        value: 40,
-        percent: 20
-      }, {
-        name: 'Birds',
-        value: 300,
-        percent: 100
-      }, {
-        name: 'Reptiles',
-        value: 65,
-        percent: 35
-      }, {
-        name: 'Amphibians',
-        value: 50,
-        percent: 25
-      }, {
-        name: 'Fish',
-        value: 0,
-        percent: 0
-      }, {
-        name: 'Invertebrates',
-        value: 30,
-        percent: 15
-      }, {
-        name: 'Plants',
-        value: 90,
-        percent: 45
-      }, {
-        name: 'Timber',
-        value: 150,
-        percent: 75
-      }],
+      taxonomyValues: dataTaxonomy.slice(0, 8),
 
-      commodityValues: [{
-        name: 'Animalia',
-        value: 45,
-        percent: 75
-      }, {
-        name: 'Plantae',
-        value: 32,
-        percent: 60
-      }, {
-        name: 'Leather',
-        value: 15,
-        percent: 35
-      }, {
-        name: 'Skins',
-        value: 10,
-        percent: 20
-      }, {
-        name: 'Trophies',
-        value: 7,
-        percent: 10
-      }]
+      commodityValues: dataCommodity.slice(0, 5)
     }
   }
 }

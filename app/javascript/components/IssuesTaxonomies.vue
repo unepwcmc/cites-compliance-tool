@@ -16,7 +16,7 @@
                 <strong>
                   {{index + 1}}.
                   <br>
-                  {{taxonomy.value}} ({{taxonomy.percent}}%)
+                  {{taxonomy.cnt}} ({{taxonomy.percent.toFixed(1)}}%)
                 </strong>
               </span>
             </div>
@@ -30,7 +30,7 @@
               <span class="level-item issues-taxonomies-list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item issues-taxonomies-list-name">
-                <strong>{{index + 1}}.</strong> {{taxonomy.name}}
+                <strong>{{index + 1}}.</strong> {{taxonomy.taxon}}
               </span>
             </div>
             <div class="level-right">
