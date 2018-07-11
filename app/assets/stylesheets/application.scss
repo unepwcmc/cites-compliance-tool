@@ -6,7 +6,7 @@
 @import './navigation.scss';
 
 @import './tiles.scss';
-@import './components.scss';
+@import './components/*';
 
 html {
   background-color: #f3f3f3;
