@@ -119,6 +119,8 @@ import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
+import '@fortawesome/fontawesome-free/js/all.js'
+
 export default {
   components: {
     IssuesReported,
@@ -275,9 +277,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-#app {
-  min-width: 960px;
-}
-</style>

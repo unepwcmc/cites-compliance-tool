@@ -1,3 +1,5 @@
+@import './vendor/bulma.min.css';
+
 @import './colours.scss';
 @import './typography.scss';
 @import './icons.scss';
@@ -16,6 +18,10 @@ html {
 body {
   color: $body-font-colour;
   font-family: $body-font;
+}
+
+#app {
+  min-width: 960px;
 }
 
 /* Bulma overrides */
