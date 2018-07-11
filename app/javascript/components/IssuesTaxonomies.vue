@@ -1,18 +1,18 @@
 <template>
-  <section class="issues-taxonomies">
+  <section class="issues-taxonomies tile__box">
     <header class="level">
       <div class="level-left">
-        <h2 class="level-item">Issues by taxonomy</h2>
+        <h3 class="level-item">Issues by taxonomy</h3>
       </div>
     </header>
 
     <div class="columns">
       <div class="column">
-        <ul class="issues-taxonomies-chart">
+        <ul class="issues-taxonomies__chart">
           <li v-for="(taxonomy, index) in taxonomies" :key="index">
-            <div class="issues-taxonomies-chart-bar" :style="{height: `${barPercentage(taxonomy.percent)}%`, backgroundColor: colours[index]}"></div>
-            <div class="issues-taxonomies-chart-labels">
-              <span class="issues-taxonomies-chart-labels-value" :style="{bottom: `${barPercentage(taxonomy.percent)}%`}">
+            <div class="issues-taxonomies__chart-bar" :style="{height: `${barPercentage(taxonomy.percent)}%`, backgroundColor: colours[index]}"></div>
+            <div class="issues-taxonomies__chart-labels">
+              <span class="issues-taxonomies__chart-labels-value" :style="{bottom: `${barPercentage(taxonomy.percent)}%`}">
                 <strong>
                   {{index + 1}}.
                   <br>
@@ -23,19 +23,19 @@
           </li>
         </ul>
       </div>
-      <div class="column is-5">
-        <ul class="issues-taxonomies-list">
+      <div class="column is-6">
+        <ul class="issues-taxonomies__list">
           <li class="level" v-for="(taxonomy, index) in taxonomies" :key="index">
             <div class="level-left">
-              <span class="level-item issues-taxonomies-list-dot" :style="{backgroundColor: colours[index]}"></span>
+              <span class="level-item issues-taxonomies__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
-              <span class="level-item issues-taxonomies-list-name">
+              <span class="level-item issues-taxonomies__list-name">
                 <strong>{{index + 1}}.</strong> {{taxonomy.name}}
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item issues-taxonomies-list-dropdown dropdown is-right is-hoverable">
-                <div class="dropdown-trigger">
+              <div class="level-item issues-taxonomies__list-dropdown dropdown is-right is-hoverable">
+                <div class="dropdown-trigger icon-ellipsis">
                   <span class="icon is-large">
                     <i class="fas fa-lg fa-ellipsis-v"></i>
                   </span>
@@ -74,106 +74,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.issues-taxonomies {
-  box-sizing: border-box;
-  font-family: Roboto;
-  height: 100%;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
-  padding: 20px 15px;
-}
-
-header {
-  margin-bottom: 20px;
-}
-
-h2 {
-  color: #424242;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 21px;
-}
-
-.issues-taxonomies-list,
-.issues-taxonomies-chart {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  height: 250px;
-}
-
-.issues-taxonomies-chart {
-  flex-direction: row;
-  flex-wrap: nowrap;
-  padding-left: 15px;
-}
-
-.issues-taxonomies-list li {
-  border: 1px solid #D7D7D7;
-  flex: 1 1 50px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  padding: 0 0 0 15px;
-}
-
-.issues-taxonomies-list li:nth-child(4n) {
-  margin-bottom: 0;
-}
-
-.issues-taxonomies-chart li {
-  border-radius: 2px;
-  flex-grow: 1;
-  margin: 0 0 0 10px;
-  padding: 0 0 15px 0;
-}
-
-.issues-taxonomies-chart li:first-child {
-  margin-left: 0;
-}
-
-.issues-taxonomies-list-dot {
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-}
-
-.issues-taxonomies-list-name strong {
-  margin-right: 5px;
-}
-
-.issues-taxonomies-list-dropdown:hover {
-  cursor: pointer;
-}
-
-.issues-taxonomies-list-dropdown.is-right .dropdown-menu {
-  right: -30px;
-}
-
-.issues-taxonomies-chart li {
-  position: relative;
-}
-
-.issues-taxonomies-chart-labels-value {
-  font-size: 14px;
-  margin-bottom: 5px;
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-}
-
-.issues-taxonomies-chart-labels-value {
-  line-height: 1.3;
-}
-
-.issues-taxonomies-chart-bar {
-  border-radius: 2px;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-}
-</style>

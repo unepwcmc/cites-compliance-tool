@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
+$font-roboto: 'Roboto', sans-serif;
+
+$body-font: $font-roboto;
+$body-font-colour: $grey-dark;
+
+h1 {
+  font-family: $font-roboto;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+h2 {
+  font-family: $font-roboto;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: $font-roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1em;
+}
+
+strong {
+  font-weight: 500;
+}

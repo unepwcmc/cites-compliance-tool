@@ -1,13 +1,13 @@
 <template>
-  <section class="issues-chart">
-    <a class="icon" href="#">
+  <section class="issues-chart tile__box">
+    <a class="icon icon-download issues-chart__download" href="#">
       <span class="fa-stack">
         <i class="fas fa-circle fa-stack-2x"></i>
         <i class="fas fa-download fa-stack-1x fa-inverse"></i>
       </span>
     </a>
 
-    <div class="issues-chart-svg">
+    <div class="issues-chart__svg">
       <svg width="100%" height="100%" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="lineGradient" x1="0" x2="1" y1="0" y2="0">
@@ -31,66 +31,66 @@
       </svg>
     </div>
 
-    <div class="panel-column is-first">
-      <div class="issues-chart-panel">
-        <div class="issues-chart-panel-issues">
+    <div class="issues-chart__panel-column is-first">
+      <div class="issues-chart__panel">
+        <div class="issues-chart__panel-issues">
           <span>{{values[0].issuesReported}}</span>
           <p>Issues reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[0].countriesReported}}</span>
           <p>Countries reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[0].countriesYetToReport}}</span>
           <p>Countries yet to report</p>
         </div>
 
-        <div class="issues-chart-label">{{values[0].year}}</div>
+        <div class="issues-chart__label">{{values[0].year}}</div>
       </div>
     </div>
 
-    <div class="panel-column is-second">
-      <div class="issues-chart-panel active">
-        <div class="issues-chart-panel-issues">
+    <div class="issues-chart__panel-column is-second">
+      <div class="issues-chart__panel active">
+        <div class="issues-chart__panel-issues">
           <span>{{values[1].issuesReported}}</span>
           <p>Issues reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[1].countriesReported}}</span>
           <p>Countries reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[1].countriesYetToReport}}</span>
           <p>Countries yet to report</p>
         </div>
 
-        <div class="issues-chart-label">{{values[1].year}}</div>
+        <div class="issues-chart__label">{{values[1].year}}</div>
       </div>
     </div>
 
-    <div class="panel-column is-third">
-      <div class="issues-chart-panel">
-        <div class="issues-chart-panel-issues">
+    <div class="issues-chart__panel-column is-third">
+      <div class="issues-chart__panel">
+        <div class="issues-chart__panel-issues">
           <span>{{values[2].issuesReported}}</span>
           <p>Issues reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[2].countriesReported}}</span>
           <p>Countries reported</p>
         </div>
 
-        <div class="issues-chart-panel-countries">
+        <div class="issues-chart__panel-countries">
           <span>{{values[2].countriesYetToReport}}</span>
           <p>Countries yet to report</p>
         </div>
 
-        <div class="issues-chart-label">{{values[2].year}}</div>
+        <div class="issues-chart__label">{{values[2].year}}</div>
       </div>
     </div>
   </section>
@@ -114,127 +114,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.issues-chart {
-  background: #fff;
-  box-sizing: border-box;
-  box-shadow: 0 2px 3px 0 rgba(207,207,207,0.5);
-  height: 380px;
-  position: relative;
-  width: 100%;
-}
-
-.issues-chart-svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  line-height: 0;
-  padding: 30px 0 70px 0;
-  width: 100%;
-}
-
-.issues-chart-svg svg {
-  overflow: visible;
-}
-
-.icon {
-  height: 37px;
-  position: absolute;
-  right: 30px;
-  top: 24px;
-  width: 37px;
-  z-index: 3;
-}
-
-.icon .fa-stack {
-  height: 100%;
-  width: 100%;
-}
-
-.icon .fa-circle {
-  color: #4d6b89;
-  height: 100%;
-  width: 100%;
-}
-
-.icon:hover .fa-circle {
-  color: #6285a7;
-}
-
-.panel-column {
-  bottom: 0;
-  position: absolute;
-  transform: translateX(-50%);
-}
-
-.panel-column.is-first {
-  left: 15%;
-}
-
-.panel-column.is-second {
-  left: 50%;
-}
-
-.panel-column.is-third {
-  left: 85%;
-}
-
-.issues-chart-panel {
-  border: 1px solid rgba(255, 255, 255, 0);
-  height: 300px;
-  padding: 20px 0 0;
-  width: 155px;
-  z-index: 2;
-}
-
-.issues-chart-panel-issues,
-.issues-chart-panel-countries {
-  margin: 0 30% 0 13px;
-}
-
-.issues-chart-panel-countries {
-  display: none;
-}
-
-.issues-chart-panel.active,
-.issues-chart-panel:hover {
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid #f5f5f5;
-  box-shadow: 0 2px 4px 0 rgba(162, 157, 157, 0.5);
-}
-
-.issues-chart-panel.active .issues-chart-panel-countries,
-.issues-chart-panel:hover .issues-chart-panel-countries {
-  display: block;
-}
-
-.issues-chart-panel p,
-.issues-chart-panel span {
-  color: #424242;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 16px;
-}
-
-.issues-chart-panel p {
-  margin-bottom: 10px;
-
-}
-
-.issues-chart-panel span {
-  font-size: 16px;
-}
-
-.issues-chart-label {
-  bottom: 15px;
-  font-family: Roboto;
-  font-size: 25px;
-  font-weight: bold;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  z-index: 3;
-}
-</style>

@@ -1,0 +1,80 @@
+.issues-taxonomies header {
+  margin-bottom: 20px;
+}
+
+.issues-taxonomies__list,
+.issues-taxonomies__chart {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 250px;
+}
+
+.issues-taxonomies__chart {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-left: 15px;
+}
+
+.issues-taxonomies__list li {
+  border: $tile-section-border;
+  flex: 1 1 50px;
+  margin-bottom: 10px !important;
+  margin-left: 2%;
+  padding: 0 0 0 15px;
+  width: 48%;
+}
+
+.issues-taxonomies__list li:nth-child(4n) {
+  margin-bottom: 0 !important;
+}
+
+.issues-taxonomies__chart li {
+  border-radius: 2px;
+  flex-grow: 1;
+  margin: 0 0 0 10px;
+  padding: 0 0 15px 0;
+}
+
+.issues-taxonomies__chart li:first-child {
+  margin-left: 0;
+}
+
+.issues-taxonomies__list-dot {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
+.issues-taxonomies__list-name strong {
+  margin-right: 5px;
+}
+
+.issues-taxonomies__list-dropdown.is-right .dropdown-menu {
+  right: -30px;
+}
+
+.issues-taxonomies__chart li {
+  position: relative;
+}
+
+.issues-taxonomies__chart-labels-value {
+  font-size: 14px;
+  margin-bottom: 5px;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.issues-taxonomies__chart-labels-value {
+  line-height: 1.3;
+}
+
+.issues-taxonomies__chart-bar {
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}

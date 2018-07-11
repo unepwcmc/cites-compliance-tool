@@ -1,0 +1,30 @@
+// Base colours
+
+$blue-light: #00a0d1;
+$blue-medium: #3f5770;
+$blue-dark: #4d6b89;
+
+$grey-light: #f7f7f7;
+$grey-dark: #424242;
+
+$green: #b4c92b;
+$red: #a32a2f;
+
+$white: #fff;
+
+
+// Gradient colours (individual)
+
+$grad-1: #4d6b89;
+$grad-2: #00a0d1;
+$grad-3: lighten($grad-2, 10%);
+$grad-4: #46aa9b;
+$grad-5: lighten($grad-4, 10%);
+$grad-6: #b4c92b;
+$grad-7: lighten($grad-6, 10%);
+
+
+// Gradient start and end
+
+$grad-start: $grad-2;
+$grad-end: $grad-6;

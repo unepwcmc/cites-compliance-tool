@@ -1,0 +1,17 @@
+.tile-container {
+  padding: 20px 0 50px;
+  max-width: 960px;
+  overflow-x: hidden;
+  width: 960px;
+}
+
+.tile__box {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0 2px 3px 0 rgba(207, 207, 207, 0.5);
+  padding: 20px 15px;
+}
+
+$tile-section-border: 1px solid #d7d7d7;

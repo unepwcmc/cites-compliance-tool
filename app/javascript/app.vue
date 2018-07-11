@@ -1,34 +1,72 @@
 <template>
   <div id="app">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item navbar-logo" href="#">
-          <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
-        </a>
-      </div>
+    <nav class="site-navigation site-navigation-main" role="navigation" aria-label="main navigation">
+      <div class="level">
+        <div class="level-left">
+          <a class="level-item site-navigation-main__logo" href="#">
+            <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
+          </a>
 
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item" href="#">
+          <a class="level-item is-active" href="#">
             Dashboard
           </a>
-          <a class="navbar-item" href="#">
+          <a class="level-item" href="#">
             Search
           </a>
         </div>
 
-        <div class="navbar-end">
-          <a class="navbar-item" href="#">
+        <div class="level-right">
+          <a class="level-item" href="#">
             Download All
+            <span class="icon">
+              <i class="fas fa-download"></i>
+            </span>
           </a>
-          <a class="navbar-item" href="#">
+          <a class="level-item" href="#">
             Name
           </a>
         </div>
       </div>
     </nav>
 
-    <div class="container is-fluid is-marginless tile-container">
+    <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
+      <div class="level">
+        <div class="level-left">
+          <h2 class="level-item">Overview</h2>
+        </div>
+
+        <div class="level-right">
+          <div class="level-item dropdown is-hoverable">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="year-select">
+                <span>2016</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="year-select" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">
+                  2014
+                </a>
+                <a href="#" class="dropdown-item">
+                  2015
+                </a>
+                <a href="#" class="dropdown-item">
+                  2016
+                </a>
+                <a href="#" class="dropdown-item">
+                  2017
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
           <issues-reported year="2016" value="123"></issues-reported>
@@ -49,19 +87,19 @@
           <top-commodities :commodities="commodityValues"></top-commodities>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <top-countries :countries="topCountries"></top-countries>
         </div>
       </div>
-      
+
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <top-species :species="speciesValues"></top-species>
@@ -80,6 +118,8 @@ import IssuesTaxonomies from './components/IssuesTaxonomies'
 import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
+
+import '@fortawesome/fontawesome-free/js/all.js'
 
 export default {
   components: {
@@ -114,7 +154,7 @@ export default {
         name: "Trade Suspensions",
         value: 35
       }, {
-        name: "Appendix 1 Trade",
+        name: "Appendix I Trade",
         value: 135
       }, {
         name: "Quotas",
@@ -237,34 +277,3 @@ export default {
   }
 }
 </script>
-
-<style>
-html {
-  background: #f3f3f3;
-}
-
-/* Stops level elements being too wide */
-.level-item {
-  flex-shrink: 1;
-}
-</style>
-
-<style scoped>
-.navbar {
-  background: #00a0d1;
-  height: 65px;
-}
-
-.navbar-item, .navbar-link {
-  color: #fff;
-}
-
-.navbar-logo img {
-  height: 36px;
-  max-height: none;
-}
-
-.tile-container {
-  padding: 20px;
-}
-</style>

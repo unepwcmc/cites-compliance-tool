@@ -1,0 +1,30 @@
+$icon-hover-colour: #6285a7;
+
+.icon-download {
+  height: 37px;
+  width: 37px;
+}
+
+.icon-download .fa-stack {
+  height: 100%;
+  width: 100%;
+}
+
+.icon-download .fa-circle {
+  color: $blue-dark;
+  height: 100%;
+  width: 100%;
+}
+
+.icon-download:hover .fa-circle {
+  color: $icon-hover-colour;
+}
+
+.icon-ellipsis {
+  color: $blue-medium !important;
+}
+
+.icon-ellipsis:hover {
+  color: $icon-hover-colour !important;
+  cursor: pointer;
+}
