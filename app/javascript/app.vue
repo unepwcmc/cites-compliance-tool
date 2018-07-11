@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <nav class="main-navigation" role="navigation" aria-label="main navigation">
+    <nav class="site-navigation site-navigation-main" role="navigation" aria-label="main navigation">
       <div class="level">
         <div class="level-left">
-          <a class="level-item navbar-logo" href="#">
+          <a class="level-item site-navigation-main__logo" href="#">
             <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
           </a>
 
@@ -29,7 +29,7 @@
       </div>
     </nav>
 
-    <nav class="sub-navigation" role="navigation" aria-label="sub navigation">
+    <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
         <div class="level-left">
           <h2 class="level-item">Overview</h2>
@@ -276,153 +276,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '../assets/stylesheets/application.scss';
-
-html {
-  background-color: #f3f3f3;
-  overflow-x: auto;
-}
-
-body {
-  color: $body-font-colour;
-  font-family: $body-font;
-}
-
-/* Bulma overrides */
-
-@media screen and (max-width: 769px), print {
-  .level,
-  .level-left,
-  .level-right,
-  .tile:not(.is-child),
-  .columns:not(.is-desktop) {
-    display: flex;
-  }
-
-  .level-left+.level-right {
-    margin-top: inherit;
-  }
-
-  .level-left .level-item:not(:last-child),
-  .level-right .level-item:not(:last-child) {
-    margin-bottom: inherit;
-    margin-right: .75rem;
-  }
-
-  .level>.level-item:not(.is-narrow) {
-    flex-grow: 1;
-  }
-
-  .tile.is-4 {
-    flex: none;
-    width: 33.33333%;
-  }
-
-  .tile.is-8 {
-    flex: none;
-    width: 66.66667%;
-  }
-
-  .tile.is-12 {
-    flex: none;
-    width: 100%;
-  }
-
-  .column.is-5 {
-    flex: none;
-    width: 41.66667%;
-  }
-
-  .column.is-6 {
-    flex: none;
-    width: 50%;
-  }
-}
-
-/* Stops level elements being too wide */
-.level-item {
-  flex-shrink: 1;
-}
-</style>
-
 <style scoped lang="scss">
-@import '../assets/stylesheets/application.scss';
-
 #app {
   min-width: 960px;
-}
-
-nav .level {
-  height: 65px;
-}
-
-nav .level-left,
-nav .level-right,
-nav .level-item {
-  height: 100%;
-}
-
-nav .level-item {
-  margin: 0 !important;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.main-navigation {
-  background: $blue-light;
-  font-size: 18px;
-}
-
-.sub-navigation {
-  background: #fff;
-  color: #424242;
-  height: 65px;
-}
-
-.sub-navigation h2 {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.sub-navigation button {
-  font-weight: 500;
-}
-
-.sub-navigation button > span:first-child {
-  padding-right: 2.75em;
-}
-
-.main-navigation .level-item,
-.main-navigation .navbar-link {
-  color: #fff;
-}
-
-.main-navigation .level-item .icon {
-  padding-left: 20px;
-}
-
-.main-navigation .navbar-logo:hover {
-  background: none !important;
-}
-
-.main-navigation .navbar-logo img {
-  height: 36px;
-  max-height: none;
-}
-
-.main-navigation a.level-item:hover,
-.main-navigation a.level-item.is-active,
-.main-navigation .navbar-link:hover,
-.main-navigation .navbar-link.is-active {
-  background: #fff;
-  color: #424242;
-}
-
-.tile-container {
-  padding: 20px 0 50px;
-  max-width: 960px;
-  overflow-x: hidden;
-  width: 960px;
 }
 </style>

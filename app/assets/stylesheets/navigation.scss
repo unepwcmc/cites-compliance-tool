@@ -1,0 +1,67 @@
+@import './colours.scss';
+
+.site-navigation .level {
+  height: 65px;
+}
+
+.site-navigation .level-left,
+.site-navigation .level-right,
+.site-navigation .level-item {
+  height: 100%;
+}
+
+.site-navigation .level-item {
+  margin: 0 !important;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.site-navigation-main {
+  background: $blue-light;
+  font-size: 18px;
+}
+
+.site-navigation-main .level-item,
+.site-navigation-main .navbar-link {
+  color: #fff;
+}
+
+.site-navigation-main .level-item .icon {
+  padding-left: 20px;
+}
+
+.site-navigation-main__logo:hover {
+  background: none !important;
+}
+
+.site-navigation-main__logo img {
+  height: 36px;
+  max-height: none;
+}
+
+.site-navigation-main a.level-item:hover,
+.site-navigation-main a.level-item.is-active,
+.site-navigation-main .navbar-link:hover,
+.site-navigation-main .navbar-link.is-active {
+  background: #fff;
+  color: #424242;
+}
+
+.site-navigation-sub {
+  background: #fff;
+  color: #424242;
+  height: 65px;
+}
+
+.site-navigation-sub h2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.site-navigation-sub button {
+  font-weight: 500;
+}
+
+.site-navigation-sub button > span:first-child {
+  padding-right: 2.75em;
+}

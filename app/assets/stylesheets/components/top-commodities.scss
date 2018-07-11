@@ -1,0 +1,65 @@
+@import './tiles.scss';
+
+.top-commodities header {
+  margin-bottom: 20px;
+}
+
+.top-commodities__list,
+.top-commodities__chart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-commodities__list li {
+  border: $tile-section-border;
+  flex-grow: 1;
+  margin-bottom: 10px !important;
+  padding: 0 0 0 15px;
+}
+
+.top-commodities__chart li {
+  background-color: #d9dee2;
+  border-radius: 2px;
+  flex-grow: 1;
+  margin-bottom: 10px !important;
+  padding: 0 0 0 15px;
+}
+
+.top-commodities__list li:last-child,
+.top-commodities__chart li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.top-commodities__list-dot {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
+.top-commodities__list-name strong,
+.top-commodities__chart-name strong {
+  margin-right: 5px;
+}
+
+.top-commodities__list-dropdown.is-right .dropdown-menu {
+  right: -30px;
+}
+
+.top-commodities__chart li {
+  position: relative;
+}
+
+.top-commodities__chart .level {
+  z-index: 1;
+}
+
+.top-commodities__chart-bar {
+  background-color: red;
+  border-radius: 2px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}

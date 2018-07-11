@@ -1,6 +1,13 @@
 @import './colours.scss';
 
-.tile-box {
+.tile-container {
+  padding: 20px 0 50px;
+  max-width: 960px;
+  overflow-x: hidden;
+  width: 960px;
+}
+
+.tile__box {
   box-sizing: border-box;
   height: 100%;
   width: 100%;

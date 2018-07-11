@@ -1,0 +1,60 @@
+@import './tiles.scss';
+
+.issues-categories h3 {
+  margin-bottom: 20px;
+}
+
+.issues-categories-chart {
+  border: $tile-section-border;
+  border-radius: 2px;
+  background-color: $white;
+  padding: 15px;
+  position: relative;
+}
+
+.issues-categories-chart h2 {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.issues-categories-chart__dropdown {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.issues-categories-chart__dropdown.is-right .dropdown-menu {
+  right: -30px;
+}
+
+.issues-categories-chart__doughnut {
+  margin: 25px 0 10px;
+  text-align: center;
+}
+
+.issues-categories-chart__doughnut text {
+  font-weight: 500;
+}
+
+.issues-categories-chart__doughnut-circle {
+  animation: issues-categories-chart__doughnut-fill 2s reverse;
+  transform: rotate(-90deg);
+  transform-origin: 50%;
+}
+
+.issues-categories-chart__doughnut-label {
+  animation: issues-categories-chart__doughnut-appear 2s forwards;
+  opacity: 0;
+}
+
+@keyframes issues-categories-chart__doughnut-fill {
+  to {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes issues-categories-chart__doughnut-appear {
+  to {
+    opacity: 1;
+  }
+}
