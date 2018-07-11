@@ -1,0 +1,48 @@
+.top-species header {
+  margin-bottom: 20px;
+}
+
+.top-species__table {
+  border-collapse: initial;
+  border-spacing: 0 8px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.top-species__table tr {
+  display: table-row;
+}
+
+.top-species__table td,
+.top-species__table th {
+  display: table-cell;
+  padding: 0 0 0 20px;
+  vertical-align: middle;
+}
+
+.top-species__table th {
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.top-species__table tbody td {
+  border: $tile-section-border;
+  border-width: 1px 0;
+}
+
+.top-species__table tbody td:first-child {
+  border-width: 1px 0 1px 1px;
+}
+
+.top-species__table tbody td:last-child {
+  border-width: 1px 1px 1px 0;
+}
+
+.top-species__dropdown {
+  float: right;
+}
+
+.top-species__dropdown.is-right .dropdown-menu {
+  right: -30px;
+}

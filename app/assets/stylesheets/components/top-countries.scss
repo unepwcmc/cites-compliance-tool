@@ -1,0 +1,75 @@
+.top-countries header {
+  margin-bottom: 20px;
+}
+
+.top-countries__button-mode {
+  color: #4d6b89;
+  border-color: #4d6b89;
+}
+
+.top-countries__button-mode.is-dark,
+.top-countries__button-mode:hover {
+  background-color: #4d6b89;
+  border-color: transparent;
+  color: #fff;
+}
+
+.top-countries__map-container {
+  border: $tile-section-border;
+  border-radius: 2px;
+  box-sizing: border-box;
+  padding: 5px 20px 0;
+  text-align: center;
+}
+
+.top-countries__map {
+  height: 290px;
+  position: relative;
+  width: 100%;
+}
+
+.top-countries__map >>> .marker-circle {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.top-countries__map >>> .marker-label {
+  fill: #fff;
+  font-family: Roboto;
+  font-size: 16px;
+}
+
+.top-countries__list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.top-countries__list li {
+  border: $tile-section-border;
+  flex-grow: 1;
+  margin-bottom: 10px !important;
+  padding: 0 0 0 15px;
+}
+
+.top-countries__list li:last-child {
+  margin-bottom: 0 !important;
+}
+
+.top-countries__list li:hover {
+  box-shadow: 0 2px 5px 0 rgba(210, 210, 210, 0.5);
+}
+
+.top-countries__list-dot {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
+.top-countries__list-name strong {
+  margin-right: 5px;
+}
+
+.top-countries__list-dropdown.is-right .dropdown-menu {
+  right: -30px;
+}

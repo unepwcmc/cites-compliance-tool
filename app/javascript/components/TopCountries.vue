@@ -1,10 +1,10 @@
 <template>
-  <section class="top-countries tile-box">
+  <section class="top-countries tile__box">
     <header class="level">
       <div class="level-left">
         <h3 class="level-item">Top 5 countries</h3>
-        <a class="button is-rounded level-item top-countries-button-mode" :class="{'is-dark': mode === 'export'}" v-on:click="onClickExport">Exporting</a>
-        <a class="button is-rounded level-item top-countries-button-mode" :class="{'is-dark': mode === 'import'}" v-on:click="onClickImport">Importing</a>
+        <a class="button is-rounded level-item top-countries__button-mode" :class="{'is-dark': mode === 'export'}" v-on:click="onClickExport">Exporting</a>
+        <a class="button is-rounded level-item top-countries__button-mode" :class="{'is-dark': mode === 'import'}" v-on:click="onClickImport">Importing</a>
       </div>
       <div class="level-right">
         <a class="button level-item is-dark button-full-list">
@@ -18,22 +18,22 @@
 
     <div class="columns">
       <div class="column">
-        <div class="map-container">
-          <div class="map" ref="map"></div>
+        <div class="top-countries__map-container">
+          <div class="top-countries__map" ref="map"></div>
         </div>
       </div>
       <div class="column is-5">
-        <ul class="top-countries-list">
+        <ul class="top-countries__list">
           <li class="level" v-for="(country, index) in countries[mode]" :key="index" v-on:mouseover="onCountryMouseover(getCountryKey(country), index)" v-on:mouseleave="onCountryMouseleave(getCountryKey(country))">
             <div class="level-left">
-              <span class="level-item top-countries-list-dot" :style="{backgroundColor: colours[index]}"></span>
+              <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
-              <span class="level-item top-countries-list-name">
+              <span class="level-item top-countries__list-name">
                 <strong>{{index + 1}}.</strong> {{getCountryName(country)}}
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item top-countries-list-dropdown dropdown is-right is-hoverable">
+              <div class="level-item top-countries__list-dropdown dropdown is-right is-hoverable">
                 <div class="dropdown-trigger icon-ellipsis">
                   <span class="icon is-large">
                     <i class="fas fa-lg fa-ellipsis-v"></i>
@@ -192,83 +192,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-@import '../../assets/stylesheets/application.scss';
-
-header {
-  margin-bottom: 20px;
-}
-
-.top-countries-button-mode {
-  color: #4d6b89;
-  border-color: #4d6b89;
-}
-
-.top-countries-button-mode.is-dark,
-.top-countries-button-mode:hover {
-  background-color: #4d6b89;
-  border-color: transparent;
-  color: #fff;
-}
-
-.map-container {
-  border: $tile-section-border;
-  border-radius: 2px;
-  box-sizing: border-box;
-  padding: 5px 20px 0;
-  text-align: center;
-}
-
-.map {
-  height: 290px;
-  position: relative;
-  width: 100%;
-}
-
-.map >>> .marker-circle {
-  stroke: #fff;
-  stroke-width: 2;
-}
-
-.map >>> .marker-label {
-  fill: #fff;
-  font-family: Roboto;
-  font-size: 16px;
-}
-
-.top-countries-list {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.top-countries-list li {
-  border: $tile-section-border;
-  flex-grow: 1;
-  margin-bottom: 10px;
-  padding: 0 0 0 15px;
-}
-
-.top-countries-list li:last-child {
-  margin-bottom: 0;
-}
-
-.top-countries-list li:hover {
-  box-shadow: 0 2px 5px 0 rgba(210, 210, 210, 0.5);
-}
-
-.top-countries-list-dot {
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-}
-
-.top-countries-list-name strong {
-  margin-right: 5px;
-}
-
-.top-countries-list-dropdown.is-right .dropdown-menu {
-  right: -30px;
-}
-</style>

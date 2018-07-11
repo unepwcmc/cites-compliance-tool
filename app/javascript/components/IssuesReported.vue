@@ -1,14 +1,14 @@
 <template>
-  <section class="issues-reported level tile-box">
+  <section class="issues-reported level tile__box">
     <div class="level-item">
       <div>
-        <p class="issues-reported-stat">
+        <p class="issues-reported__stat">
           {{values.value}}
         </p>
-        <p class="issues-reported-label">
+        <p class="issues-reported__label">
           Issues currently reported in {{values.year}}
         </p>
-        <a class="icon icon-download" href="#">
+        <a class="icon icon-download issues-reported__download" href="#">
           <span class="fa-stack">
             <i class="fas fa-circle fa-stack-2x"></i>
             <i class="fas fa-download fa-stack-1x fa-inverse"></i>
@@ -27,29 +27,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-@import '../../assets/stylesheets/application.scss';
-
-.icon-download {
-  float: left;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-.issues-reported-stat {
-  color: $blue-dark;
-  font-size: 70px;
-  font-weight: bold;
-  line-height: 94px;
-  text-align: center;
-}
-
-.issues-reported-label {
-  color: $grey-dark;
-  font-size: 25px;
-  line-height: 29px;
-  margin: 10px 0 20px 0;
-  text-align: center;
-}
-</style>

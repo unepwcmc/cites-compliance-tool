@@ -1,5 +1,5 @@
 <template>
-  <section class="issues-categories tile-box">
+  <section class="issues-categories tile__box">
     <h3>Issues by category</h3>
 
     <div class="columns is-mobile">
@@ -21,9 +21,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-h3 {
-  margin-bottom: 20px;
-}
-</style>
