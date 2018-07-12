@@ -3,10 +3,10 @@
     <div class="level-item">
       <div>
         <p class="issues-reported__stat">
-          {{value}}
+          {{values.value}}
         </p>
         <p class="issues-reported__label">
-          Issues currently reported in {{year}}
+          Issues currently reported in {{values.year}}
         </p>
         <a class="icon icon-download issues-reported__download" href="#">
           <span class="fa-stack">
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ['year', 'value'],
+  props: ['values'],
   data () {
     return {}
   }

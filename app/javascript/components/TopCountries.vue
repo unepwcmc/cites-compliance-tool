@@ -24,12 +24,12 @@
       </div>
       <div class="column is-5">
         <ul class="top-countries__list">
-          <li class="level" v-for="(country, index) in countries[mode]" :key="index" v-on:mouseover="onCountryMouseover(country.key, index)" v-on:mouseleave="onCountryMouseleave(country.key)">
+          <li class="level" v-for="(country, index) in getModeData()" :key="index" v-on:mouseover="onCountryMouseover(getCountryKey(country), index)" v-on:mouseleave="onCountryMouseleave(getCountryKey(country))">
             <div class="level-left">
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item top-countries__list-name">
-                <strong>{{index + 1}}.</strong> {{country.name}}
+                <strong>{{index + 1}}.</strong> {{getCountryName(country)}}
               </span>
             </div>
             <div class="level-right">
@@ -60,9 +60,10 @@
 import Datamap from 'datamaps'
 
 import iso2toiso3 from '../helpers/iso2-to-iso3'
+import countries from '../data/countries';
 
 export default {
-  props: ['countries'],
+  props: ['export', 'import'],
   data () {
     return {
       mode: 'export',
@@ -72,10 +73,13 @@ export default {
     }
   },
   methods: {
+    getModeData() {
+      return (this.mode === 'export') ? this.export : this.import
+    },
     countriesObject () {
       let countries = {}
-      this.countries[this.mode].forEach((country, index) => {
-        let iso3 = iso2toiso3[country.key]
+      this.getModeData().forEach((country, index) => {
+        let iso3 = iso2toiso3[this.getCountryKey(country)]
         countries[iso3] = {fillKey: `top${index+1}`}
       })
       return countries
@@ -109,6 +113,18 @@ export default {
     reloadMap() {
       const map = this.getMap()
       map.updateChoropleth(this.countriesObject(), {reset: true})
+    },
+    getCountryKey(country) {
+      return country.importer || country.exporter
+    },
+    getCountryName(country) {
+      let lookup = countries.find((c) => c['Code'] === this.getCountryKey(country))
+
+      if (!lookup || !lookup['Name']) {
+        return ''
+      }
+
+      return lookup['Name']
     }
   },
   mounted () {
