@@ -98,13 +98,15 @@ export default {
   props: ['values'],
   data () {
     return {
-      min: 0,
-      max: 40000
+      min: 0
     }
   },
   methods: {
+    getMaxValue() {
+      return Math.max(...this.values.map((t) => t.issuesReported))
+    },
     normaliseValue (value) {
-      return 100 - ((value / this.max) * 100)
+      return 100 - ((value / this.getMaxValue()) * 100)
     }
   }
 }
