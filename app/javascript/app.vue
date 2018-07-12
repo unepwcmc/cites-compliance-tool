@@ -16,11 +16,9 @@
         </div>
 
         <div class="level-right">
-          <a class="level-item" href="#">
+          <a class="level-item site-navigation-main__download" href="#">
             Download All
-            <span class="icon">
-              <i class="fas fa-download"></i>
-            </span>
+            <span class="icon-download-light"></span>
           </a>
           <a class="level-item" href="#">
             Name

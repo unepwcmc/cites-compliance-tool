@@ -8,12 +8,7 @@
         <p class="issues-reported__label">
           Issues currently reported in {{values.year}}
         </p>
-        <a class="icon icon-download issues-reported__download" href="#">
-          <span class="fa-stack">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fas fa-download fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
+        <a class="icon-download issues-reported__download" href="#"></a>
       </div>
     </div>
   </section>

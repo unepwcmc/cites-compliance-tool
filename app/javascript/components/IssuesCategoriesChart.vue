@@ -3,11 +3,7 @@
     <h2>{{title}}</h2>
 
     <div class="dropdown is-right is-hoverable issues-categories-chart__dropdown">
-      <div class="dropdown-trigger icon-ellipsis">
-        <span class="icon is-large">
-          <i class="fas fa-lg fa-ellipsis-v"></i>
-        </span>
-      </div>
+      <div class="dropdown-trigger icon-ellipsis"></div>
 
       <div class="dropdown-menu" role="menu">
         <div class="dropdown-content">
