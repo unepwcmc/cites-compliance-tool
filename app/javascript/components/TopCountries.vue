@@ -29,7 +29,7 @@
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item top-countries__list-name">
-                <strong>{{index + 1}}.</strong> {{getCountryName(country)}}
+                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 30)}}
               </span>
             </div>
             <div class="level-right">
@@ -125,6 +125,13 @@ export default {
       }
 
       return lookup['Name']
+    },
+    getTruncatedName(name, characters) {
+      if (name.length > characters) {
+        name = name.substr(0, characters) + '...'
+      }
+
+      return name
     }
   },
   mounted () {

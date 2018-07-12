@@ -25,34 +25,21 @@
   right: -30px;
 }
 
-.issues-categories-chart__doughnut {
-  margin: 25px 0 10px;
-  text-align: center;
+.issues-categories-chart__circle {
+  background: #efefef;
+  border-radius: 50%;
+  height: 175px;
+  margin: 25px auto 10px;
+  position: relative;
+  width: 175px;
 }
 
-.issues-categories-chart__doughnut text {
+.issues-categories-chart__circle span {
+  font-size: 35px;
   font-weight: 500;
-}
-
-.issues-categories-chart__doughnut-circle {
-  animation: issues-categories-chart__doughnut-fill 2s reverse;
-  transform: rotate(-90deg);
-  transform-origin: 50%;
-}
-
-.issues-categories-chart__doughnut-label {
-  animation: issues-categories-chart__doughnut-appear 2s forwards;
-  opacity: 0;
-}
-
-@keyframes issues-categories-chart__doughnut-fill {
-  to {
-    stroke-dasharray: 0 100;
-  }
-}
-
-@keyframes issues-categories-chart__doughnut-appear {
-  to {
-    opacity: 1;
-  }
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
