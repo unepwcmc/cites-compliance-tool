@@ -10,9 +10,9 @@
       <div class="column">
         <ul class="issues-taxonomies__chart">
           <li v-for="(taxonomy, index) in taxonomies" :key="index">
-            <div class="issues-taxonomies__chart-bar" :style="{height: `${barPercentage(taxonomy.percent)}%`, backgroundColor: colours[index]}"></div>
+            <div class="issues-taxonomies__chart-bar" :style="{height: `${getBarPercentage(taxonomy.percent)}%`, backgroundColor: colours[index]}"></div>
             <div class="issues-taxonomies__chart-labels">
-              <span class="issues-taxonomies__chart-labels-value" :style="{bottom: `${barPercentage(taxonomy.percent)}%`}">
+              <span class="issues-taxonomies__chart-labels-value" :style="{bottom: `${getBarPercentage(taxonomy.percent)}%`}">
                 <strong>
                   {{index + 1}}.
                   <br>
@@ -63,13 +63,15 @@ export default {
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#58bc8a', '#91c352', '#b4c92c', '#d5ec3a'],
-      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit'],
-      barMax: 80
+      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit']
     }
   },
   methods: {
-    barPercentage(value) {
-      return (value / 100) * this.barMax
+    getMaxPercent() {
+      return Math.max(...this.taxonomies.map((t) => t.percent))
+    },
+    getBarPercentage(value) {
+      return (value / this.getMaxPercent()) * 80
     }
   }
 }
