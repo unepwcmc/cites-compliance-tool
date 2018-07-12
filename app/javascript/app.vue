@@ -34,7 +34,7 @@
         </div>
 
         <div class="level-right">
-          <div class="level-item dropdown is-hoverable">
+          <div class="level-item dropdown is-right is-hoverable site-navigation-sub__dropdown">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="year-select">
                 <span>{{selectedYear}}</span>

@@ -5,10 +5,12 @@
     <div class="dropdown is-right is-hoverable issues-categories-chart__dropdown">
       <div class="dropdown-trigger icon-ellipsis"></div>
 
-      <div class="dropdown-menu" role="menu">
+      <div class="dropdown-menu dropdown-menu-dark" role="menu">
         <div class="dropdown-content">
           <a href="#" class="dropdown-item">
             Download Issues
+
+            <span class="icon-download-light"></span>
           </a>
         </div>
       </div>

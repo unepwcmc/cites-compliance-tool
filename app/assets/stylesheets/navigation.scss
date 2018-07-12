@@ -72,3 +72,8 @@
 .site-navigation-sub button > span:first-child {
   padding-right: 2.75em;
 }
+
+.site-navigation-sub__dropdown .dropdown-menu {
+  margin-right: 40px;
+  margin-top: -10px;
+}
