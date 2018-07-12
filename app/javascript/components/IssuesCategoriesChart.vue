@@ -31,9 +31,9 @@
           </linearGradient>
         </defs>
 
-        <circle class="issues-categories-chart__doughnut-background" stroke="#efefef" stroke-width="4" fill="none" cx="50%" cy="50%" r="13.91549431" />
+        <circle class="issues-categories-chart__doughnut-background" stroke="#efefef" stroke-width="4" fill="none" cx="50%" cy="50%" r="15.91549431" />
 
-        <circle class="issues-categories-chart__doughnut-circle" stroke="url(#doughnutGradient)" stroke-width="4" :stroke-dasharray="`${scaledValue},100`" stroke-linecap="round" fill="none" cx="50%" cy="50%" r="13.91549431" />
+        <circle class="issues-categories-chart__doughnut-circle" stroke="url(#doughnutGradient)" stroke-width="3" :stroke-dasharray="`${scaledValue},100`" stroke-linecap="round" fill="none" cx="50%" cy="50%" r="15.91549431" />
 
         <g class="issues-categories-chart__doughnut-label">
           <text class="issues-categories-chart__doughnut-value" x="49%" y="52%" alignment-baseline="middle" text-anchor="middle" font-size="5">

@@ -1,4 +1,4 @@
-const data = [
+const dummyData = [
   {
     "exporter": "PH",
     "cnt": 33435,
@@ -905,5 +905,12 @@ const data = [
     "percent": 0.0010410160316468874
   }
 ]
+
+const data = {
+  '2014': dummyData,
+  '2015': dummyData,
+  '2016': dummyData,
+  '2017': dummyData
+}
 
 module.exports = data

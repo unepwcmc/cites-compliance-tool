@@ -24,7 +24,7 @@
       </div>
       <div class="column is-5">
         <ul class="top-countries__list">
-          <li class="level" v-for="(country, index) in countries[mode]" :key="index" v-on:mouseover="onCountryMouseover(getCountryKey(country), index)" v-on:mouseleave="onCountryMouseleave(getCountryKey(country))">
+          <li class="level" v-for="(country, index) in getModeData()" :key="index" v-on:mouseover="onCountryMouseover(getCountryKey(country), index)" v-on:mouseleave="onCountryMouseleave(getCountryKey(country))">
             <div class="level-left">
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
@@ -63,7 +63,7 @@ import iso2toiso3 from '../helpers/iso2-to-iso3'
 import countries from '../data/countries';
 
 export default {
-  props: ['countries'],
+  props: ['export', 'import'],
   data () {
     return {
       mode: 'export',
@@ -73,9 +73,12 @@ export default {
     }
   },
   methods: {
+    getModeData() {
+      return (this.mode === 'export') ? this.export : this.import
+    },
     countriesObject () {
       let countries = {}
-      this.countries[this.mode].forEach((country, index) => {
+      this.getModeData().forEach((country, index) => {
         let iso3 = iso2toiso3[this.getCountryKey(country)]
         countries[iso3] = {fillKey: `top${index+1}`}
       })

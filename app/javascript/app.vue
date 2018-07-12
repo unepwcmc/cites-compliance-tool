@@ -39,7 +39,7 @@
           <div class="level-item dropdown is-hoverable">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="year-select">
-                <span>2016</span>
+                <span>{{selectedYear}}</span>
                 <span class="icon is-small">
                   <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </span>
@@ -47,17 +47,8 @@
             </div>
             <div class="dropdown-menu" id="year-select" role="menu">
               <div class="dropdown-content">
-                <a href="#" class="dropdown-item">
-                  2014
-                </a>
-                <a href="#" class="dropdown-item">
-                  2015
-                </a>
-                <a href="#" class="dropdown-item">
-                  2016
-                </a>
-                <a href="#" class="dropdown-item">
-                  2017
+                <a v-for="(year) in years" :key="year" class="dropdown-item" v-on:click="onSelectYear(year)">
+                  {{year}}
                 </a>
               </div>
             </div>
@@ -69,40 +60,40 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues"></issues-reported>
+          <issues-reported :values="issuesReportedValues[selectedYear]"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
-          <issues-chart :values="chartValues"></issues-chart>
+          <issues-chart :values="chartValues[selectedYear]"></issues-chart>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-categories :values="categoryValues"></issues-categories>
+          <issues-categories :values="categoryValues[selectedYear]"></issues-categories>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-commodities :commodities="commodityValues"></top-commodities>
+          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)"></top-commodities>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :taxonomies="taxonomyValues"></issues-taxonomies>
+          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)"></issues-taxonomies>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :countries="topCountries"></top-countries>
+          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)"></top-countries>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-species :species="speciesValues"></top-species>
+          <top-species :species="speciesValues[selectedYear]"></top-species>
         </div>
       </div>
     </div>
@@ -119,10 +110,14 @@ import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
+import dataReported from './data/reported'
+import dataChart from './data/chart'
+import dataCategories from './data/categories'
 import dataExporters from './data/exporters'
 import dataImporters from './data/importers'
 import dataTaxonomy from './data/taxonomies'
 import dataCommodity from './data/commodities'
+import dataSpecies from './data/species'
 
 import '@fortawesome/fontawesome-free/js/all.js'
 
@@ -138,69 +133,22 @@ export default {
   },
   data () {
     return {
-      issuesReportedValues: {
-        year: 2016,
-        value: 23286
-      },
+      years: ['2014', '2015', '2016', '2017'],
+      selectedYear: '2016',
 
-      chartValues: [{
-        year: 2015,
-        issuesReported: 34259,
-        countriesReported: 200,
-        countriesYetToReport: 7
-      }, {
-        year: 2016,
-        issuesReported: 23286,
-        countriesReported: 200,
-        countriesYetToReport: 23
-      }, {
-        year: 2017,
-        issuesReported: 27932,
-        countriesReported: 100,
-        countriesYetToReport: 15
-      }],
-
-      categoryValues: [{
-        name: "Trade Suspensions",
-        value: 7356
-      }, {
-        name: "Appendix I Trade",
-        value: 17231
-      }, {
-        name: "Quotas",
-        value: 10898
-      }],
-
-      topCountries: {
-        export: dataExporters.slice(0, 5),
-        import: dataImporters.slice(0, 5)
-      },
-
-      speciesValues: [{
-        name: 'Species 1',
-        transactions: 123,
-        appendix: 'II'
-      }, {
-        name: 'Species 2',
-        transactions: 123,
-        appendix: 'II'
-      }, {
-        name: 'Species 3',
-        transactions: 123,
-        appendix: 'II'
-      }, {
-        name: 'Species 4',
-        transactions: 123,
-        appendix: 'II'
-      }, {
-        name: 'Species 5',
-        transactions: 123,
-        appendix: 'II'
-      }],
-
-      taxonomyValues: dataTaxonomy.slice(0, 8),
-
-      commodityValues: dataCommodity.slice(0, 5)
+      issuesReportedValues: dataReported,
+      chartValues: dataChart,
+      categoryValues: dataCategories,
+      topCountriesValuesExport: dataExporters,
+      topCountriesValuesImport: dataImporters,
+      speciesValues: dataSpecies,
+      taxonomyValues: dataTaxonomy,
+      commodityValues: dataCommodity
+    }
+  },
+  methods: {
+    onSelectYear(year) {
+      this.selectedYear = year;
     }
   }
 }
