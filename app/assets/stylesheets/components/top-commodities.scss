@@ -12,6 +12,7 @@
 .top-commodities__list li {
   border: $tile-section-border;
   flex-grow: 1;
+  height: 3rem;
   margin-bottom: 10px !important;
   padding: 0 0 0 15px;
 }
@@ -38,10 +39,6 @@
 .top-commodities__list-name strong,
 .top-commodities__chart-name strong {
   margin-right: 5px;
-}
-
-.top-commodities__list-dropdown.is-right .dropdown-menu {
-  right: -30px;
 }
 
 .top-commodities__chart li {

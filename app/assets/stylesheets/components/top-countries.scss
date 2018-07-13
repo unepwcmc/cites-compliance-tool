@@ -48,6 +48,7 @@
 .top-countries__list li {
   border: $tile-section-border;
   flex-grow: 1;
+  height: 3rem;
   margin-bottom: 10px !important;
   padding: 0 0 0 15px;
 }
@@ -68,8 +69,4 @@
 
 .top-countries__list-name strong {
   margin-right: 5px;
-}
-
-.top-countries__list-dropdown.is-right .dropdown-menu {
-  right: -30px;
 }

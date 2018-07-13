@@ -18,11 +18,11 @@
 .issues-categories-chart__dropdown {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 10px;
 }
 
-.issues-categories-chart__dropdown.is-right .dropdown-menu {
-  right: -30px;
+.issues-categories-chart__dropdown:hover .icon-ellipsis {
+  background-image: url('icon-ellipsis-hover.svg');
 }
 
 .issues-categories-chart__circle {

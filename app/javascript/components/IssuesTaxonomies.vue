@@ -35,16 +35,14 @@
             </div>
             <div class="level-right">
               <div class="level-item issues-taxonomies__list-dropdown dropdown is-right is-hoverable">
-                <div class="dropdown-trigger icon-ellipsis">
-                  <span class="icon is-large">
-                    <i class="fas fa-lg fa-ellipsis-v"></i>
-                  </span>
-                </div>
+                <div class="dropdown-trigger icon-ellipsis"></div>
 
-                <div class="dropdown-menu" role="menu">
+                <div class="dropdown-menu dropdown-menu-dark" role="menu">
                   <div class="dropdown-content">
                     <a href="#" class="dropdown-item">
                       Download Issues
+
+                      <span class="icon-download-light"></span>
                     </a>
                   </div>
                 </div>

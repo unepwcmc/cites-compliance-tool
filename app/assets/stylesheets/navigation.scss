@@ -45,6 +45,15 @@
   color: #424242;
 }
 
+.site-navigation-main__download .icon-download-light {
+  margin-left: 10px;
+  margin-top: -3px;
+}
+
+.site-navigation-main__download:hover .icon-download-light {
+  background-image: url('icon-download-light-hover.svg');
+}
+
 .site-navigation-sub {
   background: #fff;
   color: #424242;
@@ -62,4 +71,9 @@
 
 .site-navigation-sub button > span:first-child {
   padding-right: 2.75em;
+}
+
+.site-navigation-sub__dropdown .dropdown-menu {
+  margin-right: 40px;
+  margin-top: -10px;
 }

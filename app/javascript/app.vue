@@ -16,11 +16,9 @@
         </div>
 
         <div class="level-right">
-          <a class="level-item" href="#">
+          <a class="level-item site-navigation-main__download" href="#">
             Download All
-            <span class="icon">
-              <i class="fas fa-download"></i>
-            </span>
+            <span class="icon-download-light"></span>
           </a>
           <a class="level-item" href="#">
             Name
@@ -36,7 +34,7 @@
         </div>
 
         <div class="level-right">
-          <div class="level-item dropdown is-hoverable">
+          <div class="level-item dropdown is-right is-hoverable site-navigation-sub__dropdown">
             <div class="dropdown-trigger">
               <button class="button" aria-haspopup="true" aria-controls="year-select">
                 <span>{{selectedYear}}</span>

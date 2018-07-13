@@ -19,6 +19,7 @@
 .issues-taxonomies__list li {
   border: $tile-section-border;
   flex: 1 1 50px;
+  height: 3rem;
   margin-bottom: 10px !important;
   margin-left: 2%;
   padding: 0 0 0 15px;
@@ -48,10 +49,6 @@
 
 .issues-taxonomies__list-name strong {
   margin-right: 5px;
-}
-
-.issues-taxonomies__list-dropdown.is-right .dropdown-menu {
-  right: -30px;
 }
 
 .issues-taxonomies__chart li {

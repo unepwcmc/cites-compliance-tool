@@ -1,30 +1,38 @@
 $icon-hover-colour: #6285a7;
 
 .icon-download {
-  height: 37px;
-  width: 37px;
+  background-image: url('icon-download.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 38px;
+  width: 38px;
 }
 
-.icon-download .fa-stack {
-  height: 100%;
-  width: 100%;
+.icon-download:hover {
+  background-image: url('icon-download-hover.svg');
+  cursor: pointer;
 }
 
-.icon-download .fa-circle {
-  color: $blue-dark;
-  height: 100%;
-  width: 100%;
-}
-
-.icon-download:hover .fa-circle {
-  color: $icon-hover-colour;
+.icon-download-light {
+  background-image: url('icon-download-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 16px;
+  width: 16px;
 }
 
 .icon-ellipsis {
-  color: $blue-medium !important;
+  background-image: url('icon-ellipsis.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 25px;
+  margin: 0 10px 0 0;
+  padding: 0 10px;
+  width: 7px;
 }
 
 .icon-ellipsis:hover {
-  color: $icon-hover-colour !important;
+  background-image: url('icon-ellipsis-hover.svg');
   cursor: pointer;
 }

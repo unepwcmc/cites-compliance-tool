@@ -1,11 +1,6 @@
 <template>
   <section class="issues-chart tile__box">
-    <a class="icon icon-download issues-chart__download" href="#">
-      <span class="fa-stack">
-        <i class="fas fa-circle fa-stack-2x"></i>
-        <i class="fas fa-download fa-stack-1x fa-inverse"></i>
-      </span>
-    </a>
+    <a class="icon-download issues-chart__download" href="#"></a>
 
     <div class="issues-chart__svg">
       <svg width="100%" height="100%" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
