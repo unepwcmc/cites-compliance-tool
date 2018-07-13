@@ -10,10 +10,12 @@ module CsvDownloader
     CSV.generate(headers: true) do |csv|
       csv << HEADER
       %w[trade_suspensions appendix_i mandatory_quotas].each do |type|
-        data = ShipmentsApiRetriever.api_call(type)['shipments']
+        data = ShipmentsApiRetriever.api_call(type)
         data.each do |row|
-          row[:compliance_type] = type
-          csv << row.values
+          row['shipments'].each do |shipments|
+            shipments[:compliance_type] = type
+            csv << shipments.values
+          end
         end
       end
     end
