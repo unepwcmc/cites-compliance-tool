@@ -1,68 +1,104 @@
 const data = {
-  '2014': [{
-    year: 2013,
-    issuesReported: 34259,
-    countriesReported: 200,
-    countriesYetToReport: 7
-  }, {
-    year: 2014,
-    issuesReported: 23286,
-    countriesReported: 200,
-    countriesYetToReport: 23
-  }, {
-    year: 2015,
-    issuesReported: 27932,
-    countriesReported: 100,
-    countriesYetToReport: 15
-  }],
-  '2015': [{
-    year: 2014,
-    issuesReported: 34259,
-    countriesReported: 200,
-    countriesYetToReport: 7
-  }, {
-    year: 2015,
-    issuesReported: 23286,
-    countriesReported: 200,
-    countriesYetToReport: 23
-  }, {
-    year: 2016,
-    issuesReported: 27932,
-    countriesReported: 100,
-    countriesYetToReport: 15
-  }],
-  '2016': [{
-    year: 2015,
-    issuesReported: 34259,
-    countriesReported: 200,
-    countriesYetToReport: 7
-  }, {
-    year: 2016,
-    issuesReported: 23286,
-    countriesReported: 200,
-    countriesYetToReport: 23
-  }, {
-    year: 2017,
-    issuesReported: 27932,
-    countriesReported: 100,
-    countriesYetToReport: 15
-  }],
-  '2017': [{
-    year: 2016,
-    issuesReported: 34259,
-    countriesReported: 200,
-    countriesYetToReport: 7
-  }, {
-    year: 2017,
-    issuesReported: 23286,
-    countriesReported: 200,
-    countriesYetToReport: 23
-  }, {
-    year: 2018,
-    issuesReported: 27932,
-    countriesReported: 100,
-    countriesYetToReport: 15
-  }]
+  "2012": [
+    {
+      "year": 2011,
+      "issuesReported": 8048,
+      "countriesReported": 101,
+      "countriesYetToReport": 82
+    },
+    {
+      "year": 2012,
+      "issuesReported": 12966,
+      "countriesReported": 142,
+      "countriesYetToReport": 41
+    },
+    {
+      "year": 2013,
+      "issuesReported": 11886,
+      "countriesReported": 153,
+      "countriesYetToReport": 30
+    }
+  ],
+  "2013": [
+    {
+      "year": 2012,
+      "issuesReported": 12966,
+      "countriesReported": 142,
+      "countriesYetToReport": 41
+    },
+    {
+      "year": 2013,
+      "issuesReported": 11886,
+      "countriesReported": 153,
+      "countriesYetToReport": 30
+    },
+    {
+      "year": 2014,
+      "issuesReported": 17390,
+      "countriesReported": 144,
+      "countriesYetToReport": 39
+    }
+  ],
+  "2014": [
+    {
+      "year": 2013,
+      "issuesReported": 11886,
+      "countriesReported": 153,
+      "countriesYetToReport": 30
+    },
+    {
+      "year": 2014,
+      "issuesReported": 17390,
+      "countriesReported": 144,
+      "countriesYetToReport": 39
+    },
+    {
+      "year": 2015,
+      "issuesReported": 12031,
+      "countriesReported": 122,
+      "countriesYetToReport": 61
+    }
+  ],
+  "2015": [
+    {
+      "year": 2014,
+      "issuesReported": 17390,
+      "countriesReported": 144,
+      "countriesYetToReport": 39
+    },
+    {
+      "year": 2015,
+      "issuesReported": 12031,
+      "countriesReported": 122,
+      "countriesYetToReport": 61
+    },
+    {
+      "year": 2016,
+      "issuesReported": 12972,
+      "countriesReported": 107,
+      "countriesYetToReport": 76
+    }
+  ],
+  "2016": [
+    {
+      "year": 2015,
+      "issuesReported": 12031,
+      "countriesReported": 122,
+      "countriesYetToReport": 61
+    },
+    {
+      "year": 2016,
+      "issuesReported": 12972,
+      "countriesReported": 107,
+      "countriesYetToReport": 76
+    },
+    {
+      "year": 2017,
+      "issuesReported": 336,
+      "countriesReported": 40,
+      "countriesYetToReport": 43
+    }
+  ]
 }
 
 module.exports = data
