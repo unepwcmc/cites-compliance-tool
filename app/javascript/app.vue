@@ -16,7 +16,7 @@
         </div>
 
         <div class="level-right">
-          <a class="level-item site-navigation-main__download" href="#">
+          <a class="level-item" href="/download/download_all">
             Download All
             <span class="icon-download-light"></span>
           </a>

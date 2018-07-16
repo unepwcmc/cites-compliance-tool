@@ -42,6 +42,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'httparty'
 
+gem 'rubocop', '~> 0.58.0', require: false
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
@@ -64,9 +66,6 @@ group :development do
   gem 'capistrano-yarn'
   gem 'capistrano-nvm'
 end
-
-gem 'dotenv-rails'
-
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
