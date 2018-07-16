@@ -6,7 +6,7 @@ const data = {
       "percent": 99.1661874640598045
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 110,
       "percent": 0.63254744105807935595
     },
@@ -23,7 +23,7 @@ const data = {
       "percent": 99.1071428571428571
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 3,
       "percent": 0.89285714285714285714
     },
@@ -40,7 +40,7 @@ const data = {
       "percent": 99.0607597040977475
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 103,
       "percent": 0.85612168564541600864
     },
@@ -57,7 +57,7 @@ const data = {
       "percent": 98.9231028100286051
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 117,
       "percent": 0.98435133770822816759
     },
@@ -74,7 +74,7 @@ const data = {
       "percent": 98.6888786055838346
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 138,
       "percent": 1.06432207311429893568
     },
@@ -91,7 +91,7 @@ const data = {
       "percent": 97.6719087264878199
     },
     {
-      "name": "AppendixI", 
+      "name": "Appendix I", 
       "value": 292,
       "percent": 2.2510021584952205
     },
