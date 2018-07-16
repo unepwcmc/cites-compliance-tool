@@ -1,19 +1,11 @@
 module  ShipmentsApiRetriever
-  def self.api_call(compliance_type = nil)
-    data = []
-    page = 1
-    loop do
-      response = HTTParty.get(ENV['SPECIES_API_URL'],
-                              headers: header,
-                              query: { compliance_type: compliance_type,
-                                       time_range_start: 2012, time_range_end: 2016,
-                                       page: page, per_page: 100_00 })
-      parsed_resp = JSON.parse(response.body)
-      break if parsed_resp['shipments'].empty?
-      data << parsed_resp
-      page += 1
-    end
-    data
+  def self.api_call(compliance_type = nil, page = 1)
+    response = HTTParty.get(ENV['SPECIES_API_URL'],
+                            headers: header,
+                            query: { compliance_type: compliance_type,
+                                     time_range_start: 2012, time_range_end: 2016,
+                                     page: page, per_page: 100_00 })
+    JSON.parse(response.body)
   end
 
   def self.header
