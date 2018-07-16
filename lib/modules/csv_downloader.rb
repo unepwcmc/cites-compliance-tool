@@ -3,7 +3,7 @@ module CsvDownloader
                term importer_reported_quantity exporter_reported_quantity
                unit importer importer_iso exporter exporter_iso origin
                purpose source import_permit export_permit origin_permit
-               issue_type ].freeze
+               issue_type, rank].freeze
 
   def self.csv_generator
     CSV.generate(headers: true) do |csv|
