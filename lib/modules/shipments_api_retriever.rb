@@ -5,7 +5,9 @@ module  ShipmentsApiRetriever
     loop do
       response = HTTParty.get(ENV['SPECIES_API_URL'],
                               headers: header,
-                              query: { compliance_type: compliance_type, page: page, per_page: 100_00 })
+                              query: { compliance_type: compliance_type,
+                                       time_range_start: 2012, time_range_end: 2016,
+                                       page: page, per_page: 100_00 })
       parsed_resp = JSON.parse(response.body)
       break if parsed_resp['shipments'].empty?
       data << parsed_resp
