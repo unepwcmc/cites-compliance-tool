@@ -64,6 +64,7 @@ export default {
       textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit']
     }
   },
+  created(){ console.log(this.taxonomies)},
   methods: {
     getMaxPercent() {
       return Math.max(...this.taxonomies.map((t) => t.percent))

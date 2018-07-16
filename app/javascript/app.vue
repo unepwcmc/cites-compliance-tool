@@ -79,7 +79,7 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)"></issues-taxonomies>
+          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 7)"></issues-taxonomies>
         </div>
       </div>
 
@@ -131,7 +131,7 @@ export default {
   },
   data () {
     return {
-      years: ['2014', '2015', '2016', '2017'],
+      years: ['2012', '2013', '2014', '2015', '2016'],
       selectedYear: '2016',
 
       issuesReportedValues: dataReported,
