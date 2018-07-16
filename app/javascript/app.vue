@@ -79,7 +79,7 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 7)"></issues-taxonomies>
+          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)"></issues-taxonomies>
         </div>
       </div>
 

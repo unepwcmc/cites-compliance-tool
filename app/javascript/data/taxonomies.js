@@ -15155,6 +15155,11 @@
 
 const dummy2012 = [
   {
+    taxon: 'Amphibians',
+    cnt: 0,
+    percent: 0
+  },
+  {
     taxon: 'Birds',
     cnt: 18,
     percent: 1.32450331125828
@@ -15192,6 +15197,11 @@ const dummy2012 = [
 ]
 
 const dummy2013 = [
+  {
+    taxon: 'Amphibians',
+    cnt: 0,
+    percent: 0
+  },
   {
     taxon: 'Birds',
     cnt: 42,
@@ -15231,6 +15241,11 @@ const dummy2013 = [
 
 const dummy2014 = [
   {
+    taxon: 'Amphibians',
+    cnt: 0,
+    percent: 0
+  },
+  {
     taxon: 'Birds',
     cnt: 46,
     percent: 2.57558790593505
@@ -15269,6 +15284,11 @@ const dummy2014 = [
 
 const dummy2015 = [
   {
+    taxon: 'Amphibians',
+    cnt: 0,
+    percent: 0
+  },
+  {
     taxon: 'Birds',
     cnt: 136,
     percent: 6.78304239401496
@@ -15306,6 +15326,11 @@ const dummy2015 = [
 ]
 
 const dummy2016 = [
+  {
+    taxon: 'Amphibians',
+    cnt: 0,
+    percent: 0
+  },
   {
     taxon: 'Birds',
     cnt: 114,
