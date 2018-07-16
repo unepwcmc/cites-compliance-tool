@@ -1,7 +1,7 @@
 $icon-hover-colour: #6285a7;
 
 .icon-download {
-  background-image: url('icon-download.svg');
+  background-image: image-url('icon-download.svg');
   background-repeat: no-repeat;
   background-size: contain;
   height: 38px;
@@ -9,12 +9,12 @@ $icon-hover-colour: #6285a7;
 }
 
 .icon-download:hover {
-  background-image: url('icon-download-hover.svg');
+  background-image: image-url('icon-download-hover.svg');
   cursor: pointer;
 }
 
 .icon-download-light {
-  background-image: url('icon-download-light.svg');
+  background-image: image-url('icon-download-light.svg');
   background-repeat: no-repeat;
   background-size: contain;
   height: 16px;
@@ -22,7 +22,7 @@ $icon-hover-colour: #6285a7;
 }
 
 .icon-ellipsis {
-  background-image: url('icon-ellipsis.svg');
+  background-image: image-url('icon-ellipsis.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -33,6 +33,6 @@ $icon-hover-colour: #6285a7;
 }
 
 .icon-ellipsis:hover {
-  background-image: url('icon-ellipsis-hover.svg');
+  background-image: image-url('icon-ellipsis-hover.svg');
   cursor: pointer;
 }
