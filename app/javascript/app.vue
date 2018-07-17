@@ -108,6 +108,7 @@ import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
+import dataYears from './data/years'
 import dataReported from './data/reported'
 import dataChart from './data/chart'
 import dataCategories from './data/categories'
@@ -131,8 +132,8 @@ export default {
   },
   data () {
     return {
-      years: ['2012', '2013', '2014', '2015', '2016'],
-      selectedYear: '2016',
+      years: dataYears,
+      selectedYear: dataYears[dataYears.length - 1],
 
       issuesReportedValues: dataReported,
       chartValues: dataChart,
