@@ -3,17 +3,7 @@
     <h2>{{title}}</h2>
 
     <div class="dropdown is-right is-hoverable issues-categories-chart__dropdown">
-      <div class="dropdown-trigger icon-ellipsis"></div>
-
-      <div class="dropdown-menu dropdown-menu-dark" role="menu">
-        <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
-            Download Issues
-
-            <span class="icon-download-light"></span>
-          </a>
-        </div>
-      </div>
+      <component-links :download="links.download" :details="links.details"></component-links>
     </div>
 
     <div class="issues-categories-chart__circle">
@@ -23,10 +13,20 @@
 </template>
 
 <script>
+import ComponentLinks from '../elements/ComponentLinks'
+
 export default {
+  components: {
+    ComponentLinks
+  },
   props: ['title', 'value'],
   data () {
-    return {}
+    return {
+      links: {
+        details: '#',
+        download: '#'
+      }
+    }
   }
 }
 </script>

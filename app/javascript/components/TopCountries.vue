@@ -34,17 +34,7 @@
             </div>
             <div class="level-right">
               <div class="level-item top-countries__list-dropdown dropdown is-right is-hoverable">
-                <div class="dropdown-trigger icon-ellipsis"></div>
-
-                <div class="dropdown-menu dropdown-menu-dark" role="menu">
-                  <div class="dropdown-content">
-                    <a href="#" class="dropdown-item">
-                      Download Issues
-
-                      <span class="icon-download-light"></span>
-                    </a>
-                  </div>
-                </div>
+                <component-links :download="links.download" :details="links.details"></component-links>
               </div>
             </div>
           </li>
@@ -60,14 +50,23 @@ import Datamap from 'datamaps'
 import iso2toiso3 from '../helpers/iso2-to-iso3'
 import countries from '../data/countries';
 
+import ComponentLinks from '../elements/ComponentLinks'
+
 export default {
+  components: {
+    ComponentLinks
+  },
   props: ['export', 'import'],
   data () {
     return {
       mode: 'export',
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#b3c82b'],
       getMap: null,
-      activeCountry: null
+      activeCountry: null,
+      links: {
+        details: '#',
+        download: '#'
+      }
     }
   },
   methods: {

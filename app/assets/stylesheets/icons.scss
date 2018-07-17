@@ -21,6 +21,15 @@ $icon-hover-colour: #6285a7;
   width: 16px;
 }
 
+.icon-details-light {
+  background-position: center;
+  background-image: image-url('icon-details-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 16px;
+  width: 16px;
+}
+
 .icon-ellipsis {
   background-image: image-url('icon-ellipsis.svg');
   background-position: center;

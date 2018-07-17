@@ -36,7 +36,8 @@
   color: $white !important;
 }
 
-.dropdown-menu-dark .icon-download-light {
+.dropdown-menu-dark .icon-download-light,
+.dropdown-menu-dark .icon-details-light {
   display: inline-block;
   position: absolute;
   right: 15px;

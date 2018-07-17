@@ -30,17 +30,7 @@
           <td>{{species.appendix}}</td>
           <td>
             <div class="level-item top-species__dropdown dropdown is-right is-hoverable">
-              <div class="dropdown-trigger icon-ellipsis"></div>
-
-              <div class="dropdown-menu dropdown-menu-dark" role="menu">
-                <div class="dropdown-content">
-                  <a href="#" class="dropdown-item">
-                    Download Issues
-
-                    <span class="icon-download-light"></span>
-                  </a>
-                </div>
-              </div>
+              <component-links :download="links.download" :details="links.details"></component-links>
             </div>
           </td>
         </tr>
@@ -50,10 +40,20 @@
 </template>
 
 <script>
+import ComponentLinks from '../elements/ComponentLinks'
+
 export default {
+  components: {
+    ComponentLinks
+  },
   props: ['species'],
   data () {
-    return {}
+    return {
+      links: {
+        details: '#',
+        download: '#'
+      }
+    }
   }
 }
 </script>
