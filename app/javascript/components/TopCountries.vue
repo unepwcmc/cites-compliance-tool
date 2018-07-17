@@ -69,6 +69,14 @@ export default {
       }
     }
   },
+  watch: {
+    export() {
+      this.reloadMap()
+    },
+    import() {
+      this.reloadMap()
+    }
+  },
   methods: {
     getModeData() {
       return (this.mode === 'export') ? this.export : this.import
