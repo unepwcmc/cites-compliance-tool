@@ -27,66 +27,15 @@
     </div>
 
     <div class="issues-chart__panel-column is-first">
-      <div class="issues-chart__panel">
-        <div class="issues-chart__panel-issues">
-          <span>{{values[0].issuesReported}}</span>
-          <p>Issues reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[0].countriesReported}}</span>
-          <p>Countries reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[0].countriesYetToReport}}</span>
-          <p>Countries yet to report</p>
-        </div>
-
-        <div class="issues-chart__label">{{values[0].year}}</div>
-      </div>
+      <issues-chart-panel :values="values[0]"></issues-chart-panel>
     </div>
 
     <div class="issues-chart__panel-column is-second">
-      <div class="issues-chart__panel active">
-        <div class="issues-chart__panel-issues">
-          <span>{{values[1].issuesReported}}</span>
-          <p>Issues reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[1].countriesReported}}</span>
-          <p>Countries reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[1].countriesYetToReport}}</span>
-          <p>Countries yet to report</p>
-        </div>
-
-        <div class="issues-chart__label">{{values[1].year}}</div>
-      </div>
+      <issues-chart-panel :values="values[1]" :active="true"></issues-chart-panel>
     </div>
 
     <div class="issues-chart__panel-column is-third">
-      <div class="issues-chart__panel">
-        <div class="issues-chart__panel-issues">
-          <span>{{values[2].issuesReported}}</span>
-          <p>Issues reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[2].countriesReported}}</span>
-          <p>Countries reported</p>
-        </div>
-
-        <div class="issues-chart__panel-countries">
-          <span>{{values[2].countriesYetToReport}}</span>
-          <p>Countries yet to report</p>
-        </div>
-
-        <div class="issues-chart__label">{{values[2].year}}</div>
-      </div>
+      <issues-chart-panel :values="values[2]"></issues-chart-panel>
     </div>
   </section>
 </template>
@@ -94,7 +43,12 @@
 <script>
 // TODO: Support 2017 edge-case (no future years)
 
+import IssuesChartPanel from './IssuesChartPanel'
+
 export default {
+  components: {
+    IssuesChartPanel
+  },
   props: ['values'],
   data () {
     return {
