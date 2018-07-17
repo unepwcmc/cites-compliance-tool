@@ -4,7 +4,7 @@
 
     <div class="dropdown-menu dropdown-menu-dark" role="menu">
       <div class="dropdown-content">
-        <a v-if="details" :href="download" class="dropdown-item">
+        <a v-if="details" :href="details" class="dropdown-item">
           View Details
           <span class="icon-details-light"></span>
         </a>
