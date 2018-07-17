@@ -1,12 +1,6 @@
 const data = {
   "2012": [
     {
-      "year": 2011,
-      "issuesReported": 8048,
-      "countriesReported": 101,
-      "countriesYetToReport": 82
-    },
-    {
       "year": 2012,
       "issuesReported": 12966,
       "countriesReported": 142,
@@ -91,12 +85,6 @@ const data = {
       "issuesReported": 12972,
       "countriesReported": 107,
       "countriesYetToReport": 76
-    },
-    {
-      "year": 2017,
-      "issuesReported": 336,
-      "countriesReported": 40,
-      "countriesYetToReport": 43
     }
   ]
 }

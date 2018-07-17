@@ -61,7 +61,7 @@
           <issues-reported :values="issuesReportedValues[selectedYear]"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
-          <issues-chart :values="chartValues[selectedYear]"></issues-chart>
+          <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
         </div>
       </div>
 
