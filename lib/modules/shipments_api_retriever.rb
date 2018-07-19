@@ -8,6 +8,20 @@ module  ShipmentsApiRetriever
     JSON.parse(response.body)
   end
 
+  def self.grouped_call(*grouping)
+    record = {}
+    response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/grouped',
+                            headers: header,
+                            query: { group_by: grouping })
+    data = JSON.parse(response.body)['shipments']
+    return data if grouping.include?('issue_type') || grouping.empty?
+    data.each do |d|
+      key = d.keys.first
+      record[key] = d[key][0..4]
+    end
+    record
+  end
+
   def self.header
     { 'X-Authentication-Token' => Rails.application.secrets['compliance_tool_token'] }
   end
