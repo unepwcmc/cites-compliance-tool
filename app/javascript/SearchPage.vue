@@ -71,7 +71,11 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+<<<<<<< HEAD
           <search-list :columns="tableColumns[selectedCategory]" :data="tableData" v-on:change-page="onChangePage"></search-list>
+=======
+          <search-list :columns="tableColumns" :data="tableData"></search-list>
+>>>>>>> Initial work on search listing page
         </div>
       </div>
     </div>
@@ -84,26 +88,42 @@ import debounce from 'lodash.debounce'
 import SiteHeader from './elements/SiteHeader'
 
 import SearchList from './components/SearchList'
+<<<<<<< HEAD
 
 import dataYears from './data/years'
 import dataCountries from './data/countries-search-list'
 import dataSpecies from './data/species-search-list'
 import dataCommodity from './data/commodities-search-list'
+=======
+import TopSpecies from './components/TopSpecies'
+
+import dataYears from './data/years'
+import dataSpecies from './data/species-search-list'
+>>>>>>> Initial work on search listing page
 
 import '@fortawesome/fontawesome-free/js/all.js'
 
 export default {
   components: {
     SiteHeader,
+<<<<<<< HEAD
     SearchList
   },
   data () {
     return {
       selectedCategory: 'species',
+=======
+    SearchList,
+    TopSpecies
+  },
+  data () {
+    return {
+>>>>>>> Initial work on search listing page
       years: dataYears,
       selectedYear: dataYears[dataYears.length - 1],
       suggestions: [],
       tableData: [],
+<<<<<<< HEAD
       tableColumns: {
         countries: {
           headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
@@ -118,6 +138,9 @@ export default {
           keys: ['name', 'transactions', 'appendix']
         }
       }
+=======
+      tableColumns: ['Species', 'No. Transactions', 'Appendix']
+>>>>>>> Initial work on search listing page
     }
   },
   methods: {
@@ -140,6 +163,7 @@ export default {
       console.log(e.target.dataset.value)
       this.getResultsForSuggestion()
     },
+<<<<<<< HEAD
     onChangePage(page) {
       console.log(page)
     },
@@ -156,6 +180,8 @@ export default {
           break;
       }
     },
+=======
+>>>>>>> Initial work on search listing page
     getSuggestions(value) {
       // TODO: Make real API call
       return ['Suggestion 1', 'Suggestion 2', 'Suggestion 3']
@@ -163,10 +189,13 @@ export default {
     getResultsForSuggestion(value) {
       // TODO: Make real API call
       return dataSpecies
+<<<<<<< HEAD
     },
     changeCategory(category) {
       this.selectedCategory = category
       this.tableData = this.getDataForCategory(category)
+=======
+>>>>>>> Initial work on search listing page
     }
   },
   mounted() {
