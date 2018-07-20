@@ -1,31 +1,6 @@
 <template>
-  <div id="app">
-    <nav class="site-navigation site-navigation-main" role="navigation" aria-label="main navigation">
-      <div class="level">
-        <div class="level-left">
-          <a class="level-item site-navigation-main__logo" href="#">
-            <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
-          </a>
-
-          <a class="level-item is-active" href="#">
-            Dashboard
-          </a>
-          <a class="level-item" href="#">
-            Search
-          </a>
-        </div>
-
-        <div class="level-right">
-          <a class="level-item site-navigation-main__download" href="/download/download_all">
-            Download All
-            <span class="icon-download-light"></span>
-          </a>
-          <a class="level-item" href="#">
-            Name
-          </a>
-        </div>
-      </div>
-    </nav>
+  <div>
+    <site-header active="dashboard"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -99,6 +74,8 @@
 </template>
 
 <script>
+import SiteHeader from './elements/SiteHeader'
+
 import IssuesReported from './components/IssuesReported'
 import IssuesChart from './components/IssuesChart'
 import IssuesCategories from './components/IssuesCategories'
@@ -122,6 +99,7 @@ import '@fortawesome/fontawesome-free/js/all.js'
 
 export default {
   components: {
+    SiteHeader,
     IssuesReported,
     IssuesChart,
     IssuesCategories,

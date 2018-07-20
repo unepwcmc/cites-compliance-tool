@@ -6,7 +6,7 @@
       <div class="dropdown-content">
         <a v-if="details" :href="details" class="dropdown-item">
           View Details
-          <span class="icon-details-light"></span>
+          <span class="icon-arrow-right-light"></span>
         </a>
         <a v-if="download" :href="download" class="dropdown-item">
           Download Issues

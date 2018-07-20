@@ -1,5 +1,5 @@
 .site-navigation .level {
-  height: 65px;
+  height: 100%;
 }
 
 .site-navigation .level-left,
@@ -14,14 +14,23 @@
   padding-right: 40px;
 }
 
+.site-navigation-sub .level-item:first-child {
+  padding-left: 0;
+}
+
+.site-navigation-sub .level-item:last-child {
+  padding-right: 0;
+}
+
 .site-navigation-main {
   background: $blue-light;
   font-size: 18px;
+  height: 65px;
 }
 
 .site-navigation-main .level-item,
 .site-navigation-main .navbar-link {
-  color: #fff;
+  color: $white;
 }
 
 .site-navigation-main .level-item .icon {
@@ -41,8 +50,8 @@
 .site-navigation-main a.level-item.is-active,
 .site-navigation-main .navbar-link:hover,
 .site-navigation-main .navbar-link.is-active {
-  background: #fff;
-  color: #424242;
+  background: $white;
+  color: $grey-dark;
 }
 
 .site-navigation-main__download .icon-download-light {
@@ -55,14 +64,30 @@
 }
 
 .site-navigation-sub {
-  background: #fff;
-  color: #424242;
+  background: $white;
+  color: $grey-dark;
   height: 65px;
+}
+
+.site-navigation-sub-dark {
+  background-color: #384F67;
+  color: $white;
+}
+
+.site-navigation-sub .level {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 20px;
+  width: 1000px;
 }
 
 .site-navigation-sub h2 {
   font-size: 18px;
   font-weight: 500;
+}
+
+.site-navigation-sub h2.active {
+  text-decoration: underline;
 }
 
 .site-navigation-sub button {
@@ -74,6 +99,7 @@
 }
 
 .site-navigation-sub__dropdown .dropdown-menu {
-  margin-right: 40px;
+  margin-right: 0;
   margin-top: -10px;
+  padding-top: 0;
 }
