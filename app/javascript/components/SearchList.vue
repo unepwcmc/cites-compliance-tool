@@ -3,7 +3,7 @@
     <table class="list-table">
       <thead>
         <tr>
-          <th v-for="(column, index) in columns" v-bind:key="index">{{column}}</th>
+          <th v-for="(name, index) in columns.headers" v-bind:key="index">{{name}}</th>
           <th class="list-table__header-button">
             <a class="button is-dark button-full-list">
               <span>Download All</span>
@@ -14,9 +14,9 @@
       </thead>
       <tbody>
         <tr v-for="(data, index) in data.data" :key="index">
-          <td><strong>{{index + 1}}.</strong> {{data.name}}</td>
-          <td>{{data.transactions}}</td>
-          <td>{{data.appendix}}</td>
+          <td v-for="(key, index) in columns.keys" v-bind:key="index">
+            {{data[key]}}
+          </td>
           <td>
             <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
               <component-links :download="links.download" :details="links.details"></component-links>
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     onChangePage(page) {
-      console.log(page)
+      this.$emit('change-page', page)
     }
   }
 }

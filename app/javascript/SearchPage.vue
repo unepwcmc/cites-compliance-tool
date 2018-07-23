@@ -5,9 +5,21 @@
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
         <div class="level-left">
-          <h2 class="level-item">Countries & Regions</h2>
-          <h2 class="level-item active">Species</h2>
-          <h2 class="level-item">Commodity</h2>
+          <h2 class="level-item" :class="{active: (selectedCategory === 'countries')}">
+            <a v-on:click="changeCategory('countries')">
+              Countries & Regions
+            </a>
+          </h2>
+          <h2 class="level-item" :class="{active: (selectedCategory === 'species')}">
+            <a v-on:click="changeCategory('species')">
+              Species
+            </a>
+          </h2>
+          <h2 class="level-item" :class="{active: (selectedCategory === 'commodity')}">
+            <a v-on:click="changeCategory('commodity')">
+              Commodity
+            </a>
+          </h2>
         </div>
       </div>
     </nav>
@@ -59,7 +71,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <search-list :columns="tableColumns" :data="tableData"></search-list>
+          <search-list :columns="tableColumns[selectedCategory]" :data="tableData" v-on:change-page="onChangePage"></search-list>
         </div>
       </div>
     </div>
@@ -72,26 +84,40 @@ import debounce from 'lodash.debounce'
 import SiteHeader from './elements/SiteHeader'
 
 import SearchList from './components/SearchList'
-import TopSpecies from './components/TopSpecies'
 
 import dataYears from './data/years'
+import dataCountries from './data/countries-search-list'
 import dataSpecies from './data/species-search-list'
+import dataCommodity from './data/commodities-search-list'
 
 import '@fortawesome/fontawesome-free/js/all.js'
 
 export default {
   components: {
     SiteHeader,
-    SearchList,
-    TopSpecies
+    SearchList
   },
   data () {
     return {
+      selectedCategory: 'species',
       years: dataYears,
       selectedYear: dataYears[dataYears.length - 1],
       suggestions: [],
       tableData: [],
-      tableColumns: ['Species', 'No. Transactions', 'Appendix']
+      tableColumns: {
+        countries: {
+          headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
+          keys: ['name', 'cnt', 'cnt', 'percent']
+        },
+        commodity: {
+          headers: ['Commodity', 'No. Transactions'],
+          keys: ['term', 'cnt']
+        },
+        species: {
+          headers: ['Species', 'No. Transactions', 'Appendix'],
+          keys: ['name', 'transactions', 'appendix']
+        }
+      }
     }
   },
   methods: {
@@ -114,6 +140,22 @@ export default {
       console.log(e.target.dataset.value)
       this.getResultsForSuggestion()
     },
+    onChangePage(page) {
+      console.log(page)
+    },
+    getDataForCategory(category) {
+      switch (category) {
+        case 'countries':
+          return dataCountries
+          break;
+        case 'species':
+          return dataSpecies
+          break;
+        case 'commodity':
+          return dataCommodity
+          break;
+      }
+    },
     getSuggestions(value) {
       // TODO: Make real API call
       return ['Suggestion 1', 'Suggestion 2', 'Suggestion 3']
@@ -121,6 +163,10 @@ export default {
     getResultsForSuggestion(value) {
       // TODO: Make real API call
       return dataSpecies
+    },
+    changeCategory(category) {
+      this.selectedCategory = category
+      this.tableData = this.getDataForCategory(category)
     }
   },
   mounted() {

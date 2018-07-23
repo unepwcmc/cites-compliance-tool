@@ -48,6 +48,12 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
+          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)"></top-countries>
+        </div>
+      </div>
+
+      <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
           <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)"></top-commodities>
         </div>
       </div>
@@ -55,12 +61,6 @@
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)"></issues-taxonomies>
-        </div>
-      </div>
-
-      <div class="tile is-ancestor">
-        <div class="tile is-12 is-parent">
-          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)"></top-countries>
         </div>
       </div>
 
