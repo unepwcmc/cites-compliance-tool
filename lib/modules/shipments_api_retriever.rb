@@ -8,7 +8,7 @@ module  ShipmentsApiRetriever
     JSON.parse(response.body)
   end
 
-  def self.grouped_call(*grouping)
+  def self.grouped_call(grouping)
     response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/grouped',
                             headers: header,
                             query: { group_by: grouping })
