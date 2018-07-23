@@ -8,7 +8,7 @@
         <p class="issues-reported__label">
           Issues currently reported in {{values.year}}
         </p>
-        <a class="icon-download issues-reported__download" href="#"></a>
+        <a class="icon-download issues-reported__download" :href="'/download/download?year=' + values.year"></a>
       </div>
     </div>
   </section>
