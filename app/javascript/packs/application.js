@@ -1,10 +1,17 @@
-import Vue from 'vue'
-import App from '../app.vue'
+import Vue from 'vue/dist/vue.esm'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.body.appendChild(document.createElement('div'))
+import DashboardPage from '../DashboardPage.vue'
+import SearchPage from '../SearchPage.vue'
+
+import TurbolinksAdapter from 'vue-turbolinks';
+Vue.use(TurbolinksAdapter)
+
+document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
-    el,
-    render: h => h(App)
+    el: '#v-app',
+    components: {
+      DashboardPage,
+      SearchPage
+    }
   })
 })
