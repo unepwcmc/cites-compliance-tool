@@ -11,7 +11,13 @@
 @import './tiles.scss';
 @import './components/*';
 
+@import './login';
+
 @import './tables.scss';
+
+html, body, #v-app {
+  height: 100%;
+}
 
 html {
   background-color: #f3f3f3;
