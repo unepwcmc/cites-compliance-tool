@@ -11,6 +11,8 @@
 @import './tiles.scss';
 @import './components/*';
 
+@import './tables.scss';
+
 html {
   background-color: #f3f3f3;
   overflow-x: auto;
@@ -21,8 +23,8 @@ body {
   font-family: $body-font;
 }
 
-#app {
-  min-width: 960px;
+#v-app {
+  min-width: 1000px;
 }
 
 /* Bulma overrides */

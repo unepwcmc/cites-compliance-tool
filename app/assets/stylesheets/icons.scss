@@ -21,12 +21,22 @@ $icon-hover-colour: #6285a7;
   width: 16px;
 }
 
-.icon-details-light {
+.icon-arrow-right-light {
   background-position: center;
-  background-image: image-url('icon-details-light.svg');
+  background-image: image-url('icon-arrow-right-light.svg');
   background-repeat: no-repeat;
   background-size: contain;
   height: 16px;
+  width: 16px;
+}
+
+.icon-arrow-left-light {
+  background-position: center;
+  background-image: image-url('icon-arrow-right-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 16px;
+  transform: rotateY(180deg);
   width: 16px;
 }
 

@@ -14,7 +14,7 @@
       </div>
     </header>
 
-    <table class="top-species__table">
+    <table class="list-table">
       <thead>
         <tr>
           <th>Species</th>
@@ -29,7 +29,7 @@
           <td>{{species.transactions}}</td>
           <td>{{species.appendix}}</td>
           <td>
-            <div class="level-item top-species__dropdown dropdown is-right is-hoverable">
+            <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
               <component-links :download="links.download" :details="links.details"></component-links>
             </div>
           </td>
