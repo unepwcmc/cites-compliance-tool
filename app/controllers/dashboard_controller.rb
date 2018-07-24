@@ -2,8 +2,11 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    #@appendix_i_total_cnt = ShipmentsApiRetriever.api_call('appendix_i')['meta']['total']
-    #@trade_suspensions_total_cnt = ShipmentsApiRetriever.api_call('trade_suspensions')['meta']['total']
-    #@mandatory_quotas_total_cnt = ShipmentsApiRetriever.api_call('mandatory_quotas')['meta']['total']
+    @issue_by_category = ShipmentsApiRetriever.grouped_call('category')
+    @commodities = ShipmentsApiRetriever.grouped_call('commodity')
+    @exporting = ShipmentsApiRetriever.grouped_call('exporting')
+    @importing = ShipmentsApiRetriever.grouped_call('importing')
+    @species = ShipmentsApiRetriever.grouped_call('species')
+    @taxonomy = ShipmentsApiRetriever.grouped_call('taxonomy')
   end
 end

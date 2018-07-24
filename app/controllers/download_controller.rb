@@ -1,6 +1,6 @@
 class DownloadController < ApplicationController
-  def download_all
-    send_data CsvDownloader.csv_generator,
-              filename: "all_shipments_#{Date.today}.csv"
+  def download
+    send_data CsvDownloader.csv_generator(params[:year]),
+              filename: "#{params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
   end
 end
