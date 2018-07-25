@@ -34,7 +34,7 @@
               </a>
               <a class="dropdown-item" href="/users/sign_out">
                 Logout
-                <span class="icon-download-light"></span>
+                <span class="icon-logout-light"></span>
               </a>
             </div>
           </div>
