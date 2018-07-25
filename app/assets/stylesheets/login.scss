@@ -1,0 +1,130 @@
+#v-app .login {
+  background-color: #3B526A;
+  color: $white;
+  height: 100%;
+  width: 100%;
+}
+
+.login .columns {
+  height: 100%;
+}
+
+.login .column {
+  position: relative;
+}
+
+.login__banner {
+  background-color: #eacd95;
+  background-image: image-url('login-banner.jpg');
+  background-position: left;
+  background-size: cover;
+}
+
+.login__content {
+  left: 10%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80%;
+}
+
+.login__content-logo {
+  margin: 0 0 40px;
+  text-align: center;
+}
+
+.login__content-logo img {
+  opacity: 0.75;
+  width: 140px;
+}
+
+.login__content p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.login__content-form {
+  margin: 40px 0 30px;
+}
+
+.login__content-form label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.login__content-form .label {
+  font-weight: 500;
+  margin: 0;
+}
+
+.login__content-sub-label {
+  font-size: 14px;
+}
+
+.login__content-form label.checkbox {
+  font-size: 14px;
+}
+
+.login__content-form label.checkbox:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.login__content-form input.checkbox {
+  vertical-align: middle;
+}
+
+.login__content-form .input {
+  background-color: transparent !important;
+  border: solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px 0;
+  border-radius: unset;
+  box-shadow: none;
+  caret-color: $white;
+  color: $white;
+  margin-bottom: 10px;
+  padding-left: 0;
+}
+
+.login__content-form .input:-webkit-autofill,
+.login__content-form .input:-webkit-autofill:hover,
+.login__content-form .input:-webkit-autofill:focus {
+  border: solid rgba(255, 255, 255, 0.5);
+  border-width: 0 0 1px 0;
+  -webkit-text-fill-color: $white;
+  -webkit-box-shadow: 0 0 0px 1000px #3B526A inset;
+  transition: background-color 5000s ease-in-out 5000s;
+}
+
+.login__content-form .input:-webkit-autofill:focus {
+  border: solid $white;
+  border-width: 0 0 1px 0;
+}
+
+.login__content .login__content-actions,
+.login__content .login__content-links {
+  text-align: center;
+}
+
+.login__content .login__content-actions {
+  margin-top: 40px;
+}
+
+.login__content-button {
+  background-color: $blue-light !important;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.login__content .login__content-links a {
+  color: inherit;
+  font-size: 14px;
+}
+
+.login__content .login__content-links a:hover {
+  text-decoration: underline;
+}
+
+.login__notification {
+  background-color: $blue-dark;
+}

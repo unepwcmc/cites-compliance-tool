@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @issue_by_category = ShipmentsApiRetriever.grouped_call('category')
     @commodities = ShipmentsApiRetriever.grouped_call('commodity')
