@@ -63,6 +63,24 @@
   background-image: url('icon-download-light-hover.svg');
 }
 
+.site-navigation-main__account-dropdown {
+  height: 100%;
+}
+
+.site-navigation-main__account-dropdown .dropdown-menu-dark {
+  right: 20px !important;
+}
+
+.site-navigation-main__account .icon-arrow-down-light {
+  margin-left: 30px;
+  margin-top: -3px;
+}
+
+.site-navigation-main__account:hover {
+  background-color: #038AB3 !important;
+  color: $white !important;
+}
+
 .site-navigation-sub {
   background: $white;
   color: $grey-dark;

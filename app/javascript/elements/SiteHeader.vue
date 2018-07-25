@@ -19,9 +19,26 @@
           Download All
           <span class="icon-download-light"></span>
         </a>
-        <a class="level-item" href="#">
-          Name
-        </a>
+
+        <div class="site-navigation-main__account-dropdown dropdown is-hoverable">
+          <a class="level-item dropdown-trigger site-navigation-main__account">
+            {{username}}
+            <span class="icon-arrow-down-light"></span>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-dark" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" href="/accounts">
+                Manage users
+                <span class="icon-arrow-right-light"></span>
+              </a>
+              <a class="dropdown-item" href="/users/sign_out">
+                Logout
+                <span class="icon-download-light"></span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -29,7 +46,7 @@
 
 <script>
 export default {
-  props: ['active'],
+  props: ['username', 'active'],
   data () {
     return {}
   }
