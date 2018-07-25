@@ -1,4 +1,4 @@
-module  ShipmentsApiRetriever
+module ShipmentsApiRetriever
   def self.api_call(compliance_type = nil, page = 1, year = nil)
     response = HTTParty.get(Rails.application.secrets['species_api_url'],
                             headers: header,
