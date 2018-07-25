@@ -14,6 +14,9 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login__content-form"}) do |f| %>
+
+          <%= raw(devise_error_messages!) %>
+
           <div class="field">
             <%= f.label :email, class: "label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
