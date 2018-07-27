@@ -14,15 +14,9 @@
       </thead>
       <tbody>
         <tr v-for="(data, index) in data.data" :key="index">
-<<<<<<< HEAD
           <td v-for="(key, index) in columns.keys" v-bind:key="index">
             {{data[key]}}
           </td>
-=======
-          <td><strong>{{index + 1}}.</strong> {{data.name}}</td>
-          <td>{{data.transactions}}</td>
-          <td>{{data.appendix}}</td>
->>>>>>> Initial work on search listing page
           <td>
             <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
               <component-links :download="links.download" :details="links.details"></component-links>
@@ -56,11 +50,7 @@ export default {
   },
   methods: {
     onChangePage(page) {
-<<<<<<< HEAD
       this.$emit('change-page', page)
-=======
-      console.log(page)
->>>>>>> Initial work on search listing page
     }
   }
 }
