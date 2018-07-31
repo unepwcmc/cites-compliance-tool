@@ -3,7 +3,7 @@ class Api::V1::SapiController < ApplicationController
 
   def index
     call = "#{sapi_params[:call]}_call"
-    @data = ShipmentsApiRetriever.send(call, sapi_params[:grouping])
+    @data = ShipmentsApiRetriever.send(call, sapi_params)
 
     render json: @data.to_json
   end
@@ -11,7 +11,7 @@ class Api::V1::SapiController < ApplicationController
   private
 
   def sapi_params
-    params.require(:sapi).permit(:call, :grouping, :user_id, :page)
+    params.require(:sapi).permit(:call, :grouping, :year, :compliance_type, :user_id, :page)
   end
 
   def authenticate_user
