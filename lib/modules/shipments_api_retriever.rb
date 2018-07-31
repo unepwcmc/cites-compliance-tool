@@ -19,10 +19,10 @@ module ShipmentsApiRetriever
     data['shipments'] || data
   end
 
-  def self.search_call(year = 2012, group = 'exporting')
+  def self.search_call(params)
     response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/search',
                             headers: header,
-                            query: { year: year, group_by: group })
+                            query: { year: params[:year] || 2012, group_by: params[:group] || 'exporting' })
     JSON.parse(response.body)
   end
 
