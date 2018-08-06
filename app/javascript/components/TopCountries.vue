@@ -120,16 +120,10 @@ export default {
       map.updateChoropleth(this.countriesObject(), {reset: true})
     },
     getCountryKey(country) {
-      return country.importer || country.exporter
+      return country.importer_iso || country.exporter_iso
     },
     getCountryName(country) {
-      let lookup = countries.find((c) => c['Code'] === this.getCountryKey(country))
-
-      if (!lookup || !lookup['Name']) {
-        return ''
-      }
-
-      return lookup['Name']
+      return country.importer || country.exporter
     },
     getTruncatedName(name, characters) {
       if (name.length > characters) {

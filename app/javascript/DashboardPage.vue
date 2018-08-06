@@ -33,7 +33,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues[selectedYear]"></issues-reported>
+          <issues-reported :values="issuesReportedValues[0][selectedYear]" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
           <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
@@ -86,14 +86,10 @@ import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
 import dataYears from './data/years'
-import dataReported from './data/reported'
+
 import dataChart from './data/chart'
 import dataCategories from './data/categories'
-import dataExporters from './data/exporters'
-import dataImporters from './data/importers'
 import dataTaxonomy from './data/taxonomies'
-import dataCommodity from './data/commodities'
-import dataSpecies from './data/species'
 
 import '@fortawesome/fontawesome-free/js/all.js'
 
@@ -108,19 +104,20 @@ export default {
     TopCountries,
     TopSpecies
   },
+  props: ['category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
   data () {
     return {
       years: dataYears,
       selectedYear: dataYears[dataYears.length - 1],
 
-      issuesReportedValues: dataReported,
+      issuesReportedValues: this.category,
       chartValues: dataChart,
       categoryValues: dataCategories,
-      topCountriesValuesExport: dataExporters,
-      topCountriesValuesImport: dataImporters,
-      speciesValues: dataSpecies,
+      topCountriesValuesExport: this.exporting,
+      topCountriesValuesImport: this.importing,
+      speciesValues: this.species,
       taxonomyValues: dataTaxonomy,
-      commodityValues: dataCommodity
+      commodityValues: this.commodities
     }
   },
   methods: {

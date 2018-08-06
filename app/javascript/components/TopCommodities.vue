@@ -39,7 +39,7 @@
             <div class="top-commodities__chart-bar" :style="{width: `${commodity.percent}%`, backgroundColor: colours[index]}"></div>
             <div class="level-left">
               <span class="level-item top-commodities__chart-name">
-                <strong :style="{color: textColours[index]}">{{index + 1}}. {{commodity.cnt}} ({{commodity.percent.toFixed(1)}}%)</strong>
+                <strong :style="{color: textColours[index]}">{{index + 1}}. {{commodity.value}} ({{Number(commodity.percent).toFixed(1)}}%)</strong>
               </span>
             </div>
           </li>
