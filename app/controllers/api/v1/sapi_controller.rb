@@ -11,7 +11,8 @@ class Api::V1::SapiController < ApplicationController
   private
 
   def sapi_params
-    params.require(:sapi).permit(:call, :grouping, :year, :compliance_type, :user_id, :page)
+    params.require(:sapi).permit(:call, :grouping, :year, :compliance_type,
+                                 :filter, :id, :user_id, :page, :query)
   end
 
   def authenticate_user
