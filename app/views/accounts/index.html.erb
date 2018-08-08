@@ -1,3 +1,3 @@
 <div id="accounts">
-  <accounts-page username="<%= current_user.email %>" :users="<%= User.all.to_json %>"></accounts-page>
+  <accounts-page username="<%= current_user.email %>" :users="<%= @users %>"></accounts-page>
 </div>

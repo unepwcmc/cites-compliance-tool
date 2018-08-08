@@ -4,6 +4,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.1.0",
     "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
     "datamaps": "^0.5.9",
     "lodash.debounce": "^4.0.8",
     "vue": "^2.5.16",
