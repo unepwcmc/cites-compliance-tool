@@ -33,7 +33,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues[0][selectedYear]" :year="selectedYear"></issues-reported>
+          <issues-reported :values="issuesReportedValues[selectedYear]" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
           <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
@@ -112,11 +112,11 @@ export default {
 
       issuesReportedValues: this.category,
       chartValues: dataChart,
-      categoryValues: dataCategories,
+      categoryValues: this.category,
       topCountriesValuesExport: this.exporting,
       topCountriesValuesImport: this.importing,
       speciesValues: this.species,
-      taxonomyValues: dataTaxonomy,
+      taxonomyValues: this.taxonomy,
       commodityValues: this.commodities
     }
   },
