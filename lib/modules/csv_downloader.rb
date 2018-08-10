@@ -1,23 +1,16 @@
 module CsvDownloader
-  HEADER = %w[id year appendix taxon class order family genus
-              term importer_reported_quantity exporter_reported_quantity
-              unit importer importer_iso exporter exporter_iso origin
-              purpose source import_permit export_permit origin_permit
-              issue_type rank].freeze
+  HEADER = %w[id year appendix taxon_name taxon_concept_id class_name order_name
+              family_name genus_name term term_id importer_reported_quantity
+              exporter_reported_quantity unit importer importer_iso importer_id
+              exporter exporter_iso exporter_id origin purpose source
+              import_permit export_permit origin_permit issue_type
+              rank_name].freeze
 
-  def self.csv_generator(year = nil)
+  def self.csv_generator(data)
     CSV.generate(headers: true) do |csv|
       csv << HEADER
-      %w[trade_suspensions appendix_i mandatory_quotas].each do |type|
-        page = 1
-        loop do
-          data = ShipmentsApiRetriever.api_call(type, page, year)
-          break if data['shipments'].empty?
-          data['shipments'].each do |row|
-            csv << row.values
-          end
-          page += 1
-        end
+      data.each do |row|
+        csv << row.values
       end
     end
   end
