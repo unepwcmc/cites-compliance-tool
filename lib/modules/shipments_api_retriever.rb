@@ -28,6 +28,25 @@ module ShipmentsApiRetriever
     JSON.parse(response.body)
   end
 
+  # API calls for data download
+  def self.download_call(params)
+    response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/shipments/download',
+                            headers: header,
+                            query: { compliance_type: params[:compliance_type],
+                                     year: params[:year], ids: params[:id],
+                                     type: params[:grouping] })
+    JSON.parse(response.body)
+  end
+
+  def self.search_download_call(params)
+    response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/shipments/search_download',
+                            headers: header,
+                            query: { type: params[:grouping],
+                                     year: params[:year], ids: params[:id] })
+    JSON.parse(response.body)
+  end
+
+  # API calls for autocomplete and dropdown search page
   def self.species_autocomplete_call(params)
     response = HTTParty.get(Rails.application.secrets['species_api_url'] + '/auto_complete_taxon_concepts',
                             headers: header,
