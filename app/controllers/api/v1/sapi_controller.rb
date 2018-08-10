@@ -4,8 +4,12 @@ class Api::V1::SapiController < ApplicationController
   def index
     call = "#{sapi_params[:call]}_call"
     @data = ShipmentsApiRetriever.send(call, sapi_params)
-
-    render json: @data.to_json
+    if call.include?('download')
+      send_data CsvDownloader.csv_generator(@data),
+                filename: "#{sapi_params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
+    else
+      render json: @data.to_json
+    end
   end
 
   private
