@@ -14,7 +14,7 @@
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <section class="accounts__list tile__box">
-            <div class="notification is-warning accounts__list-notification" :class="{active: showNotification}">
+            <div class="notification is-warning accounts__list-notification" :class="{active: showDeleteNotification}">
               Failed to delete user
             </div>
 
@@ -37,6 +37,7 @@
             <div class="field is-grouped accounts__list-add-user">
               <div class="control">
                 <input v-model="newUserEmail" class="input" type="text" placeholder="New user email">
+                <input v-model="newUserPassword" class="input" type="password" placeholder="New user password">
               </div>
 
               <button class="button is-dark accounts__list-add-button" v-on:click="onClickAddUser">
@@ -45,6 +46,10 @@
                 </span>
                 <span>Add user</span>
               </button>
+            </div>
+
+            <div class="notification is-warning accounts__list-notification" :class="{active: showCreateNotification}">
+              Failed to create user
             </div>
           </section>
         </div>
@@ -83,16 +88,36 @@ export default {
   props: ['username', 'users'],
   data () {
     return {
-      showNotification: false,
+      showCreateNotification: false,
+      showDeleteNotification: false,
       confirmRemoveModal: false,
       removeUser: {},
-      newUserEmail: ''
+      newUserEmail: '',
+      newUserPassword: ''
     }
   },
   methods: {
     onClickAddUser() {
-      console.log(this.newUserEmail)
-      this.newUserEmail = ''
+      this.showCreateNotification = false
+
+      const token = document.querySelector('meta[name="csrf-token"]').attributes.content.value
+
+      const formData = new FormData()
+      formData.set('authenticity_token', token)
+      formData.set('email', this.newUserEmail)
+      formData.set('password', this.newUserPassword)
+
+      axios({
+        method: 'post',
+        url: '/users',
+        data: formData,
+        config: { headers: {'Content-Type': 'multipart/form-data' }}
+      }).then((res) => {
+        window.location.reload()
+      }).catch((err) => {
+        console.error(err)
+        this.showCreateNotification = true
+      })
     },
 
     onClickRemoveUser(id, email) {
@@ -109,6 +134,8 @@ export default {
     },
 
     confirmRemoveUser() {
+      this.showDeleteNotification = false
+
       if (!this.removeUser || !this.removeUser.id) {
         this.confirmRemoveModal = false
         this.removeUser = {}
@@ -116,7 +143,6 @@ export default {
       }
 
       const token = document.querySelector('meta[name="csrf-token"]').attributes.content.value
-      console.log(token)
 
       const formData = new FormData()
       formData.set('authenticity_token', token)
@@ -130,7 +156,7 @@ export default {
         window.location.reload()
       }).catch((err) => {
         console.error(err)
-        this.showNotification = true
+        this.showDeleteNotification = true
       })
     }
   }
