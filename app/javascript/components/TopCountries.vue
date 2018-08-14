@@ -29,7 +29,7 @@
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item top-countries__list-name">
-                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 30)}}
+                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 26)}} ({{country.value}})
               </span>
             </div>
             <div class="level-right">
