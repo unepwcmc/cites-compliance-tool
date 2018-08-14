@@ -24,7 +24,7 @@ module ShipmentsApiRetriever
                             headers: header,
                             query: { year: params[:year] || 2012, group_by: params[:grouping] || 'exporting',
                                      filter: params[:filter] || '', id: params[:id] || '',
-                                     page: params[:page] || 1 })
+                                     page: params[:page] || 1, per_page: params[:per_page] || 25 })
     JSON.parse(response.body)
   end
 
