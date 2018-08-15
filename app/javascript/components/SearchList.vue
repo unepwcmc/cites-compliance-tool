@@ -5,15 +5,18 @@
         <tr>
           <th v-for="(name, index) in columns.headers" v-bind:key="index">{{name}}</th>
           <th class="list-table__header-button">
-            <a class="button is-dark button-full-list">
+            <a v-if="data.length > 0" class="button is-dark button-full-list">
               <span>Download All</span>
               <span class="icon-download-light"></span>
             </a>
           </th>
         </tr>
       </thead>
+      <div v-if="!data || data.length === 0" class="list-table__message">
+        No data
+      </div>
       <tbody>
-        <tr v-for="(data, index) in data.data" :key="index">
+        <tr v-for="(data, index) in data" :key="index">
           <td v-for="(key, index) in columns.keys" v-bind:key="index">
             {{data[key]}}
           </td>
@@ -26,11 +29,13 @@
       </tbody>
     </table>
 
-    <search-list-pagination :metadata="data.metadata" v-on:change-page="onChangePage"></search-list-pagination>
+    <search-list-pagination :metadata="metadata" v-on:change-page="onChangePage"></search-list-pagination>
   </section>
 </template>
 
 <script>
+import axios from 'axios'
+
 import SearchListPagination from './SearchListPagination'
 import ComponentLinks from '../elements/ComponentLinks'
 
@@ -39,18 +44,90 @@ export default {
     SearchListPagination,
     ComponentLinks
   },
-  props: ['columns', 'data'],
+
+  props: ['columns', 'grouping', 'year', 'user', 'filterId'],
+
   data () {
     return {
+      data: [],
+      metadata: {},
       links: {
         details: '#',
         download: '#'
-      }
+      },
+      axiosSource: null
     }
   },
+
+  mounted() {
+    if (this.grouping && this.year) {
+      this.getData()
+    }
+  },
+
+  watch: {
+    year() {
+      this.clearData()
+      this.getData()
+    },
+
+    grouping() {
+      this.clearData()
+      this.getData()
+    },
+
+    filterId() {
+      this.clearData()
+      this.getData()
+    }
+  },
+
   methods: {
+    clearData() {
+      this.data = []
+      this.metadata = null
+    },
+
+    getData(page = 1) {
+      if (this.axiosSource) {
+        this.axiosSource.cancel()
+      }
+
+      let endpoint = `/api/v1/sapi?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[page]=${page}`
+
+      if (this.filterId) {
+        endpoint += `&sapi[id]=${this.filterId}`
+      }
+
+      const CancelToken = axios.CancelToken
+      this.axiosSource = CancelToken.source()
+
+      axios.get(endpoint, {
+        cancelToken: this.axiosSource.token
+      }).then((res) => {
+        if (!res.data.shipments || res.data.shipments.length === 0) {
+          this.clearData()
+          return
+        }
+
+        this.data = res.data.shipments
+
+        this.metadata = {
+          page: page,
+          per_page: 8,
+          total: 7000
+        }
+      }).catch((err) => {
+        if (axios.isCancel(err)) {
+          return
+        }
+
+        console.error(err)
+      })
+    },
+
     onChangePage(page) {
-      this.$emit('change-page', page)
+      this.getData(page)
     }
   }
 }
