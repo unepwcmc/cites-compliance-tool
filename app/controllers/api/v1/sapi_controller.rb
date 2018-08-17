@@ -8,6 +8,19 @@ class Api::V1::SapiController < ApplicationController
     render json: @data.to_json
   end
 
+  def countries
+    render json: ShipmentsApiRetriever.call(:countries)
+  end
+
+  def terms
+    render json: ShipmentsApiRetriever.call(:terms)
+  end
+
+  def species_autocomplete
+    query = { taxon_concept_query: sapi_params[:query] || '' }
+    render json: ShipmentsApiRetriever.call(:species_autocomplete, query)
+  end
+
   private
 
   def sapi_params
