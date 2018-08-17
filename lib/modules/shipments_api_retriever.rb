@@ -8,7 +8,9 @@ module ShipmentsApiRetriever
     search: 'shipments/search',
     countries: 'geo_entities',
     terms: 'terms',
-    species_autocomplete: 'auto_complete_taxon_concepts'
+    species_autocomplete: 'auto_complete_taxon_concepts',
+    download: 'shipments/download',
+    search_download: 'shipments/search_download'
   }
 
   def self.api_call(params)
@@ -36,7 +38,8 @@ module ShipmentsApiRetriever
       group_by: params[:grouping] || 'exporting',
       filter: params[:filter] || '',
       id: params[:id] || '',
-      page: params[:page] || 1
+      page: params[:page] || 1,
+      per_page: params[:per_page] || 25
     }
 
     call(:search, query)
