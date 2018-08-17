@@ -38,7 +38,8 @@ module ShipmentsApiRetriever
       group_by: params[:grouping] || 'exporting',
       filter: params[:filter] || '',
       id: params[:id] || '',
-      page: params[:page] || 1
+      page: params[:page] || 1,
+      per_page: params[:per_page] || 25
     }
 
     call(:search, query)
