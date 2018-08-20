@@ -162,7 +162,13 @@ export default {
         id = item.id
       }
 
-      let endpoint = `/api/v1/sapi/download?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[id]=${id}`
+      let grouping = this.grouping
+
+      if (grouping === 'exporting') {
+        grouping = 'countries'
+      }
+
+      let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}`
 
       return endpoint
     }
