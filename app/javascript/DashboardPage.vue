@@ -86,10 +86,7 @@ import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
 import dataYears from './data/years'
-
 import dataChart from './data/chart'
-import dataCategories from './data/categories'
-import dataTaxonomy from './data/taxonomies'
 
 import '@fortawesome/fontawesome-free/js/all.js'
 

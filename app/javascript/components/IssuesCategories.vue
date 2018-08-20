@@ -4,7 +4,7 @@
 
     <div class="columns is-mobile">
       <div class="column is-one-third" v-for="(category, index) in values" :key="index">
-        <issues-categories-chart :title="category.name" :value="category.value"></issues-categories-chart>
+        <issues-categories-chart :title="category.issue_type" :value="category.value"></issues-categories-chart>
       </div>
     </div>
   </section>
