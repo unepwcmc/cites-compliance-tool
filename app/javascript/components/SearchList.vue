@@ -33,7 +33,7 @@
           </td>
           <td>
             <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
-              <component-links :download="links.download" :details="links.details"></component-links>
+              <component-links :download="getDownloadLink(data)" :details="links.details"></component-links>
             </div>
           </td>
         </tr>
@@ -63,8 +63,7 @@ export default {
       data: [],
       metadata: {},
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       },
       loading: false,
       axiosSource: null
@@ -150,6 +149,22 @@ export default {
       }
 
       return name
+    },
+
+    getDownloadLink(item) {
+      let id;
+
+      if (item.taxon_concept_id) {
+        id = item.taxon_concept_id
+      } else if (item.term_id) {
+        id = item.term_id
+      } else if (item.id) {
+        id = item.id
+      }
+
+      let endpoint = `/api/v1/sapi/download?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[id]=${id}`
+
+      return endpoint
     }
   }
 }
