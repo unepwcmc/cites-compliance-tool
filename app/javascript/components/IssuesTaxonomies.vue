@@ -35,7 +35,7 @@
             </div>
             <div class="level-right">
               <div class="level-item issues-taxonomies__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="links.download" :details="links.details"></component-links>
+                <component-links :download="getDownloadLink(taxonomy)" :details="links.details"></component-links>
               </div>
             </div>
           </li>
@@ -52,14 +52,13 @@ export default {
   components: {
     ComponentLinks
   },
-  props: ['taxonomies'],
+  props: ['taxonomies', 'user', 'year'],
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#58bc8a', '#91c352', '#b4c92c', '#d5ec3a'],
       textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit'],
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       }
     }
   },
@@ -69,6 +68,11 @@ export default {
     },
     getBarPercentage(value) {
       return (value / this.getMaxPercent()) * 80
+    },
+    getDownloadLink(item) {
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=taxonomy&sapi[id]=${item.taxon}`
+
+      return endpoint
     }
   }
 }

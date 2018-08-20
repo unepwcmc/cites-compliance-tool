@@ -4,7 +4,7 @@
 
     <div class="columns is-mobile">
       <div class="column is-one-third" v-for="(category, index) in values" :key="index">
-        <issues-categories-chart :title="category.issue_type" :value="category.value"></issues-categories-chart>
+        <issues-categories-chart :title="category.issue_type" :value="category.value" :user="user" :year="year"></issues-categories-chart>
       </div>
     </div>
   </section>
@@ -15,7 +15,7 @@ import IssuesCategoriesChart from './IssuesCategoriesChart'
 
 export default {
   components: {IssuesCategoriesChart},
-  props: ['values'],
+  props: ['values', 'user', 'year'],
   data () {
     return {}
   }

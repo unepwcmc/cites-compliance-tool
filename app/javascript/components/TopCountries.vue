@@ -34,7 +34,7 @@
             </div>
             <div class="level-right">
               <div class="level-item top-countries__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="links.download" :details="links.details"></component-links>
+                <component-links :download="getDownloadLink(country)" :details="links.details"></component-links>
               </div>
             </div>
           </li>
@@ -56,7 +56,7 @@ export default {
   components: {
     ComponentLinks
   },
-  props: ['export', 'import'],
+  props: ['export', 'import', 'user', 'year'],
   data () {
     return {
       mode: 'export',
@@ -64,8 +64,7 @@ export default {
       getMap: null,
       activeCountry: null,
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       }
     }
   },
@@ -122,6 +121,9 @@ export default {
     getCountryKey(country) {
       return country.importer_iso || country.exporter_iso
     },
+    getCountryId(country) {
+      return country.importer_id || country.exporter_id
+    },
     getCountryName(country) {
       return country.importer || country.exporter
     },
@@ -131,6 +133,11 @@ export default {
       }
 
       return name
+    },
+    getDownloadLink(item) {
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.mode}ing&sapi[id]=${this.getCountryId(item)}`
+
+      return endpoint
     }
   },
   mounted () {
