@@ -25,8 +25,8 @@
       </thead>
       <tbody>
         <tr v-for="(species, index) in species" :key="index">
-          <td><strong>{{index + 1}}.</strong> {{species.name}}</td>
-          <td>{{species.transactions}}</td>
+          <td><strong>{{index + 1}}.</strong> {{species.taxon_name}}</td>
+          <td>{{species.value}}</td>
           <td>{{species.appendix}}</td>
           <td>
             <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
