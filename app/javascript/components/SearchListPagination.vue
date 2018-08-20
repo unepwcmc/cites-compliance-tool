@@ -30,21 +30,25 @@ export default {
   },
   computed: {
     rowCount() {
-      let max = this.metadata.page * this.metadata.per_page
-      let min = max - this.metadata.per_page + 1
+      let max = Number(this.metadata.page) * Number(this.metadata.per_page)
+      let min = max - Number(this.metadata.per_page) + 1
+
+      if (this.lastPage) {
+        max = this.metadata.total
+      }
 
       return `${min} to ${max}`
     },
     firstPage() {
-      return this.metadata.page === 1
+      return Number(this.metadata.page) === 1
     },
     lastPage() {
-      return this.metadata.page === Math.ceil(this.metadata.total / this.metadata.per_page)
+      return Number(this.metadata.page) === Math.ceil(Number(this.metadata.total) / Number(this.metadata.per_page))
     }
   },
   methods: {
     changePage(pageOffset) {
-      this.$emit('change-page', this.metadata.page + pageOffset)
+      this.$emit('change-page', Number(this.metadata.page) + pageOffset)
     }
   }
 }

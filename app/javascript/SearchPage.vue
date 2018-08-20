@@ -109,7 +109,7 @@ export default {
       tableColumns: {
         exporting: {
           headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
-          keys: ['name', 'cnt', 'cnt', 'percent']
+          keys: ['country', 'cnt', 'total_cnt', 'percentage']
         },
         commodity: {
           headers: ['Commodity', 'No. Transactions'],
@@ -155,7 +155,7 @@ export default {
       }
     },
     getSuggestionsSpecies(value) {
-      const endpoint = `/api/v1/sapi?sapi[call]=species_autocomplete&sapi[user_id]=${this.user}&sapi[query]=${value}`
+      const endpoint = `/api/v1/sapi/species_autocomplete?sapi[user_id]=${this.user}&sapi[query]=${value}`
 
       axios.get(endpoint).then((res) => {
         this.suggestions = res.data.auto_complete_taxon_concepts.slice(0, 10)
@@ -163,7 +163,7 @@ export default {
     },
     getSuggestionsCommodity(value) {
       if (!this.termSuggestionList || this.termSuggestionList.length === 0) {
-        const endpoint = `/api/v1/sapi?sapi[call]=terms&sapi[user_id]=${this.user}`
+        const endpoint = `/api/v1/sapi/terms?sapi[user_id]=${this.user}`
 
         axios.get(endpoint).then((res) => {
           if (!res.data.terms) {
@@ -179,7 +179,7 @@ export default {
     },
     getSuggestionsExporting(value) {
       if (!this.exportingSuggestionList || this.exportingSuggestionList.length === 0) {
-        const endpoint = `/api/v1/sapi?sapi[call]=countries&sapi[user_id]=${this.user}`
+        const endpoint = `/api/v1/sapi/countries?sapi[user_id]=${this.user}`
 
         axios.get(endpoint).then((res) => {
           if (!res.data.geo_entities) {
