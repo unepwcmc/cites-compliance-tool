@@ -3,12 +3,12 @@
     <div class="level-item">
       <div>
         <p class="issues-reported__stat">
-          {{values.value}}
+          {{issuesReportedTotal}}
         </p>
         <p class="issues-reported__label">
-          Issues currently reported in {{values.year}}
+          Issues currently reported in {{year}}
         </p>
-        <a class="icon-download issues-reported__download" :href="'/download/download?year=' + values.year"></a>
+        <a class="icon-download issues-reported__download" :href="'/download/download?year=' + year"></a>
       </div>
     </div>
   </section>
@@ -16,9 +16,16 @@
 
 <script>
 export default {
-  props: ['values'],
+  props: ['values', 'year'],
   data () {
     return {}
+  },
+  computed: {
+    issuesReportedTotal() {
+      return this.values.reduce((acc, reported) => {
+        return acc + Number(reported.value)
+      }, 0)
+    }
   }
 }
 </script>

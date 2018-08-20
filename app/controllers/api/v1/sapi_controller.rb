@@ -53,7 +53,7 @@ class Api::V1::SapiController < ApplicationController
   end
 
   def authenticate_user
-    unless sapi_params[:user_id].present? && sapi_params[:user_id].to_i == current_user&.id
+    unless sapi_params[:user_id].present? && sapi_params[:user_id] == current_user.id.to_s
       head(401)
     end
   end
