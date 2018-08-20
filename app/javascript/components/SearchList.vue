@@ -1,6 +1,6 @@
 <template>
   <section class="search-list tile__box">
-    <table class="list-table">
+    <table v-if="!loading && data && data.length > 0" class="list-table">
       <colgroup>
         <col v-for="(name, index) in columns.headers" v-bind:key="index" :style="{width: (index === 0) ? '40%' : 'auto'}">
         <col style="width: 5%;">
@@ -20,12 +20,6 @@
           <th></th>
         </tr>
       </thead>
-      <div v-if="loading" class="list-table__message">
-        Loading data
-      </div>
-      <div v-if="!loading && (!data || data.length === 0)" class="list-table__message">
-        No data
-      </div>
       <tbody>
         <tr v-for="(data, index) in data" :key="index">
           <td v-for="(key, index) in columns.keys" v-bind:key="index">
@@ -39,6 +33,16 @@
         </tr>
       </tbody>
     </table>
+
+    <div v-if="loading" class="list-table__message">
+      <span class="icon">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+      <strong>Loading data</strong>
+    </div>
+    <div v-if="!loading && (!data || data.length === 0)" class="list-table__message">
+      <strong>No data</strong>
+    </div>
 
     <search-list-pagination v-if="data && data.length > 0" :metadata="metadata" v-on:change-page="onChangePage"></search-list-pagination>
   </section>
