@@ -41,8 +41,13 @@
 }
 
 .list-table__header-button {
-  float: right;
   font-weight: 400 !important;
+  text-align: right;
+}
+
+.list-table__message {
+  padding: 0 20px 0 20px;
+  text-align: center;
 }
 
 .list-table-pagination {
