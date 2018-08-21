@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'api/v1/sapi/species_autocomplete', to: 'api/v1/sapi#species_autocomplete', as: 'api/v1/sapi/species_autocomplete'
   get 'api/v1/sapi/download', to: 'api/v1/sapi#download', as: 'api/v1/sapi/download'
   get 'api/v1/sapi/search_download', to: 'api/v1/sapi#search_download', as: 'api/v1/sapi/search_download'
+  get 'api/v1/sapi/search_download_all', to: 'api/v1/sapi#search_download_all', as: 'api/v1/sapi/search_download_all'
 end

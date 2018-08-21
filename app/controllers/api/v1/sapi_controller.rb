@@ -29,12 +29,12 @@ class Api::V1::SapiController < ApplicationController
     data = ShipmentsApiRetriever.call(:download, query)
 
     send_data CsvDownloader.csv_generator(data),
-              filename: "#{sapi_params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
+              filename: filename
   end
 
   def search_download
     query = {
-      type: sapi_params[:grouping],
+      group_by: sapi_params[:grouping],
       year: sapi_params[:year],
       ids: sapi_params[:id]
     }
@@ -42,14 +42,40 @@ class Api::V1::SapiController < ApplicationController
     data = ShipmentsApiRetriever.call(:search_download, query)
 
     send_data CsvDownloader.csv_generator(data),
-              filename: "#{sapi_params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
+              filename: filename
+  end
+
+  def search_download_all
+    query = {
+      year: sapi_params[:year],
+      group_by: sapi_params[:grouping],
+      filter: sapi_params[:filter],
+      id: sapi_params[:id]
+    }
+
+    data = ShipmentsApiRetriever.call(:search_download_all, query)
+
+    send_data CsvDownloader.csv_generator(data),
+              filename: filename
+  end
+
+  def filename
+    if sapi_params[:year].present?
+      if sapi_params[:grouping].present? || sapi_params[:compliance_type].present?
+        "#{sapi_params[:year]}_#{sapi_params[:grouping] || sapi_params[:compliance_type]}_shipments_#{Time.now.to_i}.csv"
+      else
+        "#{sapi_params[:year]}_shipments_#{Time.now.to_i}.csv"
+      end
+    else
+      "2012-2016_all_shipments_#{Time.now.to_i}.csv"
+    end
   end
 
   private
 
   def sapi_params
     params.require(:sapi).permit(:call, :grouping, :year, :compliance_type,
-                                 :filter, :id, :user_id, :page, :per_page, :query)
+                                 :filter, :id, :user_id, :page, :per_page, :query, :all)
   end
 
   def authenticate_user
