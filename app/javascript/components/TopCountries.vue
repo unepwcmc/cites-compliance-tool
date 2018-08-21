@@ -7,7 +7,7 @@
         <a class="button is-rounded level-item top-countries__button-mode" :class="{'is-dark': mode === 'import'}" v-on:click="onClickImport">Importing</a>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -131,6 +131,9 @@ export default {
       }
 
       return name
+    },
+    openModal() {
+      this.$emit('open-modal', 'countries')
     }
   },
   mounted () {

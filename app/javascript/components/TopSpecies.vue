@@ -5,7 +5,7 @@
         <h3 class="level-item">Top 5 species</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -53,6 +53,11 @@ export default {
         details: '#',
         download: '#'
       }
+    }
+  },
+  methods: {
+    openModal() {
+      this.$emit('open-modal', 'species')
     }
   }
 }
