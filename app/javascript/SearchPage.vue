@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header active="search"></site-header>
+    <site-header :username="username" active="search"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -94,7 +94,7 @@ export default {
     SiteHeader,
     SearchList
   },
-  props: ['user'],
+  props: ['user', 'username'],
   data () {
     return {
       selectedCategory: 'species',

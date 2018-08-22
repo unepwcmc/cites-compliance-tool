@@ -1,5 +1,6 @@
 <div id="dashboard">
   <dashboard-page
+    username="<%= current_user.email %>"
     user="<%= current_user.id %>"
     :category="<%= @issue_by_category %>"
     :commodities="<%= @commodities %>"

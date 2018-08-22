@@ -1,0 +1,49 @@
+.accounts__header {
+  margin: 20px 0 40px;
+}
+
+.accounts__header h1 {
+  font-size: 18px !important;
+}
+
+.accounts__list-notification {
+  display: none;
+  margin: 10px 20px 20px;
+}
+
+.accounts__list-notification.active {
+  display: block;
+}
+
+.accounts__list li {
+  border: $tile-section-border;
+  font-weight: 500;
+  margin: 10px 20px;
+  padding: 15px 20px 15px 30px;
+}
+
+.accounts__list-remove {
+  float: right;
+  font-weight: inherit;
+}
+
+.accounts__list-remove .icon-remove {
+  margin-right: 5px;
+}
+
+
+.accounts__list-add-user {
+  margin: 25px 0 10px 20px;
+}
+
+.accounts__list-add-user input {
+  width: 300px;
+}
+
+.accounts__list-add-button {
+  background-color: $blue-dark !important;
+}
+
+.accounts__list-add-button:hover {
+  background-color: #6285a7 !important;
+}
