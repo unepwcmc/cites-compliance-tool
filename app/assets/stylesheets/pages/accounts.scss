@@ -36,7 +36,12 @@
   margin: 25px 0 10px 20px;
 }
 
-.accounts__list-add-user input {
+.accounts__list-add-user-admin {
+  margin: 10px 0 10px 20px;
+}
+
+.accounts__list-add-user input[type="text"],
+.accounts__list-add-user input[type="password"] {
   width: 300px;
 }
 

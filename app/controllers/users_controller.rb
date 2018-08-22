@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index; end
 
   def create
-    @user = User.new(email: params[:email], password: params[:password])
+    @user = User.new(email: params[:email], password: params[:password], admin:  params[:admin])
     @user.save!
   end
 
