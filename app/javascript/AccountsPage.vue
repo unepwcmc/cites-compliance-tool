@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header :username="username"></site-header>
+    <site-header :username="username" :user="user" :admin="admin"></site-header>
 
     <div class="container">
 
@@ -85,7 +85,7 @@ export default {
   components: {
     SiteHeader
   },
-  props: ['username', 'users'],
+  props: ['username', 'users', 'admin'],
   data () {
     return {
       showCreateNotification: false,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header :username="username" :user="user" active="dashboard"></site-header>
+    <site-header :username="username" :user="user" :admin="admin" active="dashboard"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -114,7 +114,7 @@ export default {
     TopCountries,
     TopSpecies
   },
-  props: ['user', 'username', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
+  props: ['user', 'username', 'admin', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
   data () {
     return {
       years: dataYears,

@@ -28,7 +28,7 @@
 
           <div class="dropdown-menu dropdown-menu-dark" role="menu">
             <div class="dropdown-content">
-              <a class="dropdown-item" href="/accounts">
+              <a v-if="admin" class="dropdown-item" href="/accounts">
                 Manage users
                 <span class="icon-arrow-right-light"></span>
               </a>
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  props: ['username', 'user', 'active'],
+  props: ['username', 'user', 'admin', 'active'],
   data () {
     return {}
   },
