@@ -53,15 +53,17 @@ class Api::V1::SapiController < ApplicationController
       id: sapi_params[:id]
     }
 
+    type = 'countries' if sapi_params[:grouping].include?('exporting')
+
     data = ShipmentsApiRetriever.call(:search_download_all, query)
 
     send_data CsvDownloader.csv_generator(data),
-              filename: filename
+              filename: filename(type)
   end
 
-  def filename
+  def filename(type = nil)
     if sapi_params[:year].present?
-      type = sapi_params[:grouping].presence || sapi_params[:compliance_type].presence || ''
+      type ||= sapi_params[:grouping].presence || sapi_params[:compliance_type].presence || ''
       type = "_#{type}" if type.present?
 
       "#{sapi_params[:year]}#{type}_shipments_#{Time.now.to_i}.csv"
