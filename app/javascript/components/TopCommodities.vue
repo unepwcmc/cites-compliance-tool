@@ -26,9 +26,7 @@
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item top-commodities__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="getDownloadLink(commodity)" :details="links.details"></component-links>
-              </div>
+              <component-links :download="getDownloadLink(commodity)"></component-links>
             </div>
           </li>
         </ul>
@@ -60,10 +58,7 @@ export default {
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#b3c82b'],
-      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit'],
-      links: {
-        details: '#'
-      }
+      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit']
     }
   },
   methods: {

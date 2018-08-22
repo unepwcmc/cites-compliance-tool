@@ -26,11 +26,7 @@
             {{getTruncatedName(data[key], 40)}}
           </td>
           <td>
-            <div v-if="!inModal" class="level-item list-table__dropdown dropdown is-right is-hoverable">
-              <component-links :download="getDownloadLink(data)" :details="links.details"></component-links>
-            </div>
-
-            <a v-else class="icon-download" :href="getDownloadLink(data)"></a>
+            <component-links :download="getDownloadLink(data)"></component-links>
           </td>
         </tr>
       </tbody>

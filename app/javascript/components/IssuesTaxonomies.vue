@@ -34,9 +34,7 @@
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item issues-taxonomies__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="getDownloadLink(taxonomy)" :details="links.details"></component-links>
-              </div>
+              <component-links :download="getDownloadLink(taxonomy)"></component-links>
             </div>
           </li>
         </ul>
@@ -56,10 +54,7 @@ export default {
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#58bc8a', '#91c352', '#b4c92c', '#d5ec3a'],
-      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit'],
-      links: {
-        details: '#'
-      }
+      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit', 'inherit']
     }
   },
   methods: {
