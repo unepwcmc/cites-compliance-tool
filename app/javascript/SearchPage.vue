@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header :username="username" active="search"></site-header>
+    <site-header :username="username" :user="user" active="search"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">

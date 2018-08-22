@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header :username="username" active="dashboard"></site-header>
+    <site-header :username="username" :user="user" active="dashboard"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -33,7 +33,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues[selectedYear]" :year="selectedYear"></issues-reported>
+          <issues-reported :values="issuesReportedValues[selectedYear]" :user="user" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
           <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
