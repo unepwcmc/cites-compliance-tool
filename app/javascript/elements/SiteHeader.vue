@@ -15,7 +15,7 @@
       </div>
 
       <div class="level-right">
-        <a class="level-item site-navigation-main__download" href="/download/download">
+        <a class="level-item site-navigation-main__download" href="/api/v1/sapi/download?sapi[all]">
           Download All
           <span class="icon-download-light"></span>
         </a>

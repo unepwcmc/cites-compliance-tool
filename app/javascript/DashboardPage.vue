@@ -42,31 +42,31 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-categories :values="categoryValues[selectedYear]"></issues-categories>
+          <issues-categories :values="categoryValues[selectedYear]" :user="user" :year="selectedYear"></issues-categories>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)" v-on:open-modal="openModal"></top-countries>
+          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)" v-on:open-modal="openModal"></top-commodities>
+          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)"></issues-taxonomies>
+          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)" :user="user" :year="selectedYear"></issues-taxonomies>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-species :species="speciesValues[selectedYear]" v-on:open-modal="openModal"></top-species>
+          <top-species :species="speciesValues[selectedYear]" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
         </div>
       </div>
     </div>
@@ -114,7 +114,7 @@ export default {
     TopCountries,
     TopSpecies
   },
-  props: ['category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy', 'user'],
+  props: ['user', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
   data () {
     return {
       years: dataYears,

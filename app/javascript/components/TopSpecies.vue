@@ -30,7 +30,7 @@
           <td>{{species.appendix}}</td>
           <td>
             <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
-              <component-links :download="links.download" :details="links.details"></component-links>
+              <component-links :download="getDownloadLink(species)" :details="links.details"></component-links>
             </div>
           </td>
         </tr>
@@ -46,18 +46,22 @@ export default {
   components: {
     ComponentLinks
   },
-  props: ['species'],
+  props: ['species', 'user', 'year'],
   data () {
     return {
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       }
     }
   },
   methods: {
     openModal() {
       this.$emit('open-modal', 'species')
+    },
+    getDownloadLink(item) {
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=species&sapi[id]=${item.taxon_concept_id}`
+
+      return endpoint
     }
   }
 }
