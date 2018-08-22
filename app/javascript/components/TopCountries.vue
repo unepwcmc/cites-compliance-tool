@@ -7,7 +7,7 @@
         <a class="button is-rounded level-item top-countries__button-mode" :class="{'is-dark': mode === 'import'}" v-on:click="onClickImport">Importing</a>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -29,12 +29,12 @@
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item top-countries__list-name">
-                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 30)}}
+                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 26)}} ({{country.value}})
               </span>
             </div>
             <div class="level-right">
               <div class="level-item top-countries__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="links.download" :details="links.details"></component-links>
+                <component-links :download="getDownloadLink(country)" :details="links.details"></component-links>
               </div>
             </div>
           </li>
@@ -56,7 +56,7 @@ export default {
   components: {
     ComponentLinks
   },
-  props: ['export', 'import'],
+  props: ['export', 'import', 'user', 'year'],
   data () {
     return {
       mode: 'export',
@@ -64,8 +64,7 @@ export default {
       getMap: null,
       activeCountry: null,
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       }
     }
   },
@@ -120,16 +119,13 @@ export default {
       map.updateChoropleth(this.countriesObject(), {reset: true})
     },
     getCountryKey(country) {
-      return country.importer || country.exporter
+      return country.importer_iso || country.exporter_iso
+    },
+    getCountryId(country) {
+      return country.importer_id || country.exporter_id
     },
     getCountryName(country) {
-      let lookup = countries.find((c) => c['Code'] === this.getCountryKey(country))
-
-      if (!lookup || !lookup['Name']) {
-        return ''
-      }
-
-      return lookup['Name']
+      return country.importer || country.exporter
     },
     getTruncatedName(name, characters) {
       if (name.length > characters) {
@@ -137,6 +133,14 @@ export default {
       }
 
       return name
+    },
+    openModal() {
+      this.$emit('open-modal', 'countries')
+    },
+    getDownloadLink(item) {
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.mode}ing&sapi[id]=${this.getCountryId(item)}`
+
+      return endpoint
     }
   },
   mounted () {

@@ -49,11 +49,11 @@ class Api::V1::SapiController < ApplicationController
 
   def sapi_params
     params.require(:sapi).permit(:call, :grouping, :year, :compliance_type,
-                                 :filter, :id, :user_id, :page, :per_page, :query)
+                                 :filter, :id, :user_id, :page, :per_page, :query, :all)
   end
 
   def authenticate_user
-    unless sapi_params[:user_id].present? && sapi_params[:user_id] == current_user&.id
+    unless sapi_params[:user_id].present? && sapi_params[:user_id] == current_user.id.to_s
       head(401)
     end
   end

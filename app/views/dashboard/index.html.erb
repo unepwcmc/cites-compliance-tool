@@ -1,3 +1,14 @@
 <div id="dashboard">
-  <dashboard-page username="<%= current_user.email %>"></dashboard-page>
+  <dashboard-page
+    username="<%= current_user.email %>"
+    user="<%= current_user.id %>"
+    :category="<%= @issue_by_category %>"
+    :commodities="<%= @commodities %>"
+    :exporting="<%= @exporting %>"
+    :importing="<%= @importing %>"
+    :species="<%= @species %>"
+    :taxonomy="<%= @taxonomy %>"
+    user="<%= current_user.id %>"
+  >
+  </dashboard-page>
 </div>

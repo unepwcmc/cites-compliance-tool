@@ -5,8 +5,8 @@
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
         <div class="level-left">
-          <h2 class="level-item" :class="{active: (selectedCategory === 'countries')}">
-            <a v-on:click="changeCategory('countries')">
+          <h2 class="level-item" :class="{active: (selectedCategory === 'exporting')}">
+            <a v-on:click="changeCategory('exporting')">
               Countries & Regions
             </a>
           </h2>
@@ -28,17 +28,17 @@
       <div class="level">
         <div class="level-item level-left">
           <div class="control has-icons-right">
-            <div class="dropdown" :class="{'is-active': suggestions.length > 0}">
+            <div class="dropdown" :class="{'is-active': (suggestions && suggestions.length > 0)}">
               <div class="dropdown-trigger">
-                <input class="input" type="text" placeholder="Search" v-on:input="onSearchInput">
+                <input v-model="suggestionInput" class="input" type="text" placeholder="Search" v-on:input="onSearchInput">
                 <span class="icon is-small is-right">
                   <i class="fas fa-search"></i>
                 </span>
               </div>
               <div class="dropdown-menu" id="search-selections" role="menu">
                 <div class="dropdown-content">
-                  <a v-for="(suggestion, index) in suggestions" v-bind:key="index" class="dropdown-item" :data-value="index" v-on:click="onSuggestionSelect">
-                    {{suggestion}}
+                  <a v-for="(suggestion, index) in suggestions" v-bind:key="suggestion.id" class="dropdown-item" :data-value="suggestion.id" v-on:click="onSuggestionSelect">
+                    {{suggestion.full_name || suggestion.name}}
                   </a>
                 </div>
               </div>
@@ -71,7 +71,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <search-list :columns="tableColumns[selectedCategory]" :data="tableData" v-on:change-page="onChangePage"></search-list>
+          <search-list :columns="tableColumns[selectedCategory]" :grouping="selectedCategory" :year="selectedYear" :user="user" :filter-id="categoryFilterId"></search-list>
         </div>
       </div>
     </div>
@@ -80,15 +80,12 @@
 
 <script>
 import debounce from 'lodash.debounce'
+import axios from 'axios'
 
 import SiteHeader from './elements/SiteHeader'
-
 import SearchList from './components/SearchList'
 
 import dataYears from './data/years'
-import dataCountries from './data/countries-search-list'
-import dataSpecies from './data/species-search-list'
-import dataCommodity from './data/commodities-search-list'
 
 import '@fortawesome/fontawesome-free/js/all.js'
 
@@ -97,18 +94,22 @@ export default {
     SiteHeader,
     SearchList
   },
-  props: ['username'],
+  props: ['user', 'username'],
   data () {
     return {
       selectedCategory: 'species',
+      categoryFilterId: null,
       years: dataYears,
       selectedYear: dataYears[dataYears.length - 1],
+      suggestionInput: null,
       suggestions: [],
+      termSuggestionList: [],
+      exportingSuggestionList: [],
       tableData: [],
       tableColumns: {
-        countries: {
+        exporting: {
           headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
-          keys: ['name', 'cnt', 'cnt', 'percent']
+          keys: ['country', 'cnt', 'total_cnt', 'percentage']
         },
         commodity: {
           headers: ['Commodity', 'No. Transactions'],
@@ -116,7 +117,7 @@ export default {
         },
         species: {
           headers: ['Species', 'No. Transactions', 'Appendix'],
-          keys: ['name', 'transactions', 'appendix']
+          keys: ['taxon_name', 'cnt', 'appendix']
         }
       }
     }
@@ -124,55 +125,86 @@ export default {
   methods: {
     onSelectYear(year) {
       this.selectedYear = year
-      this.tableData = dataSpecies
     },
     onSearchInput: debounce(function(e) {
-      if (e.target.value.length < 3) {
+      if (this.suggestionInput < 3) {
         this.suggestions = []
+        this.categoryFilterId = null
         return
       }
 
-      this.suggestions = this.getSuggestions(e.target.value)
-    }, 50),
+      this.getSuggestions(this.suggestionInput)
+    }, 200),
     onClickOutside: function(e) {
       this.suggestions = []
     },
     onSuggestionSelect: function(e) {
-      console.log(e.target.dataset.value)
-      this.getResultsForSuggestion()
-    },
-    onChangePage(page) {
-      console.log(page)
-    },
-    getDataForCategory(category) {
-      switch (category) {
-        case 'countries':
-          return dataCountries
-          break;
-        case 'species':
-          return dataSpecies
-          break;
-        case 'commodity':
-          return dataCommodity
-          break;
-      }
+      this.categoryFilterId = e.target.dataset.value
     },
     getSuggestions(value) {
-      // TODO: Make real API call
-      return ['Suggestion 1', 'Suggestion 2', 'Suggestion 3']
+      switch (this.selectedCategory) {
+        case 'species':
+          this.getSuggestionsSpecies(value)
+          break
+        case 'commodity':
+          this.getSuggestionsCommodity(value)
+          break
+        case 'exporting':
+          this.getSuggestionsExporting(value)
+          break
+      }
     },
-    getResultsForSuggestion(value) {
-      // TODO: Make real API call
-      return dataSpecies
+    getSuggestionsSpecies(value) {
+      const endpoint = `/api/v1/sapi/species_autocomplete?sapi[user_id]=${this.user}&sapi[query]=${value}`
+
+      axios.get(endpoint).then((res) => {
+        this.suggestions = res.data.auto_complete_taxon_concepts.slice(0, 10)
+      })
+    },
+    getSuggestionsCommodity(value) {
+      if (!this.termSuggestionList || this.termSuggestionList.length === 0) {
+        const endpoint = `/api/v1/sapi/terms?sapi[user_id]=${this.user}`
+
+        axios.get(endpoint).then((res) => {
+          if (!res.data.terms) {
+            return
+          }
+
+          this.termSuggestionList = res.data.terms
+          this.suggestions = this.filterLocalSuggestions(this.termSuggestionList, value)
+        })
+      } else {
+        this.suggestions = this.filterLocalSuggestions(this.termSuggestionList, value)
+      }
+    },
+    getSuggestionsExporting(value) {
+      if (!this.exportingSuggestionList || this.exportingSuggestionList.length === 0) {
+        const endpoint = `/api/v1/sapi/countries?sapi[user_id]=${this.user}`
+
+        axios.get(endpoint).then((res) => {
+          if (!res.data.geo_entities) {
+            return
+          }
+
+          this.exportingSuggestionList = res.data.geo_entities
+          this.suggestions = this.filterLocalSuggestions(this.exportingSuggestionList, value)
+        })
+      } else {
+        this.suggestions = this.filterLocalSuggestions(this.exportingSuggestionList, value)
+      }
+    },
+    filterLocalSuggestions(list, value) {
+      return list.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
     },
     changeCategory(category) {
       this.selectedCategory = category
-      this.tableData = this.getDataForCategory(category)
+      this.categoryFilterId = null
+      this.suggestionInput = null
     }
   },
   mounted() {
     document.addEventListener('click', this.onClickOutside)
-    this.tableData = dataSpecies
+    this.selectedCategory = 'species'
   },
   destroyed() {
     document.removeEventListener('click', this.onClickOutside)

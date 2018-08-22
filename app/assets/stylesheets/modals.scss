@@ -1,0 +1,27 @@
+.modal-background {
+  background: #fff;
+}
+
+.modal-close {
+  right: 40px;
+  top: 40px;
+}
+
+.modal-content {
+  width: 960px;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content .search-list {
+  border: $tile-section-border;
+}
+
+.modal-content .icon-download {
+  float: right;
+  height: 32px;
+  margin-right: 15px;
+  width: 32px;
+}

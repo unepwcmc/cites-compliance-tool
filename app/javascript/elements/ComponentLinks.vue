@@ -8,7 +8,7 @@
           View Details
           <span class="icon-arrow-right-light"></span>
         </a>
-        <a v-if="download" :href="download" class="dropdown-item">
+        <a v-if="download" :href="download" target="_blank" class="dropdown-item">
           Download Issues
           <span class="icon-download-light"></span>
         </a>
