@@ -10,7 +10,8 @@ module ShipmentsApiRetriever
     terms: 'terms',
     species_autocomplete: 'auto_complete_taxon_concepts',
     download: 'shipments/download',
-    search_download: 'shipments/search_download'
+    search_download: 'shipments/search_download',
+    search_download_all: 'shipments/search_download_all'
   }
 
   def self.api_call(params)

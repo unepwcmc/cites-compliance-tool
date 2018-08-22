@@ -29,12 +29,12 @@ class Api::V1::SapiController < ApplicationController
     data = ShipmentsApiRetriever.call(:download, query)
 
     send_data CsvDownloader.csv_generator(data),
-              filename: "#{sapi_params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
+              filename: filename
   end
 
   def search_download
     query = {
-      type: sapi_params[:grouping],
+      group_by: sapi_params[:grouping],
       year: sapi_params[:year],
       ids: sapi_params[:id]
     }
@@ -42,7 +42,34 @@ class Api::V1::SapiController < ApplicationController
     data = ShipmentsApiRetriever.call(:search_download, query)
 
     send_data CsvDownloader.csv_generator(data),
-              filename: "#{sapi_params[:year] || 'all'}_shipments_#{Time.now.to_i}.csv"
+              filename: filename
+  end
+
+  def search_download_all
+    query = {
+      year: sapi_params[:year],
+      group_by: sapi_params[:grouping],
+      filter: sapi_params[:filter],
+      id: sapi_params[:id]
+    }
+
+    type = 'countries' if sapi_params[:grouping].include?('exporting')
+
+    data = ShipmentsApiRetriever.call(:search_download_all, query)
+
+    send_data CsvDownloader.csv_generator(data),
+              filename: filename(type)
+  end
+
+  def filename(type = nil)
+    if sapi_params[:year].present?
+      type ||= sapi_params[:grouping].presence || sapi_params[:compliance_type].presence || ''
+      type = "_#{type}" if type.present?
+
+      "#{sapi_params[:year]}#{type}_shipments_#{Time.now.to_i}.csv"
+    else
+      "2012-2016_all_shipments_#{Time.now.to_i}.csv"
+    end
   end
 
   private
