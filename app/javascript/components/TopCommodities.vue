@@ -5,7 +5,7 @@
         <h3 class="level-item">Top 5 commodity</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -67,6 +67,9 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$emit('open-modal', 'commodity')
+    },
     getDownloadLink(item) {
       let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=commodity&sapi[id]=${item.term_id}`
 

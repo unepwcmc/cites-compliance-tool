@@ -5,7 +5,7 @@
         <h3 class="level-item">Top 5 species</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -55,6 +55,9 @@ export default {
     }
   },
   methods: {
+    openModal() {
+      this.$emit('open-modal', 'species')
+    },
     getDownloadLink(item) {
       let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=species&sapi[id]=${item.taxon_concept_id}`
 

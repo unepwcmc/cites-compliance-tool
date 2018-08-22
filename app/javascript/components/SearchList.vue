@@ -3,7 +3,7 @@
     <table v-if="!loading && data && data.length > 0" class="list-table">
       <colgroup>
         <col v-for="(name, index) in columns.headers" v-bind:key="index" :style="{width: (index === 0) ? '40%' : 'auto'}">
-        <col style="width: 5%;">
+        <col :style="{width: (inModal) ? '10%' : '5%'}">
       </colgroup>
 
       <thead>
@@ -26,9 +26,11 @@
             {{getTruncatedName(data[key], 40)}}
           </td>
           <td>
-            <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
+            <div v-if="!inModal" class="level-item list-table__dropdown dropdown is-right is-hoverable">
               <component-links :download="getDownloadLink(data)" :details="links.details"></component-links>
             </div>
+
+            <a v-else class="icon-download" :href="getDownloadLink(data)"></a>
           </td>
         </tr>
       </tbody>
@@ -60,7 +62,21 @@ export default {
     ComponentLinks
   },
 
-  props: ['columns', 'grouping', 'year', 'user', 'filterId'],
+  props: {
+    columns: Object,
+    grouping: String,
+    year: [String, Number],
+    user: [String, Number],
+    filterId: [String, Number],
+    perPage: {
+      type: [String, Number],
+      default: 25
+    },
+    inModal: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   data () {
     return {
@@ -108,7 +124,7 @@ export default {
         this.axiosSource.cancel()
       }
 
-      let endpoint = `/api/v1/sapi?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[page]=${page}&sapi[per_page]=25`
+      let endpoint = `/api/v1/sapi?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[page]=${page}&sapi[per_page]=${this.perPage}`
 
       if (this.filterId) {
         endpoint += `&sapi[id]=${this.filterId}`
