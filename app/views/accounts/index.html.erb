@@ -1,3 +1,8 @@
 <div id="accounts">
-  <accounts-page username="<%= current_user.email %>" :users="<%= @users %>"></accounts-page>
+  <accounts-page
+    username="<%= current_user.email %>"
+    user="<%= current_user.id %>"
+    :users="<%= @users %>"
+    :admin="<%= current_user.admin %>"
+  ></accounts-page>
 </div>

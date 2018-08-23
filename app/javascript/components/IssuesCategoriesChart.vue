@@ -2,9 +2,7 @@
   <section class="issues-categories-chart">
     <h2>{{title}}</h2>
 
-    <div class="dropdown is-right is-hoverable issues-categories-chart__dropdown">
-      <component-links :download="getDownloadLink()" :details="links.details"></component-links>
-    </div>
+    <component-links class="issues-categories-chart__links" :download="getDownloadLink()"></component-links>
 
     <div class="issues-categories-chart__circle">
       <span>{{value}}</span>
@@ -21,11 +19,7 @@ export default {
   },
   props: ['title', 'value', 'user', 'year'],
   data () {
-    return {
-      links: {
-        details: '#'
-      }
-    }
+    return {}
   },
   methods: {
     getDownloadLink() {

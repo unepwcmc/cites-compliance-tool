@@ -1,3 +1,7 @@
 <div id="search">
-  <search-page user="<%= current_user.id %>" username="<%= current_user.email %>"></search-page>
+  <search-page
+    user="<%= current_user.id %>"
+    username="<%= current_user.email %>"
+    :admin="<%= current_user.admin %>"
+  ></search-page>
 </div>

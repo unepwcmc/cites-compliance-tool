@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header :username="username"></site-header>
+    <site-header :username="username" :user="user" :admin="admin"></site-header>
 
     <div class="container">
 
@@ -48,6 +48,13 @@
               </button>
             </div>
 
+            <div class="field accounts__list-add-user-admin">
+              <label class="checkbox">
+                <input v-model="newUserAdmin" type="checkbox">
+                Admin
+              </label>
+            </div>
+
             <div class="notification is-warning accounts__list-notification" :class="{active: showCreateNotification}">
               Failed to create user
             </div>
@@ -57,7 +64,7 @@
     </div>
 
     <div class="modal accounts__modal" :class="{'is-active': confirmRemoveModal}">
-      <div class="modal-background"></div>
+      <div class="modal-background accounts__modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Remove user</p>
@@ -85,7 +92,7 @@ export default {
   components: {
     SiteHeader
   },
-  props: ['username', 'users'],
+  props: ['username', 'user', 'users', 'admin'],
   data () {
     return {
       showCreateNotification: false,
@@ -93,7 +100,8 @@ export default {
       confirmRemoveModal: false,
       removeUser: {},
       newUserEmail: '',
-      newUserPassword: ''
+      newUserPassword: '',
+      newUserAdmin: false
     }
   },
   methods: {
@@ -106,6 +114,7 @@ export default {
       formData.set('authenticity_token', token)
       formData.set('email', this.newUserEmail)
       formData.set('password', this.newUserPassword)
+      formData.set('admin', this.newUserAdmin)
 
       axios({
         method: 'post',

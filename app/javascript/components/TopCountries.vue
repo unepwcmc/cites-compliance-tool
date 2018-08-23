@@ -29,13 +29,11 @@
               <span class="level-item top-countries__list-dot" :style="{backgroundColor: colours[index]}"></span>
 
               <span class="level-item top-countries__list-name">
-                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 26)}} ({{country.value}})
+                <strong>{{index + 1}}.</strong> {{getTruncatedName(getCountryName(country), 23)}} ({{country.value}})
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item top-countries__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="getDownloadLink(country)" :details="links.details"></component-links>
-              </div>
+              <component-links :download="getDownloadLink(country)"></component-links>
             </div>
           </li>
         </ul>
@@ -62,10 +60,7 @@ export default {
       mode: 'export',
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#b3c82b'],
       getMap: null,
-      activeCountry: null,
-      links: {
-        details: '#'
-      }
+      activeCountry: null
     }
   },
   watch: {

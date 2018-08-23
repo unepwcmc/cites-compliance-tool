@@ -9,7 +9,7 @@
       <thead>
         <tr>
           <th :colspan="columns.headers.length + 1" class="list-table__header-button">
-            <a v-if="data.length > 0" class="button is-dark button-full-list">
+            <a v-if="data.length > 0" class="button is-dark button-full-list" :href="getDownloadAllLink()" target="_blank">
               <span>Download All</span>
               <span class="icon-download-light"></span>
             </a>
@@ -26,11 +26,7 @@
             {{getTruncatedName(data[key], 40)}}
           </td>
           <td>
-            <div v-if="!inModal" class="level-item list-table__dropdown dropdown is-right is-hoverable">
-              <component-links :download="getDownloadLink(data)" :details="links.details"></component-links>
-            </div>
-
-            <a v-else class="icon-download" :href="getDownloadLink(data)"></a>
+            <component-links :download="getDownloadLink(data)"></component-links>
           </td>
         </tr>
       </tbody>
@@ -189,6 +185,22 @@ export default {
       }
 
       let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}`
+
+      return endpoint
+    },
+
+    getDownloadAllLink(id) {
+      let grouping = this.grouping
+
+      if (grouping === 'exporting') {
+        grouping = 'countries'
+      }
+
+      let endpoint = `/api/v1/sapi/search_download_all?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}`
+
+      if (this.filterId) {
+        endpoint += `&sapi[id]=${this.filterId}`
+      }
 
       return endpoint
     }

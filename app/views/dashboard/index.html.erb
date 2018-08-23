@@ -2,6 +2,7 @@
   <dashboard-page
     username="<%= current_user.email %>"
     user="<%= current_user.id %>"
+    :admin="<%= current_user.admin %>"
     :category="<%= @issue_by_category %>"
     :commodities="<%= @commodities %>"
     :exporting="<%= @exporting %>"
