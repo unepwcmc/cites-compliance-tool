@@ -27,7 +27,7 @@ export default {
 
       switch (this.title.toLowerCase()) {
         case 'suspension':
-          complianceType = 'trade'
+          complianceType = 'suspension'
           break
         case 'appendixi':
           complianceType = 'appendixi'
