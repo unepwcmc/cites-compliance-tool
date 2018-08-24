@@ -2,7 +2,7 @@
   <section class="top-commodities tile__box">
     <header class="level">
       <div class="level-left">
-        <h3 class="level-item">Top 5 commodity</h3>
+        <h3 class="level-item">Top 5 commodities</h3>
       </div>
       <div class="level-right">
         <a class="button level-item is-dark button-full-list" v-on:click="openModal">
