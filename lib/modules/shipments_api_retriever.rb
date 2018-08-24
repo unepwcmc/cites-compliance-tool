@@ -18,7 +18,7 @@ module ShipmentsApiRetriever
     query = {
       compliance_type: params[:compliance_type],
       time_range_start: params[:year] || 2012,
-      time_range_end: params[:year] || 2016,
+      time_range_end: params[:year] || 2017,
       page: params[:page] || 1,
       per_page: 100_00
     }
