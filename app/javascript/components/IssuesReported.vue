@@ -8,17 +8,21 @@
         <p class="issues-reported__label">
           Issues currently reported in {{year}}
         </p>
-        <a class="icon-download issues-reported__download" :href="getDownloadLink()" target="_blank"></a>
+        <a class="icon-download issues-reported__download" v-on:click="onClickDownload()"></a>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import {Downloader} from '../helpers/downloader'
+
 export default {
   props: ['values', 'year', 'user'],
   data () {
-    return {}
+    return {
+      disableDownload: false
+    }
   },
   computed: {
     issuesReportedTotal() {
@@ -30,6 +34,18 @@ export default {
   methods: {
     getDownloadLink() {
       return `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}`
+    },
+
+    onClickDownload() {
+      if (this.disableDownload) {
+        return
+      }
+
+      this.disableDownload = true
+
+      Downloader(this.getDownloadLink()).then(() => {
+        this.disableDownload = false
+      })
     }
   }
 }

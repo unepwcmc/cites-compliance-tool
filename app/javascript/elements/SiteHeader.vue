@@ -15,7 +15,7 @@
       </div>
 
       <div class="level-right">
-        <a class="level-item site-navigation-main__download" :href="getDownloadLink()" target="_blank">
+        <a class="level-item site-navigation-main__download" v-on:click="onClickDownload(getDownloadLink())">
           Download All
           <span class="icon-download-light"></span>
         </a>
@@ -45,14 +45,30 @@
 </template>
 
 <script>
+import {Downloader} from '../helpers/downloader'
+
 export default {
   props: ['username', 'user', 'admin', 'active'],
   data () {
-    return {}
+    return {
+      disableDownload: false
+    }
   },
   methods: {
     getDownloadLink() {
       return `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[all]`
+    },
+
+    onClickDownload(path) {
+      if (this.disableDownload) {
+        return
+      }
+
+      this.disableDownload = true
+
+      Downloader(path).then(() => {
+        this.disableDownload = false
+      })
     }
   }
 }

@@ -9,7 +9,7 @@
       <thead>
         <tr>
           <th :colspan="columns.headers.length + 1" class="list-table__header-button">
-            <a v-if="data.length > 0" class="button is-dark button-full-list" :href="getDownloadAllLink()" target="_blank">
+            <a v-if="data.length > 0" class="button is-dark button-full-list" v-on:click="onClickDownload(getDownloadAllLink())">
               <span>Download All</span>
               <span class="icon-download-light"></span>
             </a>
@@ -54,6 +54,7 @@
 
 <script>
 import axios from 'axios'
+import {Downloader} from '../helpers/downloader'
 
 import SearchListPagination from './SearchListPagination'
 import ComponentLinks from '../elements/ComponentLinks'
@@ -88,7 +89,8 @@ export default {
         details: '#'
       },
       loading: false,
-      axiosSource: null
+      axiosSource: null,
+      disableDownload: false
     }
   },
 
@@ -195,7 +197,7 @@ export default {
       return endpoint
     },
 
-    getDownloadAllLink(id) {
+    getDownloadAllLink() {
       let grouping = this.grouping
 
       if (grouping === 'exporting') {
@@ -209,6 +211,18 @@ export default {
       }
 
       return endpoint
+    },
+
+    onClickDownload(path) {
+      if (this.disableDownload) {
+        return
+      }
+
+      this.disableDownload = true
+
+      Downloader(path).then(() => {
+        this.disableDownload = false
+      })
     },
 
     isSpecies() {
