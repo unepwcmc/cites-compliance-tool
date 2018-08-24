@@ -23,7 +23,13 @@
       <tbody>
         <tr v-for="(data, index) in data" :key="index">
           <td v-for="(key, index) in columns.keys" v-bind:key="index">
-            {{getTruncatedName(data[key], 40)}}
+            <template v-if="isSpecies() && index === 0">
+              <em>{{getTruncatedName(data[key], 40)}}</em>
+            </template>
+
+            <template v-else>
+              {{getTruncatedName(data[key], 40)}}
+            </template>
           </td>
           <td>
             <component-links :download="getDownloadLink(data)"></component-links>
@@ -203,6 +209,10 @@ export default {
       }
 
       return endpoint
+    },
+
+    isSpecies() {
+      return this.grouping.toLowerCase() === 'species'
     }
   }
 }
