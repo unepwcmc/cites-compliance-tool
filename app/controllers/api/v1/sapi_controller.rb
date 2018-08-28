@@ -64,9 +64,11 @@ class Api::V1::SapiController < ApplicationController
   def filename(type = nil)
     if sapi_params[:year].present?
       type ||= sapi_params[:grouping].presence || sapi_params[:compliance_type].presence || ''
+      id ||= sapi_params[:id].presence || ''
       type = "_#{type}" if type.present?
+      id = "_#{id}" if id.present?
 
-      "#{sapi_params[:year]}#{type}_shipments_#{Time.now.to_i}.csv"
+      "#{sapi_params[:year]}#{type}#{id}_shipments_#{Time.now.to_i}.csv"
     else
       "2012-2016_all_shipments_#{Time.now.to_i}.csv"
     end
