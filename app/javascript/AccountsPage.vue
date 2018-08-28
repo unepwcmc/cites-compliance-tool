@@ -86,8 +86,6 @@
 import SiteHeader from './elements/SiteHeader'
 import axios from 'axios'
 
-import '@fortawesome/fontawesome-free/js/all.js'
-
 export default {
   components: {
     SiteHeader

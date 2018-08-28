@@ -2,7 +2,6 @@
   "name": "cites-compliance-tool",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.1.0",
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
     "datamaps": "^0.5.9",

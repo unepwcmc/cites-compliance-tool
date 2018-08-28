@@ -87,8 +87,6 @@ import SearchList from './components/SearchList'
 
 import dataYears from './data/years'
 
-import '@fortawesome/fontawesome-free/js/all.js'
-
 export default {
   components: {
     SiteHeader,
