@@ -2,9 +2,7 @@
   <section class="issues-categories-chart">
     <h2>{{title}}</h2>
 
-    <div class="dropdown is-right is-hoverable issues-categories-chart__dropdown">
-      <component-links :download="getDownloadLink()" :details="links.details"></component-links>
-    </div>
+    <component-links class="issues-categories-chart__links" :download="getDownloadLink()"></component-links>
 
     <div class="issues-categories-chart__circle">
       <span>{{value}}</span>
@@ -21,27 +19,11 @@ export default {
   },
   props: ['title', 'value', 'user', 'year'],
   data () {
-    return {
-      links: {
-        details: '#'
-      }
-    }
+    return {}
   },
   methods: {
     getDownloadLink() {
-      let complianceType;
-
-      switch (this.title.toLowerCase()) {
-        case 'suspension':
-          complianceType = 'trade'
-          break
-        case 'appendixi':
-          complianceType = 'appendixi'
-          break
-        case 'quota':
-          complianceType = 'quota'
-          break
-      }
+      let complianceType = this.title.toLowerCase();
 
       let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[compliance_type]=${complianceType}`
 

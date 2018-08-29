@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header active="dashboard"></site-header>
+    <site-header :username="username" :user="user" :admin="admin" active="dashboard"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -33,7 +33,7 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues[selectedYear]" :year="selectedYear"></issues-reported>
+          <issues-reported :values="issuesReportedValues[selectedYear]" :user="user" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
           <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
@@ -48,13 +48,13 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)" :user="user" :year="selectedYear"></top-countries>
+          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)" :user="user" :year="selectedYear"></top-commodities>
+          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
         </div>
       </div>
 
@@ -66,9 +66,19 @@
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-species :species="speciesValues[selectedYear]" :user="user" :year="selectedYear"></top-species>
+          <top-species :species="speciesValues[selectedYear]" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
         </div>
       </div>
+    </div>
+
+    <div class="modal" :class="{'is-active': modalActive}">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <h1>{{tableName}}</h1>
+        <h2>Issues currently reported in {{selectedYear}}</h2>
+        <search-list :columns="tableColumns[tableCategory]" :grouping="tableCategory" :year="selectedYear" per-page="8" :user="user" :in-modal="true"></search-list>
+      </div>
+      <button class="modal-close is-large button-full-list" aria-label="close" v-on:click="closeModal()"></button>
     </div>
   </div>
 </template>
@@ -85,10 +95,10 @@ import TopCommodities from './components/TopCommodities'
 import TopCountries from './components/TopCountries'
 import TopSpecies from './components/TopSpecies'
 
+import SearchList from './components/SearchList'
+
 import dataYears from './data/years'
 import dataChart from './data/chart'
-
-import '@fortawesome/fontawesome-free/js/all.js'
 
 export default {
   components: {
@@ -97,11 +107,12 @@ export default {
     IssuesChart,
     IssuesCategories,
     IssuesTaxonomies,
+    SearchList,
     TopCommodities,
     TopCountries,
     TopSpecies
   },
-  props: ['user', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
+  props: ['user', 'username', 'admin', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
   data () {
     return {
       years: dataYears,
@@ -114,12 +125,52 @@ export default {
       topCountriesValuesImport: this.importing,
       speciesValues: this.species,
       taxonomyValues: this.taxonomy,
-      commodityValues: this.commodities
+      commodityValues: this.commodities,
+      tableColumns: {
+        exporting: {
+          headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
+          keys: ['country', 'cnt', 'total_cnt', 'percentage']
+        },
+        commodity: {
+          headers: ['Commodity', 'No. Transactions'],
+          keys: ['term', 'cnt']
+        },
+        species: {
+          headers: ['Species', 'No. Transactions', 'Appendix'],
+          keys: ['taxon_name', 'cnt', 'appendix']
+        }
+      },
+      tableCategory: 'species',
+      tableName: 'Species',
+      modalActive: false
     }
   },
   methods: {
     onSelectYear(year) {
-      this.selectedYear = year;
+      this.selectedYear = year
+    },
+
+    openModal(category) {
+      switch (category) {
+        case 'countries':
+          this.tableCategory = 'exporting'
+          this.tableName = 'Countries'
+          break
+        case 'species':
+          this.tableCategory = 'species'
+          this.tableName = 'Species'
+          break
+        case 'commodity':
+          this.tableCategory = 'commodity'
+          this.tableName = 'Commodity'
+          break
+      }
+
+      this.modalActive = true
+    },
+
+    closeModal() {
+      this.modalActive = false
     }
   }
 }

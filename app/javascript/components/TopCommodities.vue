@@ -5,7 +5,7 @@
         <h3 class="level-item">Top 5 commodity</h3>
       </div>
       <div class="level-right">
-        <a class="button level-item is-dark button-full-list">
+        <a class="button level-item is-dark button-full-list" v-on:click="openModal">
           <span>Full List</span>
           <span class="icon is-small">
             <i class="fas fa-angle-right"></i>
@@ -26,9 +26,7 @@
               </span>
             </div>
             <div class="level-right">
-              <div class="level-item top-commodities__list-dropdown dropdown is-right is-hoverable">
-                <component-links :download="getDownloadLink(commodity)" :details="links.details"></component-links>
-              </div>
+              <component-links :download="getDownloadLink(commodity)"></component-links>
             </div>
           </li>
         </ul>
@@ -60,13 +58,13 @@ export default {
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#b3c82b'],
-      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit'],
-      links: {
-        details: '#'
-      }
+      textColours: ['#fff', 'inherit', 'inherit', 'inherit', 'inherit']
     }
   },
   methods: {
+    openModal() {
+      this.$emit('open-modal', 'commodity')
+    },
     getDownloadLink(item) {
       let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=commodity&sapi[id]=${item.term_id}`
 

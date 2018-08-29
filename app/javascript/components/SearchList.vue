@@ -3,13 +3,13 @@
     <table v-if="!loading && data && data.length > 0" class="list-table">
       <colgroup>
         <col v-for="(name, index) in columns.headers" v-bind:key="index" :style="{width: (index === 0) ? '40%' : 'auto'}">
-        <col style="width: 5%;">
+        <col :style="{width: (inModal) ? '10%' : '5%'}">
       </colgroup>
 
       <thead>
         <tr>
           <th :colspan="columns.headers.length + 1" class="list-table__header-button">
-            <a v-if="data.length > 0" class="button is-dark button-full-list">
+            <a v-if="data.length > 0" class="button is-dark button-full-list" :href="getDownloadAllLink()" target="_blank">
               <span>Download All</span>
               <span class="icon-download-light"></span>
             </a>
@@ -26,9 +26,7 @@
             {{getTruncatedName(data[key], 40)}}
           </td>
           <td>
-            <div class="level-item list-table__dropdown dropdown is-right is-hoverable">
-              <component-links :download="links.download" :details="links.details"></component-links>
-            </div>
+            <component-links :download="getDownloadLink(data)"></component-links>
           </td>
         </tr>
       </tbody>
@@ -60,15 +58,28 @@ export default {
     ComponentLinks
   },
 
-  props: ['columns', 'grouping', 'year', 'user', 'filterId'],
+  props: {
+    columns: Object,
+    grouping: String,
+    year: [String, Number],
+    user: [String, Number],
+    filterId: [String, Number],
+    perPage: {
+      type: [String, Number],
+      default: 25
+    },
+    inModal: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   data () {
     return {
       data: [],
       metadata: {},
       links: {
-        details: '#',
-        download: '#'
+        details: '#'
       },
       loading: false,
       axiosSource: null
@@ -109,7 +120,7 @@ export default {
         this.axiosSource.cancel()
       }
 
-      let endpoint = `/api/v1/sapi?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[page]=${page}&sapi[per_page]=25`
+      let endpoint = `/api/v1/sapi?sapi[call]=search&sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.grouping}&sapi[page]=${page}&sapi[per_page]=${this.perPage}`
 
       if (this.filterId) {
         endpoint += `&sapi[id]=${this.filterId}`
@@ -154,6 +165,44 @@ export default {
       }
 
       return name
+    },
+
+    getDownloadLink(item) {
+      let id;
+
+      if (item.taxon_concept_id) {
+        id = item.taxon_concept_id
+      } else if (item.term_id) {
+        id = item.term_id
+      } else if (item.id) {
+        id = item.id
+      }
+
+      let grouping = this.grouping
+
+      if (grouping === 'exporting') {
+        grouping = 'countries'
+      }
+
+      let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}`
+
+      return endpoint
+    },
+
+    getDownloadAllLink(id) {
+      let grouping = this.grouping
+
+      if (grouping === 'exporting') {
+        grouping = 'countries'
+      }
+
+      let endpoint = `/api/v1/sapi/search_download_all?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}`
+
+      if (this.filterId) {
+        endpoint += `&sapi[id]=${this.filterId}`
+      }
+
+      return endpoint
     }
   }
 }

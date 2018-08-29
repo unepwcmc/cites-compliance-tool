@@ -1,6 +1,6 @@
 <template>
   <div>
-    <site-header active="search"></site-header>
+    <site-header :username="username" :user="user" :admin="admin" active="search"></site-header>
 
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
@@ -87,14 +87,12 @@ import SearchList from './components/SearchList'
 
 import dataYears from './data/years'
 
-import '@fortawesome/fontawesome-free/js/all.js'
-
 export default {
   components: {
     SiteHeader,
     SearchList
   },
-  props: ['user'],
+  props: ['user', 'username', 'admin'],
   data () {
     return {
       selectedCategory: 'species',

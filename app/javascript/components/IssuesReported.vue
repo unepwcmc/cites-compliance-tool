@@ -8,7 +8,7 @@
         <p class="issues-reported__label">
           Issues currently reported in {{year}}
         </p>
-        <a class="icon-download issues-reported__download" :href="'/download/download?year=' + year"></a>
+        <a class="icon-download issues-reported__download" :href="getDownloadLink()" target="_blank"></a>
       </div>
     </div>
   </section>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ['values', 'year'],
+  props: ['values', 'year', 'user'],
   data () {
     return {}
   },
@@ -25,6 +25,11 @@ export default {
       return this.values.reduce((acc, reported) => {
         return acc + Number(reported.value)
       }, 0)
+    }
+  },
+  methods: {
+    getDownloadLink() {
+      return `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}`
     }
   }
 }
