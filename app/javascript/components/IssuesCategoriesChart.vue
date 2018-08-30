@@ -23,19 +23,7 @@ export default {
   },
   methods: {
     getDownloadLink() {
-      let complianceType;
-
-      switch (this.title.toLowerCase()) {
-        case 'suspension':
-          complianceType = 'trade'
-          break
-        case 'appendixi':
-          complianceType = 'appendixi'
-          break
-        case 'quota':
-          complianceType = 'quota'
-          break
-      }
+      let complianceType = this.title.toLowerCase();
 
       let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[compliance_type]=${complianceType}`
 

@@ -7,6 +7,7 @@ module CsvDownloader
               rank_name].freeze
 
   def self.csv_generator(data)
+    return unless data
     CSV.generate(headers: true) do |csv|
       csv << HEADER
       data.each do |row|
