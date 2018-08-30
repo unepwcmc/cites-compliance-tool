@@ -191,10 +191,6 @@ export default {
 
       let grouping = this.grouping
 
-      if (grouping === 'exporting') {
-        grouping = 'countries'
-      }
-
       let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}`
 
       return endpoint
@@ -202,10 +198,6 @@ export default {
 
     getDownloadAllLink() {
       let grouping = this.grouping
-
-      if (grouping === 'exporting') {
-        grouping = 'countries'
-      }
 
       let endpoint = `/api/v1/sapi/search_download_all?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}`
 
