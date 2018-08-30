@@ -8,7 +8,12 @@
         <p class="issues-reported__label">
           Issues currently reported in {{year}}
         </p>
-        <a class="icon-download issues-reported__download" v-on:click="onClickDownload()"></a>
+
+        <span v-if="loadingDownload" class="icon issues-reported__download issues-reported__download-indicator">
+          <i class="fas fa-spinner fa-pulse"></i>
+        </span>
+
+        <a v-else class="icon-download issues-reported__download" v-on:click="onClickDownload(getDownloadLink())"></a>
       </div>
     </div>
   </section>

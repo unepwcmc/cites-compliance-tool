@@ -11,7 +11,12 @@
           <th :colspan="columns.headers.length + 1" class="list-table__header-button">
             <a v-if="data.length > 0" class="button is-dark button-full-list" v-on:click="onClickDownload(getDownloadAllLink())">
               <span>Download All</span>
-              <span class="icon-download-light"></span>
+
+              <span v-if="loadingDownload" class="icon icon-download-loading">
+                <i class="fas fa-spinner fa-pulse"></i>
+              </span>
+
+              <span v-else class="icon-download-light"></span>
             </a>
           </th>
         </tr>

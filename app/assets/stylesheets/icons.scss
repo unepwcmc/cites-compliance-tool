@@ -21,6 +21,18 @@ $icon-hover-colour: #6285a7;
   width: 16px;
 }
 
+.icon-download-loading {
+  height: 16px;
+  width: 16px;
+}
+
+.button .icon-download-loading:last-child:not(:first-child) {
+  height: inherit;
+  margin-left: 0;
+  margin-right: 0;
+  width: inherit;
+}
+
 .icon-arrow-right-light {
   background-position: center;
   background-image: image-url('icon-arrow-right-light.svg');

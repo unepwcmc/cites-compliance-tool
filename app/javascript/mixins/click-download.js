@@ -3,20 +3,23 @@ import {Downloader} from '../helpers/downloader'
 export default {
   data() {
     return {
-      disableDownload: false
+      loadingDownload: false
     }
   },
 
   methods: {
     onClickDownload(path) {
-      if (this.disableDownload) {
+      if (this.loadingDownload) {
         return
       }
 
-      this.disableDownload = true
+      this.loadingDownload = true
 
       Downloader(path).then(() => {
-        this.disableDownload = false
+        this.loadingDownload = false
+      }).catch((err) => {
+        this.loadingDownload = false
+        console.error(err)
       })
     }
   }

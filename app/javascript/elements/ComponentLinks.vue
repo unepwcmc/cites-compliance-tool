@@ -20,7 +20,10 @@
     </template>
 
     <template v-else>
-      <a class="icon-download list-table__icon-download" v-on:click="onClickDownload(download)"></a>
+      <span v-if="loadingDownload" class="icon icon-download-loading list-table__icon-download-loading">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+      <a v-else class="icon-download list-table__icon-download" v-on:click="onClickDownload(download)"></a>
     </template>
   </div>
 </template>

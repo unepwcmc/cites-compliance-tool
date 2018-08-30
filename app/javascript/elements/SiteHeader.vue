@@ -17,7 +17,12 @@
       <div class="level-right">
         <a class="level-item site-navigation-main__download" v-on:click="onClickDownload(getDownloadLink())">
           Download All
-          <span class="icon-download-light"></span>
+
+          <span v-if="loadingDownload" class="icon icon-download-loading">
+            <i class="fas fa-spinner fa-pulse"></i>
+          </span>
+
+          <span v-else class="icon-download-light"></span>
         </a>
 
         <div class="site-navigation-main__account-dropdown dropdown is-hoverable">
