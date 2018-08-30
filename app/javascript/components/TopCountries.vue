@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Datamap from 'datamaps'
+import Datamap from 'datamaps/dist/datamaps.world.hires.js'
 
 import iso2toiso3 from '../helpers/iso2-to-iso3'
 import countries from '../data/countries';
