@@ -34,12 +34,12 @@
       <div class="column">
         <ul class="top-commodities__chart">
           <li class="level" v-for="(commodity, index) in commodities" :key="index">
-            <div class="top-commodities__chart-bar" :style="{width: `${commodity.percent}%`, backgroundColor: colours[index]}"></div>
             <div class="level-left">
               <span class="level-item top-commodities__chart-name">
                 <strong :style="{color: textColours[index]}">{{index + 1}}. {{commodity.value}} ({{Number(commodity.percent).toFixed(1)}}%)</strong>
               </span>
             </div>
+            <div class="top-commodities__chart-bar" :style="{width: `${commodity.percent}%`, backgroundColor: colours[index]}"></div>
           </li>
         </ul>
       </div>

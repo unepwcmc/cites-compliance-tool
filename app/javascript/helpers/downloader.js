@@ -15,15 +15,19 @@ const Downloader = (path) => {
         type: 'text/csv'
       })
 
-      const link = document.createElement('a')
-      link.href = window.URL.createObjectURL(blob)
-      link.download = filename
+      if (window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveOrOpenBlob(blob, filename);
+      } else {
+        const link = document.createElement('a')
+        link.href = window.URL.createObjectURL(blob)
+        link.download = filename
 
-      document.body.appendChild(link)
+        document.body.appendChild(link)
 
-      link.click()
+        link.click()
 
-      document.body.removeChild(link)
+        document.body.removeChild(link)
+      }
 
       resolve()
     }).catch(reject)
