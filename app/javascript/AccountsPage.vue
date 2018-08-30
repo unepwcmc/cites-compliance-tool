@@ -26,7 +26,12 @@
               <li v-else v-for="(user, index) in users" v-bind:key="index">
                 <div class="level">
                   {{user.email}}
-                  <button class="button is-white accounts__list-remove" v-on:click="onClickRemoveUser(user.id, user.email)">
+
+                  <span v-if="user.admin" class="tag is-medium">
+                    Admin
+                  </span>
+
+                  <button v-else class="button is-white accounts__list-remove" v-on:click="onClickRemoveUser(user.id, user.email)">
                     <span class="icon-remove"></span>
                     <span>Remove</span>
                   </button>
