@@ -15,7 +15,7 @@
       </div>
 
       <div class="level-right">
-        <a class="level-item site-navigation-main__download" :href="getDownloadLink()" target="_blank">
+        <a class="level-item site-navigation-main__download" v-on:click="onClickDownload(getDownloadLink())">
           Download All
           <span class="icon-download-light"></span>
         </a>
@@ -45,7 +45,10 @@
 </template>
 
 <script>
+import mixinClickDownload from '../mixins/click-download'
+
 export default {
+  mixins: [mixinClickDownload],
   props: ['username', 'user', 'admin', 'active'],
   data () {
     return {}

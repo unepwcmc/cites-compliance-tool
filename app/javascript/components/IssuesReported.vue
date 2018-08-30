@@ -8,14 +8,17 @@
         <p class="issues-reported__label">
           Issues currently reported in {{year}}
         </p>
-        <a class="icon-download issues-reported__download" :href="getDownloadLink()" target="_blank"></a>
+        <a class="icon-download issues-reported__download" v-on:click="onClickDownload()"></a>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import mixinClickDownload from '../mixins/click-download'
+
 export default {
+  mixins: [mixinClickDownload],
   props: ['values', 'year', 'user'],
   data () {
     return {}

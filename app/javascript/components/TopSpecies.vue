@@ -25,7 +25,7 @@
       </thead>
       <tbody>
         <tr v-for="(species, index) in species" :key="index">
-          <td><strong>{{index + 1}}.</strong> {{species.taxon_name}}</td>
+          <td><strong>{{index + 1}}.</strong> <em>{{species.taxon_name}}</em></td>
           <td>{{species.value}}</td>
           <td>{{species.appendix}}</td>
           <td>

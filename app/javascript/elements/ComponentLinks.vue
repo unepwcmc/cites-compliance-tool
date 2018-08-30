@@ -10,7 +10,7 @@
               View Details
               <span class="icon-arrow-right-light"></span>
             </a>
-            <a v-if="download" :href="download" target="_blank" class="dropdown-item">
+            <a v-if="download" class="dropdown-item" v-on:click="onClickDownload(download)">
               Download Issues
               <span class="icon-download-light"></span>
             </a>
@@ -20,13 +20,16 @@
     </template>
 
     <template v-else>
-      <a class="icon-download list-table__icon-download" :href="download"></a>
+      <a class="icon-download list-table__icon-download" v-on:click="onClickDownload(download)"></a>
     </template>
   </div>
 </template>
 
 <script>
+import mixinClickDownload from '../mixins/click-download'
+
 export default {
+  mixins: [mixinClickDownload],
   props: ['download', 'details'],
   data () {
     return {}

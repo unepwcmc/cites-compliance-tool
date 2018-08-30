@@ -9,7 +9,7 @@
       <thead>
         <tr>
           <th :colspan="columns.headers.length + 1" class="list-table__header-button">
-            <a v-if="data.length > 0" class="button is-dark button-full-list" :href="getDownloadAllLink()" target="_blank">
+            <a v-if="data.length > 0" class="button is-dark button-full-list" v-on:click="onClickDownload(getDownloadAllLink())">
               <span>Download All</span>
               <span class="icon-download-light"></span>
             </a>
@@ -23,7 +23,13 @@
       <tbody>
         <tr v-for="(data, index) in data" :key="index">
           <td v-for="(key, index) in columns.keys" v-bind:key="index">
-            {{getTruncatedName(data[key], 40)}}
+            <template v-if="isSpecies() && index === 0">
+              <em>{{getTruncatedName(data[key], 40)}}</em>
+            </template>
+
+            <template v-else>
+              {{getTruncatedName(data[key], 40)}}
+            </template>
           </td>
           <td>
             <component-links :download="getDownloadLink(data)"></component-links>
@@ -48,15 +54,20 @@
 
 <script>
 import axios from 'axios'
+import {Downloader} from '../helpers/downloader'
 
 import SearchListPagination from './SearchListPagination'
 import ComponentLinks from '../elements/ComponentLinks'
+
+import mixinClickDownload from '../mixins/click-download'
 
 export default {
   components: {
     SearchListPagination,
     ComponentLinks
   },
+
+  mixins: [mixinClickDownload],
 
   props: {
     columns: Object,
@@ -189,7 +200,7 @@ export default {
       return endpoint
     },
 
-    getDownloadAllLink(id) {
+    getDownloadAllLink() {
       let grouping = this.grouping
 
       if (grouping === 'exporting') {
@@ -203,6 +214,10 @@ export default {
       }
 
       return endpoint
+    },
+
+    isSpecies() {
+      return this.grouping.toLowerCase() === 'species'
     }
   }
 }
