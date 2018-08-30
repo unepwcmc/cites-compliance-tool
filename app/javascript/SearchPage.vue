@@ -98,7 +98,7 @@ export default {
       selectedCategory: 'species',
       categoryFilterId: null,
       years: dataYears,
-      selectedYear: dataYears[dataYears.length - 1],
+      selectedYear: dataYears[0],
       suggestionInput: null,
       suggestions: [],
       termSuggestionList: [],
