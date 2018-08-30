@@ -109,10 +109,10 @@ export default {
       const token = document.querySelector('meta[name="csrf-token"]').attributes.content.value
 
       const formData = new FormData()
-      formData.set('authenticity_token', token)
-      formData.set('email', this.newUserEmail)
-      formData.set('password', this.newUserPassword)
-      formData.set('admin', this.newUserAdmin)
+      formData.append('authenticity_token', token)
+      formData.append('email', this.newUserEmail)
+      formData.append('password', this.newUserPassword)
+      formData.append('admin', this.newUserAdmin)
 
       axios({
         method: 'post',
@@ -152,7 +152,7 @@ export default {
       const token = document.querySelector('meta[name="csrf-token"]').attributes.content.value
 
       const formData = new FormData()
-      formData.set('authenticity_token', token)
+      formData.append('authenticity_token', token)
 
       axios({
         method: 'delete',

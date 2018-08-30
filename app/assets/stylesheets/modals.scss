@@ -2,6 +2,10 @@
   background: #fff;
 }
 
+.modal {
+  flex-direction: column;
+}
+
 .accounts__modal-background {
   background-color: rgba(10, 10, 10, 0.86);
 }

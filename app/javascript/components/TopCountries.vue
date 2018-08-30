@@ -193,7 +193,7 @@ export default {
         .attr('x', centroid[0])
         .attr('y', centroid[1] + 2)
         .attr('text-anchor', 'middle')
-        .attr('alignment-baseline', 'middle')
+        .attr('dy', '0.25em')
         .text(options.value)
     })
 
