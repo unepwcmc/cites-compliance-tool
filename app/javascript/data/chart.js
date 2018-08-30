@@ -85,6 +85,26 @@ const data = {
       "issuesReported": 12972,
       "countriesReported": 107,
       "countriesYetToReport": 76
+    },
+    {
+      "year": 2017,
+      "issuesReported": 13543,
+      "countriesReported": 99,
+      "countriesYetToReport": 58
+    }
+  ],
+  "2017": [
+    {
+      "year": 2016,
+      "issuesReported": 12972,
+      "countriesReported": 107,
+      "countriesYetToReport": 76
+    },
+    {
+      "year": 2017,
+      "issuesReported": 13543,
+      "countriesReported": 99,
+      "countriesYetToReport": 58
     }
   ]
 }
