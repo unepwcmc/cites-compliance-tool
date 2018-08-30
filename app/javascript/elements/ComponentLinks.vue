@@ -10,7 +10,7 @@
               View Details
               <span class="icon-arrow-right-light"></span>
             </a>
-            <a v-if="download" class="dropdown-item" v-on:click="onClickDownload()">
+            <a v-if="download" class="dropdown-item" v-on:click="onClickDownload(download)">
               Download Issues
               <span class="icon-download-light"></span>
             </a>
@@ -20,34 +20,19 @@
     </template>
 
     <template v-else>
-      <a class="icon-download list-table__icon-download" v-on:click="onClickDownload()"></a>
+      <a class="icon-download list-table__icon-download" v-on:click="onClickDownload(download)"></a>
     </template>
   </div>
 </template>
 
 <script>
-import {Downloader} from '../helpers/downloader'
+import mixinClickDownload from '../mixins/click-download'
 
 export default {
+  mixins: [mixinClickDownload],
   props: ['download', 'details'],
   data () {
-    return {
-      disableDownload: false
-    }
-  },
-
-  methods: {
-    onClickDownload() {
-      if (this.disableDownload) {
-        return
-      }
-
-      this.disableDownload = true
-
-      Downloader(this.download).then(() => {
-        this.disableDownload = false
-      })
-    }
+    return {}
   }
 }
 </script>

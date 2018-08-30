@@ -45,30 +45,17 @@
 </template>
 
 <script>
-import {Downloader} from '../helpers/downloader'
+import mixinClickDownload from '../mixins/click-download'
 
 export default {
+  mixins: [mixinClickDownload],
   props: ['username', 'user', 'admin', 'active'],
   data () {
-    return {
-      disableDownload: false
-    }
+    return {}
   },
   methods: {
     getDownloadLink() {
       return `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[all]`
-    },
-
-    onClickDownload(path) {
-      if (this.disableDownload) {
-        return
-      }
-
-      this.disableDownload = true
-
-      Downloader(path).then(() => {
-        this.disableDownload = false
-      })
     }
   }
 }

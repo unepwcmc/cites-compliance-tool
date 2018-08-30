@@ -59,11 +59,15 @@ import {Downloader} from '../helpers/downloader'
 import SearchListPagination from './SearchListPagination'
 import ComponentLinks from '../elements/ComponentLinks'
 
+import mixinClickDownload from '../mixins/click-download'
+
 export default {
   components: {
     SearchListPagination,
     ComponentLinks
   },
+
+  mixins: [mixinClickDownload],
 
   props: {
     columns: Object,
@@ -89,8 +93,7 @@ export default {
         details: '#'
       },
       loading: false,
-      axiosSource: null,
-      disableDownload: false
+      axiosSource: null
     }
   },
 
@@ -211,18 +214,6 @@ export default {
       }
 
       return endpoint
-    },
-
-    onClickDownload(path) {
-      if (this.disableDownload) {
-        return
-      }
-
-      this.disableDownload = true
-
-      Downloader(path).then(() => {
-        this.disableDownload = false
-      })
     },
 
     isSpecies() {

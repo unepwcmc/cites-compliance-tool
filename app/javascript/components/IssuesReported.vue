@@ -15,14 +15,13 @@
 </template>
 
 <script>
-import {Downloader} from '../helpers/downloader'
+import mixinClickDownload from '../mixins/click-download'
 
 export default {
+  mixins: [mixinClickDownload],
   props: ['values', 'year', 'user'],
   data () {
-    return {
-      disableDownload: false
-    }
+    return {}
   },
   computed: {
     issuesReportedTotal() {
@@ -34,18 +33,6 @@ export default {
   methods: {
     getDownloadLink() {
       return `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}`
-    },
-
-    onClickDownload() {
-      if (this.disableDownload) {
-        return
-      }
-
-      this.disableDownload = true
-
-      Downloader(this.getDownloadLink()).then(() => {
-        this.disableDownload = false
-      })
     }
   }
 }
