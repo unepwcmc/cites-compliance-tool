@@ -1,7 +1,13 @@
 <template>
   <section class="issues-reported level tile__box">
-    <div class="level-item">
-      <div v-show="values">
+    <div v-if="!values" class="tile__box-loading level-item">
+      <span class="icon">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+    </div>
+
+    <div v-show="values" class="level-item">
+      <div>
         <p class="issues-reported__stat">
           {{issuesReportedTotal}}
         </p>

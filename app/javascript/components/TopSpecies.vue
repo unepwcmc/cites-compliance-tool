@@ -1,5 +1,11 @@
 <template>
   <section class="top-species tile__box">
+    <div v-if="!values" class="tile__box-loading">
+      <span class="icon">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+    </div>
+
     <div v-show="values">
       <header class="level">
         <div class="level-left">

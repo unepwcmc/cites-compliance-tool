@@ -1,5 +1,11 @@
 <template>
   <section class="issues-categories tile__box">
+    <div v-if="!values" class="tile__box-loading">
+      <span class="icon">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+    </div>
+
     <div v-show="values">
       <h3>Issues by category</h3>
 

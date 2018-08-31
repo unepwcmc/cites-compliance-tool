@@ -1,5 +1,11 @@
 <template>
   <section class="top-countries tile__box">
+    <div v-if="!exporting || !importing" class="tile__box-loading">
+      <span class="icon">
+        <i class="fas fa-spinner fa-pulse"></i>
+      </span>
+    </div>
+
     <div v-show="exporting && importing">
       <header class="level">
         <div class="level-left">
