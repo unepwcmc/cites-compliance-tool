@@ -58,10 +58,10 @@ export default {
       return 100 - ((value / this.getMaxValue()) * 100)
     },
     isFirstYear() {
-      return (this.values.length < 3 && this.values[0].year.toString() === this.years[0].toString())
+      return (this.values.length < 3 && this.values[0].year.toString() === this.years[this.years.length - 1].toString())
     },
     isLastYear() {
-      return (this.values.length < 3 && this.values[1].year.toString() === this.years[this.years.length - 1].toString())
+      return (this.values.length < 3 && this.values[1].year.toString() === this.years[0].toString())
     },
     getFirstValue() {
       if (this.isFirstYear()) {

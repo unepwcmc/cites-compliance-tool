@@ -116,7 +116,7 @@ export default {
   data () {
     return {
       years: dataYears,
-      selectedYear: dataYears[dataYears.length - 1],
+      selectedYear: dataYears[0],
 
       issuesReportedValues: this.category,
       chartValues: dataChart,
