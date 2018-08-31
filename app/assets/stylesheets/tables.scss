@@ -83,10 +83,12 @@
   width: 15px;
 }
 
-.list-table-pagination__button .icon-arrow-left-light {
+.list-table-pagination__button .icon-arrow-left-light,
+.list-table-pagination__button .icon-arrow-left-end-light {
   background-position: right;
 }
 
-.list-table-pagination__button .icon-arrow-right-light {
+.list-table-pagination__button .icon-arrow-right-light,
+.list-table-pagination__button .icon-arrow-right-end-light {
   background-position: right;
 }
