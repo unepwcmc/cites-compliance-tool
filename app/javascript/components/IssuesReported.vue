@@ -1,7 +1,7 @@
 <template>
   <section class="issues-reported level tile__box">
     <div class="level-item">
-      <div>
+      <div v-show="values">
         <p class="issues-reported__stat">
           {{issuesReportedTotal}}
         </p>
@@ -30,6 +30,10 @@ export default {
   },
   computed: {
     issuesReportedTotal() {
+      if (!this.values) {
+        return
+      }
+
       return this.values.reduce((acc, reported) => {
         return acc + Number(reported.value)
       }, 0)
