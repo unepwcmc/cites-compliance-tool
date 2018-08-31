@@ -9,12 +9,20 @@
             <strong>Rows {{rowCount}} of</strong> {{metadata.total}}
           </span>
 
+          <button class="button is-dark list-table-pagination__button" v-on:click="setPage(1)" v-if="!firstPage">
+            <span class="icon-arrow-left-end-light"></span>
+          </button>
+
           <button class="button is-dark list-table-pagination__button" v-on:click="changePage(-1)" v-if="!firstPage">
             <span class="icon-arrow-left-light"></span>
           </button>
 
           <button class="button is-dark list-table-pagination__button" v-on:click="changePage(1)" v-if="!lastPage">
             <span class="icon-arrow-right-light"></span>
+          </button>
+
+          <button class="button is-dark list-table-pagination__button" v-on:click="setPage(totalPages)" v-if="!lastPage">
+            <span class="icon-arrow-right-end-light"></span>
           </button>
         </div>
       </div>
@@ -39,14 +47,24 @@ export default {
 
       return `${min} to ${max}`
     },
+
     firstPage() {
       return Number(this.metadata.page) === 1
     },
+
     lastPage() {
-      return Number(this.metadata.page) === Math.ceil(Number(this.metadata.total) / Number(this.metadata.per_page))
+      return Number(this.metadata.page) === this.totalPages
+    },
+
+    totalPages() {
+      return Math.ceil(Number(this.metadata.total) / Number(this.metadata.per_page))
     }
   },
   methods: {
+    setPage(page) {
+      this.$emit('change-page', Number(page))
+    },
+
     changePage(pageOffset) {
       this.$emit('change-page', Number(this.metadata.page) + pageOffset)
     }

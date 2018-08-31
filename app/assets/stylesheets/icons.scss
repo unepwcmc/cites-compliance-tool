@@ -61,6 +61,23 @@ $icon-hover-colour: #6285a7;
   width: 16px;
 }
 
+.icon-arrow-right-end-light {
+  background-position: center;
+  background-image: image-url('icon-arrow-right-end-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 16px;
+}
+
+.icon-arrow-left-end-light {
+  background-position: center;
+  background-image: image-url('icon-arrow-right-end-light.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 16px;
+  transform: rotateY(180deg);
+}
+
 .icon-ellipsis {
   background-image: image-url('icon-ellipsis.svg');
   background-position: center;
