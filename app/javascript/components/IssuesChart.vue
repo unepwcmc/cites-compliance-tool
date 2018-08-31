@@ -1,10 +1,6 @@
 <template>
   <section class="issues-chart tile__box">
-    <div v-if="!values" class="tile__box-loading">
-      <span class="icon">
-        <i class="fas fa-spinner fa-pulse"></i>
-      </span>
-    </div>
+    <component-loading v-if="!values"></component-loading>
 
     <div v-show="values" class="issues-chart__svg">
       <svg width="100%" height="100%" viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
@@ -42,13 +38,13 @@
 </template>
 
 <script>
-// TODO: Support 2017 edge-case (no future years)
-
+import ComponentLoading from '../elements/ComponentLoading'
 import IssuesChartPanel from './IssuesChartPanel'
 
 export default {
   components: {
-    IssuesChartPanel
+    IssuesChartPanel,
+    ComponentLoading
   },
   props: ['values', 'years'],
   data () {

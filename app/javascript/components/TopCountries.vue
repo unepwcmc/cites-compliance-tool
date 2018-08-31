@@ -1,10 +1,6 @@
 <template>
   <section class="top-countries tile__box">
-    <div v-if="!exporting || !importing" class="tile__box-loading">
-      <span class="icon">
-        <i class="fas fa-spinner fa-pulse"></i>
-      </span>
-    </div>
+    <component-loading v-if="!exporting || !importing"></component-loading>
 
     <div v-show="exporting && importing">
       <header class="level">
@@ -56,11 +52,13 @@ import Datamap from 'datamaps/dist/datamaps.world.hires.js'
 import iso2toiso3 from '../helpers/iso2-to-iso3'
 import countries from '../data/countries';
 
+import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
 
 export default {
   components: {
-    ComponentLinks
+    ComponentLinks,
+    ComponentLoading
   },
   props: ['exporting', 'importing', 'user', 'year'],
   data () {

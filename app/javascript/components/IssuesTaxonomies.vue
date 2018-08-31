@@ -1,10 +1,6 @@
 <template>
   <section class="issues-taxonomies tile__box">
-    <div v-if="!values" class="tile__box-loading">
-      <span class="icon">
-        <i class="fas fa-spinner fa-pulse"></i>
-      </span>
-    </div>
+    <component-loading v-if="!values"></component-loading>
 
     <div v-show="values">
       <header class="level">
@@ -52,11 +48,13 @@
 </template>
 
 <script>
+import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
 
 export default {
   components: {
-    ComponentLinks
+    ComponentLinks,
+    ComponentLoading
   },
   props: ['values', 'user', 'year'],
   data () {

@@ -1,10 +1,6 @@
 <template>
   <section class="issues-reported level tile__box">
-    <div v-if="!values" class="tile__box-loading level-item">
-      <span class="icon">
-        <i class="fas fa-spinner fa-pulse"></i>
-      </span>
-    </div>
+    <component-loading v-if="!values"></component-loading>
 
     <div v-show="values" class="level-item">
       <div>
@@ -26,9 +22,11 @@
 </template>
 
 <script>
+import ComponentLoading from '../elements/ComponentLoading'
 import mixinClickDownload from '../mixins/click-download'
 
 export default {
+  components: {ComponentLoading},
   mixins: [mixinClickDownload],
   props: ['values', 'year', 'user'],
   data () {
