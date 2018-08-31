@@ -33,40 +33,40 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReportedValues[selectedYear]" :user="user" :year="selectedYear"></issues-reported>
+          <issues-reported :values="issuesReported" :user="user" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
-          <issues-chart :values="chartValues[selectedYear]" :years="years"></issues-chart>
+          <issues-chart :values="chart" :years="years"></issues-chart>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-categories :values="categoryValues[selectedYear]" :user="user" :year="selectedYear"></issues-categories>
+          <issues-categories :values="category" :user="user" :year="selectedYear"></issues-categories>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :export="topCountriesValuesExport[selectedYear].slice(0, 5)" :import="topCountriesValuesImport[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
+          <top-countries :exporting="exporting" :importing="importing" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-commodities :commodities="commodityValues[selectedYear].slice(0, 5)" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
+          <top-commodities :values="commodity" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :taxonomies="taxonomyValues[selectedYear].slice(0, 8)" :user="user" :year="selectedYear"></issues-taxonomies>
+          <issues-taxonomies :values="taxonomy" :user="user" :year="selectedYear"></issues-taxonomies>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-species :species="speciesValues[selectedYear]" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
+          <top-species :values="species" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
         </div>
       </div>
     </div>
@@ -84,6 +84,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import SiteHeader from './elements/SiteHeader'
 
 import IssuesReported from './components/IssuesReported'
@@ -112,20 +114,41 @@ export default {
     TopCountries,
     TopSpecies
   },
-  props: ['user', 'username', 'admin', 'category', 'commodities', 'exporting', 'importing', 'species', 'taxonomy'],
+
+  props: ['user', 'username', 'admin'],
+
   data () {
     return {
       years: dataYears,
       selectedYear: dataYears[dataYears.length - 1],
 
-      issuesReportedValues: this.category,
+      groupings: [
+        'category',
+        'importing',
+        'exporting',
+        'commodity',
+        'taxonomy',
+        'species'
+      ],
+
+      issuesReportedValues: null,
       chartValues: dataChart,
-      categoryValues: this.category,
-      topCountriesValuesExport: this.exporting,
-      topCountriesValuesImport: this.importing,
-      speciesValues: this.species,
-      taxonomyValues: this.taxonomy,
-      commodityValues: this.commodities,
+      categoryValues: null,
+      exportingValues: null,
+      importingValues: null,
+      speciesValues: null,
+      taxonomyValues: null,
+      commodityValues: null,
+
+      loading: {
+        category: false,
+        importing: false,
+        exporting: false,
+        commodity: false,
+        taxonomy: false,
+        species: false
+      },
+
       tableColumns: {
         exporting: {
           headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
@@ -145,7 +168,120 @@ export default {
       modalActive: false
     }
   },
+
+  mounted () {
+    this.getData()
+  },
+
+  computed: {
+    issuesReported() {
+      if (this.issuesReportedValues) {
+        return this.issuesReportedValues[this.selectedYear]
+      }
+
+      return
+    },
+
+    chart() {
+      if (this.chartValues) {
+        return this.chartValues[this.selectedYear]
+      }
+
+      return
+    },
+
+    category() {
+      if (this.categoryValues) {
+        return this.categoryValues[this.selectedYear]
+      }
+
+      return
+    },
+
+    exporting() {
+      if (this.exportingValues) {
+        return this.exportingValues[this.selectedYear].slice(0, 5)
+      }
+
+      return
+    },
+
+    importing() {
+      if (this.importingValues) {
+        return this.importingValues[this.selectedYear].slice(0, 5)
+      }
+
+      return
+    },
+
+    commodity() {
+      if (this.commodityValues) {
+        return this.commodityValues[this.selectedYear].slice(0, 5)
+      }
+
+      return
+    },
+
+    taxonomy() {
+      if (this.taxonomyValues) {
+        return this.taxonomyValues[this.selectedYear].slice(0, 8)
+      }
+
+      return
+    },
+
+    species() {
+      if (this.speciesValues) {
+        return this.speciesValues[this.selectedYear]
+      }
+
+      return
+    }
+  },
+
   methods: {
+    getEndpoint(grouping) {
+      return `/api/v1/sapi/?sapi[user_id]=${this.user}&sapi[call]=grouped&sapi[grouping]=${grouping}`
+    },
+
+    getData() {
+      this.groupings.forEach((grouping) => {
+        let values
+
+        switch(grouping) {
+          case 'category':
+            values = ['categoryValues', 'issuesReportedValues']
+            break
+          default:
+            values = `${grouping}Values`
+            break
+        }
+
+        this.getDataGrouping(grouping, values)
+      })
+    },
+
+    getDataGrouping(grouping, values) {
+      const endpoint = this.getEndpoint(grouping)
+
+      this.loading[grouping] = true
+
+      axios.get(endpoint).then((res) => {
+        if (Array.isArray(values)) {
+          values.forEach((value) => {
+            this[value] = res.data
+          })
+        } else {
+          this[values] = res.data
+        }
+
+        this.loading[grouping] = false
+      }).catch((err) => {
+        console.error(err)
+        this.loading[grouping] = false
+      })
+    },
+
     onSelectYear(year) {
       this.selectedYear = year
     },

@@ -1,10 +1,12 @@
 <template>
   <section class="issues-categories tile__box">
-    <h3>Issues by category</h3>
+    <div v-show="values">
+      <h3>Issues by category</h3>
 
-    <div class="columns is-mobile">
-      <div class="column is-one-third" v-for="(category, index) in values" :key="index">
-        <issues-categories-chart :title="category.issue_type" :value="category.value" :user="user" :year="year"></issues-categories-chart>
+      <div class="columns is-mobile">
+        <div class="column is-one-third" v-for="(category, index) in values" :key="index">
+          <issues-categories-chart :title="category.issue_type" :value="category.value" :user="user" :year="year"></issues-categories-chart>
+        </div>
       </div>
     </div>
   </section>
