@@ -10,7 +10,7 @@ module CsvDownloader
     return unless data
     CSV.generate(headers: true) do |csv|
       csv << HEADER
-      data.each do |row|
+      data['shipments'].each do |row|
         csv << row.values
       end
     end
