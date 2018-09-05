@@ -147,7 +147,7 @@ export default {
       this.$emit('open-modal', 'countries')
     },
     getDownloadLink(item) {
-      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.mode}ing&sapi[id]=${this.getCountryId(item)}`
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${this.mode}&sapi[id]=${this.getCountryId(item)}`
 
       return endpoint
     },
