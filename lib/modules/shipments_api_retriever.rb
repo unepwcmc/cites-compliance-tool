@@ -4,6 +4,7 @@ module ShipmentsApiRetriever
 
   ENDPOINTS = {
     shipments: 'shipments',
+    chart: 'shipments/chart',
     grouped: 'shipments/grouped',
     search: 'shipments/search',
     countries: 'geo_entities',
@@ -24,6 +25,12 @@ module ShipmentsApiRetriever
     }
 
     call(:shipments, query)
+  end
+
+  def self.chart_call(params)
+    query = { year: params[:year] }
+
+    call(:chart, query)
   end
 
   def self.grouped_call(params)
