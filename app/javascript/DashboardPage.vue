@@ -295,15 +295,6 @@ export default {
 
       axios.get(endpoint).then((res) => {
         this.chartValues = res.data
-
-        if (this.selectedYear === '2012') {
-          this.chartValues[this.selectedYear].shift()
-        }
-
-        if (this.selectedYear === '2017') {
-          this.chartValues[this.selectedYear].pop()
-        }
-
         this.loading.chart = false
       }).catch((err) => {
         console.error(err)
