@@ -100,7 +100,6 @@ import TopSpecies from './components/TopSpecies'
 import SearchList from './components/SearchList'
 
 import dataYears from './data/years'
-import dataChart from './data/chart'
 
 export default {
   components: {
@@ -132,7 +131,7 @@ export default {
       ],
 
       issuesReportedValues: null,
-      chartValues: dataChart,
+      chartValues: null,
       categoryValues: null,
       exportingValues: null,
       importingValues: null,
@@ -240,8 +239,12 @@ export default {
   },
 
   methods: {
-    getEndpoint(grouping) {
+    getEndpointGrouping(grouping) {
       return `/api/v1/sapi/?sapi[user_id]=${this.user}&sapi[call]=grouped&sapi[grouping]=${grouping}`
+    },
+
+    getEndpointChart() {
+      return `/api/v1/sapi/?sapi[user_id]=${this.user}&sapi[call]=chart&sapi[year]=${this.selectedYear}`
     },
 
     getData() {
@@ -259,10 +262,12 @@ export default {
 
         this.getDataGrouping(grouping, values)
       })
+
+      this.getDataChart()
     },
 
     getDataGrouping(grouping, values) {
-      const endpoint = this.getEndpoint(grouping)
+      const endpoint = this.getEndpointGrouping(grouping)
 
       this.loading[grouping] = true
 
@@ -282,8 +287,33 @@ export default {
       })
     },
 
+    getDataChart() {
+      const endpoint = this.getEndpointChart()
+
+      this.chartValues = null
+      this.loading.chart = true
+
+      axios.get(endpoint).then((res) => {
+        this.chartValues = res.data
+
+        if (this.selectedYear === '2012') {
+          this.chartValues[this.selectedYear].shift()
+        }
+
+        if (this.selectedYear === '2017') {
+          this.chartValues[this.selectedYear].pop()
+        }
+
+        this.loading.chart = false
+      }).catch((err) => {
+        console.error(err)
+        this.loading.chart = false
+      })
+    },
+
     onSelectYear(year) {
       this.selectedYear = year
+      this.getDataChart()
     },
 
     openModal(category) {
