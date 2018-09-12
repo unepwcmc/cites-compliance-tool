@@ -1,7 +1,9 @@
 <template>
   <section class="issues-reported level tile__box">
-    <div class="level-item">
-      <div v-show="values">
+    <component-loading v-if="!values"></component-loading>
+
+    <div v-show="values" class="level-item">
+      <div>
         <p class="issues-reported__stat">
           {{issuesReportedTotal}}
         </p>
@@ -20,9 +22,11 @@
 </template>
 
 <script>
+import ComponentLoading from '../elements/ComponentLoading'
 import mixinClickDownload from '../mixins/click-download'
 
 export default {
+  components: {ComponentLoading},
   mixins: [mixinClickDownload],
   props: ['values', 'year', 'user'],
   data () {
