@@ -1,5 +1,7 @@
 <template>
   <section class="top-commodities tile__box">
+    <component-loading v-if="!values"></component-loading>
+
     <div v-show="values">
       <header class="level">
         <div class="level-left">
@@ -50,11 +52,13 @@
 </template>
 
 <script>
+import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
 
 export default {
   components: {
-    ComponentLinks
+    ComponentLinks,
+    ComponentLoading
   },
   props: ['values', 'user', 'year'],
   data () {
