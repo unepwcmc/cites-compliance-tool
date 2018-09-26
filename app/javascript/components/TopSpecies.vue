@@ -59,7 +59,7 @@ export default {
       this.$emit('open-modal', 'species')
     },
     getDownloadLink(item) {
-      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=species&sapi[id]=${item.taxon_concept_id}`
+      let endpoint = `/api/v1/sapi/download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=species&sapi[id]=${item.taxon_concept_id}&sapi[appendix]=${item.appendix}`
 
       return endpoint
     }

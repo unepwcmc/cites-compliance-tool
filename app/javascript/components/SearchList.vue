@@ -196,7 +196,7 @@ export default {
 
       let grouping = this.grouping
 
-      let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}`
+      let endpoint = `/api/v1/sapi/search_download?sapi[user_id]=${this.user}&sapi[year]=${this.year}&sapi[grouping]=${grouping}&sapi[id]=${id}&sapi[appendix]=${item.appendix}`
 
       return endpoint
     },

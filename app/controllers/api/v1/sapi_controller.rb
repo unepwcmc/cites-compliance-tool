@@ -24,8 +24,10 @@ class Api::V1::SapiController < ApplicationController
       compliance_type: sapi_params[:compliance_type],
       year: sapi_params[:year],
       ids: sapi_params[:id],
-      type: sapi_params[:grouping]
+      type: sapi_params[:grouping],
+      appendix: sapi_params[:appendix]
     }
+
     data = ShipmentsApiRetriever.call(:download, query)
 
     send_data CsvDownloader.csv_generator(data),
@@ -36,7 +38,8 @@ class Api::V1::SapiController < ApplicationController
     query = {
       group_by: sapi_params[:grouping],
       year: sapi_params[:year],
-      ids: sapi_params[:id]
+      ids: sapi_params[:id],
+      appendix: sapi_params[:appendix]
     }
 
     data = ShipmentsApiRetriever.call(:search_download, query)
@@ -78,7 +81,7 @@ class Api::V1::SapiController < ApplicationController
 
   def sapi_params
     params.require(:sapi).permit(:call, :grouping, :year, :compliance_type,
-                                 :filter, :id, :user_id, :page, :per_page, :query, :all)
+                                 :filter, :id, :user_id, :page, :per_page, :query, :all, :appendix)
   end
 
   def authenticate_user
