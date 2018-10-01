@@ -12,6 +12,9 @@
         <a class="level-item" :class="{'is-active': active === 'search'}" href="/search">
           Search
         </a>
+        <a class="level-item" :class="{'is-active': active === 'about'}" href="/about">
+          About
+        </a>
       </div>
 
       <div class="level-right">
