@@ -7,11 +7,9 @@
     <div class="column">
 
       <div class="login__content">
-        <div class="login__content-logo">
-          <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
-        </div>
+        <h1 class="has-text-centered">CITES Trade Monitoring Tool</h1>
 
-        <h1>CITES Trade Monitoring Tool</h1>
+        <p>The CITES Trade Monitoring Tool provides a mechanism for the CITES Secretariat to identify potential issues in international wildlife trade based on the CITES Trade Database (<%= link_to 'trade.cites.org', 'https://trade.cites.org/', title: 'Visit the CITES Trade Database website', target: '_blank', class: 'a--white' %>). </p>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "login__content-form"}) do |f| %>
 
@@ -41,6 +39,10 @@
 
         <div class="login__content-links">
           <%= render "devise/shared/links" %>
+        </div>
+
+        <div class="login__content-logo">
+          <img src="https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg" alt="UN Environment World Conservation Monitoring Centre">
         </div>
       </div>
 
