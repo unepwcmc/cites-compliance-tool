@@ -9,3 +9,16 @@
 .button-full-list span:first-child {
   padding-right: 20px;
 }
+
+.a--white { 
+  color: white; 
+  text-decoration: underline;
+
+  &:hover { text-decoraion: none; }
+}
+
+.a--margin { 
+  margin-bottom: 20px; 
+
+  display: block;
+}
