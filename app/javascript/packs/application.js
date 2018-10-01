@@ -3,6 +3,7 @@ import Vue from 'vue/dist/vue.esm'
 import DashboardPage from '../DashboardPage.vue'
 import SearchPage from '../SearchPage.vue'
 import AccountsPage from '../AccountsPage.vue'
+import SiteHeader from '../elements/SiteHeader.vue'
 
 import TurbolinksAdapter from 'vue-turbolinks';
 Vue.use(TurbolinksAdapter)
@@ -13,7 +14,8 @@ document.addEventListener('turbolinks:load', () => {
     components: {
       DashboardPage,
       SearchPage,
-      AccountsPage
+      AccountsPage,
+      SiteHeader
     }
   })
 })

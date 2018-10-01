@@ -9,12 +9,20 @@ h1 {
   font-family: $font-roboto;
   font-size: 25px;
   font-weight: 500;
+
+  .about &,
+  .login & { margin-bottom: 14px; }
 }
 
 h2 {
   font-family: $font-roboto;
   font-size: 25px;
   font-weight: 400;
+
+  .about & { 
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
 
 h3 {
@@ -26,4 +34,8 @@ h3 {
 
 strong {
   font-weight: 500;
+}
+
+p {
+  margin-bottom: 14px;
 }
