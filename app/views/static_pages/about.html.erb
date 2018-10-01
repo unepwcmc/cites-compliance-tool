@@ -1,0 +1,45 @@
+<div class="about">
+  <site-header username="<%= current_user.email %>" user="<%= current_user.id %>" :admin="<%= current_user.admin %>" active="about"></site-header>
+
+  <div class="container tile-container">
+    <div class="tile__box">
+      <h1>About the CITES Trade Monitoring Tool</h1>
+      <p>The CITES Trade Monitoring Tool provides a mechanism for the CITES Secretariat to identify any
+      potential issues with CITES trade transactions from the CITES Trade Database.</p>
+      <p>The tool automatically detects the following cases based on a query of the CITES Trade Database:</p>
+      <ul>
+        <li>Trade subject to Standing Committee recommendations to suspend trade (<strong>trade
+      suspensions</strong>);</li>
+        <li>Trade in wild-sourced <strong>Appendix I</strong> taxa for <strong>commercial</strong> purposes (purpose T); and</li>
+        <li>Total annual trade in taxa exceeding <strong>mandatory quotas</strong> (including CoP-approved quotas and zero quotas that were agreed as part of the listing proposal).</li>
+      </ul>
+      <p>The tool is password protected and only available for use by the CITES Secretariat. As many of the
+      trade transactions flagged are only potential issues (see Note), this tool will only provide the starting
+      point for a dialogue with Parties.</p>
+
+      <p><em><strong>Note:</strong> It is important to note that the ‘potential issues’ identified through this tool may not be in
+      contravention of the provisions of CITES. For instance, it is possible that in some cases an apparent
+      quota excess could be due to year-end trade to trade reported being based on permits issued rather
+      than actual trade (for example, inclusion of cancelled permits). Similarly, as trade is reported by year,
+      but suspensions may only be in place for part of a year, it could be that the trade occurred prior to a
+      suspension coming into place, or following a suspension being removed.</em></p>
+
+      <h2>Contributors</h2>
+      <p>The CITES Trade Monitoring Tool was developed by UN Environment World Conservation Monitoring
+      Centre (UNEP-WCMC) on behalf of the CITES Secretariat. Financial support to develop the online tool
+      was provided by the United States Fish and Wildlife Service (USFWS) through its Combating Wildlife
+      Trafficking (CWT) grant programme.</p>
+
+      <h2>Contact</h2>
+      
+      <p>UN Environment World Conservation Monitoring Centre<br>
+      219 Huntingdon Road<br>
+      Cambridge, CB3 0DL<br>
+      United Kingdom<br>
+      Tel: +44 (0) 1223 277314<br>
+      Email: <%= link_to 'species@unep-wcmc.org', 'mailto:species@unep-wcmc.org', title: 'Email Species and the UN Environment World Conservation Monitoring Centre' %><br>
+      Website: <%= link_to 'www.unep-wcmc.org', 'http://www.unep-wcmc.org', title: 'Visit the UN Environment World Conservation Monitoring Centre website', target: '_blank' %>
+      </p>
+    </div>
+  </div>
+</div>
