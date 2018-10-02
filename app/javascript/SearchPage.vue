@@ -7,7 +7,7 @@
         <div class="level-left">
           <h2 class="level-item" :class="{active: (selectedCategory === 'exporting')}">
             <a v-on:click="changeCategory('exporting')">
-              Countries & Regions
+              Countries & Territories
             </a>
           </h2>
           <h2 class="level-item" :class="{active: (selectedCategory === 'species')}">
@@ -106,7 +106,7 @@ export default {
       tableData: [],
       tableColumns: {
         exporting: {
-          headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
+          headers: ['Country / Territory', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
           keys: ['country', 'cnt', 'total_cnt', 'percentage']
         },
         commodity: {
