@@ -7,7 +7,7 @@
 
       <div class="columns is-mobile">
         <div class="column is-one-third" v-for="(category, index) in values" :key="index">
-          <issues-categories-chart :title="category.issue_type" :value="category.value" :user="user" :year="year"></issues-categories-chart>
+          <issues-categories-chart :title="title(category.issue_type)" :value="category.value" :user="user" :year="year"></issues-categories-chart>
         </div>
       </div>
     </div>
@@ -26,6 +26,20 @@ export default {
   props: ['values', 'user', 'year'],
   data () {
     return {}
+  },
+
+  methods: {
+    title (issue_type) {
+      if(issue_type.match(/App/)) {
+        return 'Appendix I'
+      }
+      else if(issue_type.match(/Suspension/)) {
+        return 'Suspensions'
+      }
+      else {
+        return 'Quotas'
+      }
+    }
   }
 }
 </script>

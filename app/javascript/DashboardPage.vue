@@ -150,7 +150,7 @@ export default {
 
       tableColumns: {
         exporting: {
-          headers: ['Country / Region', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
+          headers: ['Country / Territory', 'No. Transactions with issues', 'Total No. of Transactions', '% of Transactions with issues'],
           keys: ['country', 'cnt', 'total_cnt', 'percentage']
         },
         commodity: {
