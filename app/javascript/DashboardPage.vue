@@ -198,7 +198,7 @@ export default {
     },
 
     exporting() {
-      if (this.exportingValues) {
+      if (this.exportingValues && this.exportingValues[this.selectedYear]) {
         return this.exportingValues[this.selectedYear].slice(0, 5)
       }
 
@@ -206,7 +206,7 @@ export default {
     },
 
     importing() {
-      if (this.importingValues) {
+      if (this.importingValues && this.importingValues[this.selectedYear]) {
         return this.importingValues[this.selectedYear].slice(0, 5)
       }
 
@@ -214,7 +214,7 @@ export default {
     },
 
     commodity() {
-      if (this.commodityValues) {
+      if (this.commodityValues && this.commodityValues[this.selectedYear]) {
         return this.commodityValues[this.selectedYear].slice(0, 5)
       }
 
@@ -222,7 +222,7 @@ export default {
     },
 
     taxonomy() {
-      if (this.taxonomyValues) {
+      if (this.taxonomyValues && this.taxonomyValues[this.selectedYear]) {
         return this.taxonomyValues[this.selectedYear].slice(0, 8)
       }
 
@@ -230,7 +230,7 @@ export default {
     },
 
     species() {
-      if (this.speciesValues) {
+      if (this.speciesValues && this.speciesValues[this.selectedYear]) {
         return this.speciesValues[this.selectedYear]
       }
 
