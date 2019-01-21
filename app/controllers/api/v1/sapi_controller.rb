@@ -73,7 +73,7 @@ class Api::V1::SapiController < ApplicationController
 
       "#{sapi_params[:year]}#{type}#{id}_shipments_#{Time.now.to_i}.csv"
     else
-      "2012-2017_all_shipments_#{Time.now.to_i}.csv"
+      "2012-#{Date.today.year - 1}_all_shipments_#{Time.now.to_i}.csv"
     end
   end
 
