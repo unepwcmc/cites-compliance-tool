@@ -57,7 +57,7 @@ module ShipmentsApiRetriever
     return '' unless ENDPOINTS[endpoint]
 
     url = "#{Rails.application.secrets['species_api_url']}/#{ENDPOINTS[endpoint]}"
-    response = HTTParty.get(url, headers: header, query: query)#, pem: File.read("#{Rails.application.secrets['certificate_path']}"))
+    response = HTTParty.get(url, headers: header, query: query, pem: File.read("#{Rails.application.secrets['certificate_path']}"))
     JSON.parse(response.body)
   end
 
