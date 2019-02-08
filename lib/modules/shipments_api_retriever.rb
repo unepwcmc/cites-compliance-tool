@@ -59,7 +59,13 @@ module ShipmentsApiRetriever
     url = "#{Rails.application.secrets['species_api_url']}/#{ENDPOINTS[endpoint]}"
     cert = Rails.application.secrets['certificate_path']
     pem = cert.present? ? File.read(cert) : ''
-    response = HTTParty.get(url, headers: header, query: query, pem: pem)
+    request_params = {
+      headers: header,
+      query: query
+    }
+    request_params.merge!({pem: pem}) if pem.present?
+
+    response = HTTParty.get(url, request_params)
     JSON.parse(response.body)
   end
 
