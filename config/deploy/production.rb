@@ -1,3 +1,15 @@
+set :stage, :production
+set :branch, "master"
+
+
+server "sapi-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
+
+set :application, "cites-compliance-tool"
+set :server_name, "cites-compliance-tool"
+set :sudo_user, "wcmc"
+set :app_port, "80"
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
