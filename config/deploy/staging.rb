@@ -1,8 +1,8 @@
 set :stage, :staging
-set :branch, "develop"
+set :branch, "migration_deploy"
 
 
-server "sapi-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
+server "temp.sapi-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
 set :application, "cites-compliance-tool"
 set :server_name, "cites-compliance-tool"
