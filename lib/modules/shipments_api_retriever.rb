@@ -70,7 +70,7 @@ module ShipmentsApiRetriever
   end
 
   def self.header
-    { 'X-Authentication-Token' => Rails.application.secrets['compliance_tool_token'] }
+    { 'X-Authentication-Token' => Rails.application.secrets['shipments_api_token'] }
   end
 
   def self.sanitise_type(type)
