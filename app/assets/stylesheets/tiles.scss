@@ -14,13 +14,20 @@
   padding: 20px 15px;
 }
 
-.tile__box-loading {
+.tile__box-loading,
+.tile__box-no-data {
   align-items: center;
   display: flex;
   font-size: 25px;
   height: 100%;
   min-height: 200px;
   justify-content: center;
+}
+
+.tile__box-no-data-text {
+  font-size: 20px;
+  text-align: center;
+  max-width: 280px;
 }
 
 $tile-section-border: 1px solid #d7d7d7;

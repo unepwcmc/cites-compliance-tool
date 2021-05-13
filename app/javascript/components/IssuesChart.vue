@@ -1,6 +1,7 @@
 <template>
   <section class="issues-chart tile__box">
-    <component-loading v-if="!values"></component-loading>
+    <component-loading v-if="loading" />
+    <no-data-overlay v-else-if="!values" />
 
     <div v-if="values">
       <div class="issues-chart__svg">
@@ -42,13 +43,15 @@
 <script>
 import ComponentLoading from '../elements/ComponentLoading'
 import IssuesChartPanel from './IssuesChartPanel'
+import NoDataOverlay from '../elements/NoDataOverlay'
 
 export default {
   components: {
     IssuesChartPanel,
-    ComponentLoading
+    ComponentLoading,
+    NoDataOverlay
   },
-  props: ['values', 'years'],
+  props: ['values', 'years', 'loading'],
   data () {
     return {
       min: 0

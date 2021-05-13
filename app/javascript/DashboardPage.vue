@@ -1,7 +1,6 @@
 <template>
   <div>
     <site-header :username="username" :user="user" :admin="admin" active="dashboard"></site-header>
-
     <nav class="site-navigation site-navigation-sub" role="navigation" aria-label="sub navigation">
       <div class="level">
         <div class="level-left">
@@ -33,40 +32,40 @@
     <div class="container tile-container">
       <div class="tile is-ancestor">
         <div class="tile is-4 is-parent">
-          <issues-reported :values="issuesReported" :user="user" :year="selectedYear"></issues-reported>
+          <issues-reported :loading="loading.category" :values="issuesReported" :user="user" :year="selectedYear"></issues-reported>
         </div>
         <div class="tile is-8 is-parent">
-          <issues-chart :values="chart" :years="years"></issues-chart>
+          <issues-chart :loading="loading.chart" :values="chart" :years="years"></issues-chart>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-categories :values="category" :user="user" :year="selectedYear"></issues-categories>
+          <issues-categories :loading="loading.category" :values="category" :user="user" :year="selectedYear"></issues-categories>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-countries :exporting="exporting" :importing="importing" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
+          <top-countries :loading="loading.importing || loading.exporting" :exporting="exporting" :importing="importing" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-countries>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-commodities :values="commodity" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
+          <top-commodities :loading="loading.commodity" :values="commodity" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-commodities>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <issues-taxonomies :values="taxonomy" :user="user" :year="selectedYear"></issues-taxonomies>
+          <issues-taxonomies :loading="loading.taxonomy" :values="taxonomy" :user="user" :year="selectedYear"></issues-taxonomies>
         </div>
       </div>
 
       <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
-          <top-species :values="species" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
+          <top-species :loading="loading.species" :values="species" v-on:open-modal="openModal" :user="user" :year="selectedYear"></top-species>
         </div>
       </div>
     </div>
@@ -140,6 +139,7 @@ export default {
       commodityValues: null,
 
       loading: {
+        chart: false,
         category: false,
         importing: false,
         exporting: false,

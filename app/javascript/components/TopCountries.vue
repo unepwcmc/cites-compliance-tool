@@ -1,6 +1,7 @@
 <template>
   <section class="top-countries tile__box">
-    <component-loading v-if="!exporting || !importing"></component-loading>
+    <component-loading v-if="loading" />
+    <no-data-overlay v-else-if="!exporting || !importing" />
 
     <div v-show="exporting && importing">
       <header class="level">
@@ -54,13 +55,15 @@ import countries from '../data/countries';
 
 import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
+import NoDataOverlay from '../elements/NoDataOverlay'
 
 export default {
   components: {
     ComponentLinks,
-    ComponentLoading
+    ComponentLoading,
+    NoDataOverlay
   },
-  props: ['exporting', 'importing', 'user', 'year'],
+  props: ['exporting', 'importing', 'user', 'year', 'loading'],
   data () {
     return {
       mode: 'exporting',
