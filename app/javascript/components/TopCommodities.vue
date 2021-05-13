@@ -1,6 +1,7 @@
 <template>
   <section class="top-commodities tile__box">
-    <component-loading v-if="!values"></component-loading>
+    <component-loading v-if="loading" />
+    <no-data-overlay v-else-if="!values" />
 
     <div v-show="values">
       <header class="level">
@@ -54,13 +55,15 @@
 <script>
 import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
+import NoDataOverlay from '../elements/NoDataOverlay'
 
 export default {
   components: {
     ComponentLinks,
-    ComponentLoading
+    ComponentLoading,
+    NoDataOverlay
   },
-  props: ['values', 'user', 'year'],
+  props: ['values', 'user', 'year', 'loading'],
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#b3c82b'],

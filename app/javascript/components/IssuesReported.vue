@@ -1,6 +1,7 @@
 <template>
   <section class="issues-reported level tile__box">
-    <component-loading v-if="!values"></component-loading>
+    <component-loading v-if="loading" />
+    <no-data-overlay v-else-if="!values" />
 
     <div v-show="values" class="level-item">
       <div>
@@ -23,12 +24,13 @@
 
 <script>
 import ComponentLoading from '../elements/ComponentLoading'
+import NoDataOverlay from '../elements/NoDataOverlay'
 import mixinClickDownload from '../mixins/click-download'
 
 export default {
-  components: {ComponentLoading},
+  components: {ComponentLoading, NoDataOverlay},
   mixins: [mixinClickDownload],
-  props: ['values', 'year', 'user'],
+  props: ['values', 'year', 'user', 'loading'],
   data () {
     return {}
   },

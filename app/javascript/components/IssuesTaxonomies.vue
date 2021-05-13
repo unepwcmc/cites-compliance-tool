@@ -1,8 +1,9 @@
 <template>
   <section class="issues-taxonomies tile__box">
-    <component-loading v-if="!values"></component-loading>
+    <component-loading v-if="loading" />
+    <no-data-overlay v-else-if="!(values && values.length)" />
 
-    <div v-show="values">
+    <div v-else>
       <header class="level">
         <div class="level-left">
           <h3 class="level-item">Issues by taxonomy</h3>
@@ -50,13 +51,15 @@
 <script>
 import ComponentLoading from '../elements/ComponentLoading'
 import ComponentLinks from '../elements/ComponentLinks'
+import NoDataOverlay from '../elements/NoDataOverlay'
 
 export default {
   components: {
     ComponentLinks,
-    ComponentLoading
+    ComponentLoading,
+    NoDataOverlay
   },
-  props: ['values', 'user', 'year'],
+  props: ['values', 'user', 'year', 'loading'],
   data () {
     return {
       colours: ['#3c526a', '#088ba5', '#00a2d0', '#3aa18e', '#58bc8a', '#91c352', '#b4c92c', '#d5ec3a'],
