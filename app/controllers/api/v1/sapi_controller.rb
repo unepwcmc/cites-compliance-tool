@@ -7,7 +7,8 @@ class Api::V1::SapiController < ApplicationController
   end
 
   def countries
-    render json: ShipmentsApiRetriever.call(:countries)
+    query = { query_string: sapi_params[:query] || '' }
+    render json: ShipmentsApiRetriever.call(:countries, query)
   end
 
   def terms
