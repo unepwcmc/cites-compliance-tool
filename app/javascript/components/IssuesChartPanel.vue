@@ -7,12 +7,7 @@
 
     <div class="issues-chart__panel-countries">
       <span>{{values.countriesReported}}</span>
-      <p>Parties reported</p>
-    </div>
-
-    <div class="issues-chart__panel-countries">
-      <span>{{values.countriesYetToReport}}</span>
-      <p>Parties yet to report</p>
+      <p>Parties with issues reported</p>
     </div>
 
     <div class="issues-chart__label">{{values.year}}</div>
