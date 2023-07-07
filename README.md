@@ -11,4 +11,9 @@
 * `bundle exec rails s`
 * Open http://localhost:3000/
 
-For development you can point the app at your local instance of SAPI using the variables in .env
+For development you can point the app at your local instance of SAPI, or the staging server using the variables in .env, e.g.:
+```
+SPECIES_API_URL='http://localhost:3001/api/v1/'
+OR
+SPECIES_API_URL='https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1'
+```
