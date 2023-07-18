@@ -176,20 +176,11 @@ export default {
       }
     },
     getSuggestionsExporting(value) {
-      if (!this.exportingSuggestionList || this.exportingSuggestionList.length === 0) {
-        const endpoint = `/api/v1/sapi/countries?sapi[user_id]=${this.user}`
+      const endpoint = `/api/v1/sapi/countries?sapi[user_id]=${this.user}&sapi[query]=${value}`
 
-        axios.get(endpoint).then((res) => {
-          if (!res.data.geo_entities) {
-            return
-          }
-
-          this.exportingSuggestionList = res.data.geo_entities
-          this.suggestions = this.filterLocalSuggestions(this.exportingSuggestionList, value)
-        })
-      } else {
-        this.suggestions = this.filterLocalSuggestions(this.exportingSuggestionList, value)
-      }
+      axios.get(endpoint).then((res) => {
+        this.suggestions = res.data.geo_entities.slice(0, 10)
+      })
     },
     filterLocalSuggestions(list, value) {
       return list.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()))
