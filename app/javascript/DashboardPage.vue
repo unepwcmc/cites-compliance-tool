@@ -75,6 +75,7 @@
       <div class="modal-content">
         <h1>{{tableName}}</h1>
         <h2>Issues currently reported in {{selectedYear}}</h2>
+        <p v-if="explanationText">{{explanationText}}</p>
         <search-list :columns="tableColumns[tableCategory]" :grouping="tableCategory" :year="selectedYear" per-page="8" :user="user" :in-modal="true"></search-list>
       </div>
       <button class="modal-close is-large button-full-list" aria-label="close" v-on:click="closeModal()"></button>
@@ -235,6 +236,17 @@ export default {
       }
 
       return
+    },
+
+    explanationText() {
+      switch (this.tableCategory) {
+        case 'exporting': case 'importing':
+          return 'Based on combining imports and exports as reported by both reporting Parties'
+        case 'species': case 'commodity':
+          return 'Based on combining importer- and exporter-reported data'
+        default:
+          return false
+      }
     }
   },
 
