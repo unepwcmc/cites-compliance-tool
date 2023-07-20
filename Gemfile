@@ -68,6 +68,10 @@ group :development do
   gem 'capistrano-passenger', '~> 0.1.1', require: false
   gem 'capistrano-yarn'
   gem 'capistrano-nvm'
+  gem 'bcrypt_pbkdf'
+  gem 'ed25519'
+  gem 'rbnacl', '>= 3.2', '< 5.0'
+  # gem 'rbnacl-libsodium' Needed if you don't have libsodium installed
 end
 
 group :test do
