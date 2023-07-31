@@ -1,6 +1,7 @@
 ### 0.0.3
 
 * Add additional text explanation to data in charts and tables
+* add 2022 to available years in dashboard dropdown
 
 ### 0.0.2
 
