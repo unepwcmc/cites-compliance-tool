@@ -96,5 +96,14 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: Rails.application.secrets.dig(:mailer, :host) }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    domain: 'sapi-production.linode.unep-wcmc.org',
+    user_name: ENV.fetch("MAIL_USERNAME", nil),
+    password: ENV.fetch("MAIL_PASSWORD", nil),
+    authentication:       :login,
+    enable_starttls_auto: true
+  }
 end

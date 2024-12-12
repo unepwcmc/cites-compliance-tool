@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.0'
+ruby '2.6.10'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
@@ -36,18 +36,18 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Use Webpacker for Vue.js
-gem 'webpacker'
+gem 'webpacker', '3.5.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'httparty'
+gem 'httparty', '0.16.2'
 
 gem 'rubocop', '~> 0.58.0', require: false
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', '2.5.0'
 
-gem 'devise'
+gem 'devise', '4.4.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
