@@ -1,0 +1,57 @@
+services:
+  rails:
+    container_name: cites-compliance-tool-rails
+    build:
+      dockerfile: Dockerfile.dev
+    command: /bin/bash -l -c "bundle install && yarn install && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - '.:/rails'
+      - bundler_gems:/usr/local/bundle
+    ports:
+      - '${CONTAINER_RAILS_PORT:-3000}:3000'
+    networks:
+      - cites-compliance-tool
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+      - mailcatcher
+    environment:
+      DATABASE_HOST: cites-compliance-tool-db
+      SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+      SMTP_ADDRESS: cites-compliance-tool-mailcatcher
+
+  db:
+    container_name: cites-compliance-tool-db
+    image: postgres:10.23-alpine
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      # - ./db_init:/docker-entrypoint-initdb.d
+      - 'pgdata:/var/lib/postgresql/data'
+    ports:
+      - "${CONTAINER_DB_PORT:-5432}:5432"
+    networks:
+      - cites-compliance-tool
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+      POSTGRES_DB: "cites_compliance_tool_development"
+
+  mailcatcher:
+    container_name: cites-compliance-tool-mailcatcher
+    image: sj26/mailcatcher
+    ports:
+      - '${CONTAINER_MAILCATCHER_PORT:-1080}:1080'
+    networks:
+      - cites-compliance-tool
+
+networks:
+  cites-compliance-tool:
+    driver: bridge
+
+volumes:
+  pgdata:
+  bundler_gems:
