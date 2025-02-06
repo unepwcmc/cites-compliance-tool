@@ -1,3 +1,7 @@
+### 0.0.4
+
+* Remove reference to polyfill.io
+
 ### 0.0.3
 
 * Add additional text explanation to data in charts and tables
