@@ -1,18 +1,14 @@
-FROM --platform=linux/amd64 ruby:2.5.0-slim-stretch
+FROM ruby:2.6.10-slim
 
 ENV BUNDLE_PATH="/usr/local/bundle"
 
-# Install dependencies
-RUN echo "deb http://archive.debian.org/debian stretch main contrib non-free" > /etc/apt/sources.list && \
-  echo "deb http://archive.debian.org/debian-security stretch/updates main contrib non-free" >> /etc/apt/sources.list && \
-  echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
-  apt-get update -qq && \
+RUN apt-get update -qq && \
   apt-get install --no-install-recommends -y \
   curl build-essential zlib1g-dev git libpq-dev \
   # Editor
   vim nano \
   # For nvm and Node.js
-  libffi-dev python3 python3-pip \
+  libffi-dev python python-is-python2 \
   # For webpack-dev-server
   libsodium-dev \
   # For mimemagic gem
