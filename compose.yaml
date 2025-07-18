@@ -10,6 +10,7 @@ services:
       - '${CONTAINER_RAILS_PORT:-3000}:3000'
     networks:
       - cites-compliance-tool
+      - sapi
     stdin_open: true
     tty: true
     depends_on:
@@ -17,7 +18,8 @@ services:
       - mailcatcher
     environment:
       DATABASE_HOST: cites-compliance-tool-db
-      SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+      # SPECIES_API_URL: ${SPECIES_API_URL:-https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1}
+      SPECIES_API_URL: http://sapi-rails:3000/api/v1
       SMTP_ADDRESS: cites-compliance-tool-mailcatcher
 
   db:
@@ -50,6 +52,9 @@ services:
 networks:
   cites-compliance-tool:
     driver: bridge
+  sapi:
+    driver: bridge
+    external: true
 
 volumes:
   pgdata:
