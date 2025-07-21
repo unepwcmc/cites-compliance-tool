@@ -18,8 +18,8 @@ services:
       - mailcatcher
     environment:
       DATABASE_HOST: cites-compliance-tool-db
-      # SPECIES_API_URL: ${SPECIES_API_URL:-https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1}
-      SPECIES_API_URL: http://sapi-rails:3000/api/v1
+      # SPECIES_API_URL: "${SPECIES_API_URL:-https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1}"
+      SPECIES_API_URL: "${SPECIES_API_URL:-http://sapi-rails:3000/api/v1}"
       SMTP_ADDRESS: cites-compliance-tool-mailcatcher
 
   db:
