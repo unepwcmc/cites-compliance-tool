@@ -1,0 +1,30 @@
+# Name of the container image
+image: ghcr.io/unepwcmc/cites-compliance-tool/rails-staging
+
+# Define services (servers for Kamal 2.5.2 compatibility)
+servers:
+  web:
+    hosts:
+      - example.com # TODO: Ruan
+    proxy:
+      hosts:
+        - cites-compliance-tool.sapi-staging.linode.unep-wcmc.org # Public-facing domain
+      ssl: true # Proxy terminates SSL
+      forward_headers: true # Forward headers like X-Forwarded-Proto
+      healthcheck:
+        path: /up
+      logging:
+        request_headers:
+          - Cache-Control
+          - User-Agent
+          - X-Forwarded-Proto # Critical for Rails to detect HTTPS
+        response_headers:
+          - X-Request-ID
+
+# Environment variables
+env:
+  clear:
+    RAILS_ENV: staging
+    SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+    CERTIFICATE_PATH: "" # Deprecated /home/wcmc/temp/new_certs/server.pem
+    MAILER_HOST: http://cites-compliance-tool.sapi-staging.linode.unep-wcmc.org
