@@ -37,5 +37,3 @@ builder:
   dockerfile: Dockerfile.deploy
   args:
     RUBY_VERSION: 2.6.10
-  secrets:
-    - RAILS_MASTER_KEY # Need this for assets:precompile in build time, before we upgrade to Rails 7.1
