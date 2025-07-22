@@ -2,7 +2,7 @@ services:
   rails:
     container_name: cites-compliance-tool-rails
     build: .
-    command: /bin/bash -l -c "bundle install && yarn install && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: /bin/bash -l -c "bundle install && yarn install --frozen-lockfile && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - '.:/rails'
       - bundler_gems:/usr/local/bundle

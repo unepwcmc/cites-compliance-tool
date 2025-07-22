@@ -14,11 +14,11 @@ development:
 
 production:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") %>
+  database: <%= ENV.fetch("DATABASE_NAME", nil) %>
 
 staging:
   <<: *default
-  database: <%= ENV.fetch("DATABASE_NAME") %>
+  database: <%= ENV.fetch("DATABASE_NAME", nil) %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

@@ -1,4 +1,4 @@
-FROM ruby:2.6.10-slim
+FROM --platform=linux/amd64 ruby:2.6.10-slim
 
 ENV BUNDLE_PATH="/usr/local/bundle"
 
@@ -19,28 +19,17 @@ RUN apt-get update -qq && \
 # Install Ruby bundler
 RUN bash -c "gem install bundler -v '1.17.3'"
 
-# Install nvm
-ENV NVM_DIR=/usr/local/nvm
-ENV NODE_VERSION=10.24.1
-# Create NVM_DIR directory
-RUN mkdir -p $NVM_DIR
-# Install nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-# Install Node.js and npm
-RUN bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION"
-# Add Node.js and npm to PATH
-ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
+# Leonardo: I tried installing via apt-get using the source (https://deb.nodesource.com/setup_10.x),
+# but it ended up installing version 12.
+# Install Node.js 10.24.1 manually
+RUN curl -fsSL https://nodejs.org/dist/v10.24.1/node-v10.24.1-linux-x64.tar.xz \
+  | tar -xJ -C /usr/local --strip-components=1
+
 # Install Yarn globally using npm
-RUN bash -c "source $NVM_DIR/nvm.sh && npm install -g yarn"
-# Source nvm scripts automatically
-RUN echo 'export NVM_DIR="$NVM_DIR"' >> /etc/bash.bashrc && \
-  echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> /etc/bash.bashrc
+RUN npm install -g yarn
 
 # Rails app lives here
 WORKDIR /rails
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 EXPOSE 3000
 CMD ["tail", "-f", "/dev/null"]
