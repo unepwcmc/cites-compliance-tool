@@ -1,29 +1,35 @@
-# Name of the container image
-image: ghcr.io/unepwcmc/cites-compliance-tool/rails-staging
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-compliance-tool/rails-staging
 
 servers:
   web:
     hosts:
-      - example.com # TODO: Ruan
+      - 172.20.0.146
+    options:
+      add-host: host.docker.internal:host-gateway
     proxy:
       hosts:
-        - cites-compliance-tool.sapi-staging.linode.unep-wcmc.org # Public-facing domain
-      ssl: true # Proxy terminates SSL
-      forward_headers: true # Forward headers like X-Forwarded-Proto
+        - cites-compliance-tool-sapi-web-staging-01.internal.unep-wcmc.org
+      ssl:
+        certificate_pem: CERTIFICATE_PEM
+        private_key_pem: PRIVATE_KEY_PEM
+      forward_headers: true
       healthcheck:
         path: /up
       logging:
         request_headers:
           - Cache-Control
           - User-Agent
-          - X-Forwarded-Proto # Critical for Rails to detect HTTPS
+          - X-Forwarded-Proto
         response_headers:
           - X-Request-ID
 
-# Environment variables
+builder:
+  dockerfile: Dockerfile.staging
+
 env:
   clear:
     RAILS_ENV: staging
     SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
-    CERTIFICATE_PATH: "" # Deprecated /home/wcmc/temp/new_certs/server.pem
-    MAILER_HOST: http://cites-compliance-tool.sapi-staging.linode.unep-wcmc.org
+    CERTIFICATE_PATH: ""
+    MAILER_HOST: https://cites-compliance-tool-sapi-web-staging-01.internal.unep-wcmc.org

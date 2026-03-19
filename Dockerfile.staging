@@ -1,0 +1,54 @@
+# syntax=docker/dockerfile:1
+
+# Staging Dockerfile — identical to Dockerfile.deploy but CMD binds puma to 0.0.0.0.
+# Without this kamal-proxy cannot reach puma and health checks fail.
+# RAILS_ENV is injected at runtime by Kamal (env.clear.RAILS_ENV: staging).
+
+ARG RUBY_VERSION=2.6.10
+FROM --platform=linux/amd64 ruby:${RUBY_VERSION}-slim
+
+ENV NODE_ENV="production" \
+  RAILS_ENV="production" \
+  BUNDLE_DEPLOYMENT="1" \
+  BUNDLE_PATH="/usr/local/bundle" \
+  BUNDLE_WITHOUT="development"
+
+# Install dependencies
+RUN apt-get update -qq && \
+  apt-get install --no-install-recommends -y \
+  curl build-essential zlib1g-dev git libpq-dev \
+  vim nano \
+  libffi-dev python python-is-python2 \
+  shared-mime-info \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install Ruby bundler
+RUN bash -c "gem install bundler -v '1.17.3'"
+
+# Install Node.js 10.24.1 manually
+RUN curl -fsSL https://nodejs.org/dist/v10.24.1/node-v10.24.1-linux-x64.tar.xz \
+  | tar -xJ -C /usr/local --strip-components=1
+
+# Install Yarn globally using npm
+RUN npm install -g yarn
+
+WORKDIR /rails
+
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
+RUN bundle install && \
+  yarn install --frozen-lockfile
+
+COPY . .
+
+# Asset precompile uses SECRET_KEY_BASE=dummy (no credentials file in Rails 5.2)
+RUN SECRET_KEY_BASE=dummy ./bin/rails assets:precompile
+
+RUN groupadd --system --gid 1000 rails && \
+  useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+  chown -R rails:rails db log tmp
+USER 1000:1000
+
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+
+EXPOSE 80
+CMD ["./bin/rails", "server", "-b", "0.0.0.0"]
