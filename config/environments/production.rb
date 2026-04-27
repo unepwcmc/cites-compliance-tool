@@ -100,7 +100,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.sendgrid.net',
     port: '587',
-    domain: 'sapi-production.linode.unep-wcmc.org',
+    domain: 'speciesplus.net',
     user_name: ENV.fetch("MAIL_USERNAME", nil),
     password: ENV.fetch("MAIL_PASSWORD", nil),
     authentication:       :login,

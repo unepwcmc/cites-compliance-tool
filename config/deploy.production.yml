@@ -24,6 +24,6 @@ servers:
 env:
   clear:
     RAILS_ENV: production
-    SPECIES_API_URL: https://sapi.sapi-production.linode.unep-wcmc.org/api/v1
+    SPECIES_API_URL: https://www.speciesplus.net/api/v1
     CERTIFICATE_PATH: "" # Deprecated
     MAILER_HOST: https://cites-trade-tool.speciesplus.net
