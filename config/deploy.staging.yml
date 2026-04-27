@@ -30,6 +30,6 @@ builder:
 env:
   clear:
     RAILS_ENV: staging
-    SPECIES_API_URL: https://shipments.sapi-staging.linode.unep-wcmc.org/api/v1
+    SPECIES_API_URL: https://staging.speciesplus.net/api/v1
     CERTIFICATE_PATH: ""
     MAILER_HOST: https://cites-compliance-tool-sapi-web-staging-01.internal.unep-wcmc.org
