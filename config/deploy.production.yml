@@ -1,14 +1,18 @@
-# Name of the container image
-image: ghcr.io/unepwcmc/cites-compliance-tool/rails-production
+# No ghcr.io/ prefix — Kamal prepends localhost:5555/ from config/deploy.yml
+image: unepwcmc/cites-compliance-tool/rails-production
 
 servers:
   web:
     hosts:
-      - example.com # TODO: Ruan
+      - 172.20.0.158 # sapi-web-prod-01.internal.unep-wcmc.org
+    options:
+      add-host: host.docker.internal:host-gateway
     proxy:
       hosts:
-        - cites-trade-tool.speciesplus.net # Public-facing domain
-      ssl: true # Proxy terminates SSL
+        - cites-compliance-tool-sapi-web-prod-01.internal.unep-wcmc.org
+      ssl:
+        certificate_pem: CERTIFICATE_PEM
+        private_key_pem: PRIVATE_KEY_PEM
       forward_headers: true # Forward headers like X-Forwarded-Proto
       healthcheck:
         path: /up
@@ -20,10 +24,15 @@ servers:
         response_headers:
           - X-Request-ID
 
+# Build remotely on the production web server, same host the app deploys to.
+builder:
+  dockerfile: Dockerfile.deploy
+  remote: ssh://wcmc@172.20.0.158
+
 # Environment variables
 env:
   clear:
     RAILS_ENV: production
     SPECIES_API_URL: https://www.speciesplus.net/api/v1
     CERTIFICATE_PATH: "" # Deprecated
-    MAILER_HOST: https://cites-trade-tool.speciesplus.net
+    MAILER_HOST: https://cites-compliance-tool-sapi-web-prod-01.internal.unep-wcmc.org

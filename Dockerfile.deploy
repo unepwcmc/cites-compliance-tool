@@ -23,6 +23,12 @@ RUN apt-get update -qq && \
 # Install Ruby bundler
 RUN bash -c "gem install bundler -v '1.17.3'"
 
+# Force baseline x86-64 so native extensions (e.g. ffi) don't use AVX2/AVX512
+# instructions that may be unavailable on the target Proxmox VM CPU (seen as a
+# SIGILL crash in the ffi gem when this was missing on other apps).
+ENV CFLAGS="-march=x86-64" \
+    CXXFLAGS="-march=x86-64"
+
 # Leonardo: I tried installing via apt-get using the source (https://deb.nodesource.com/setup_10.x),
 # but it ended up installing version 12.
 # Install Node.js 10.24.1 manually
