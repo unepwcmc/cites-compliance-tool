@@ -33,6 +33,9 @@ builder:
 env:
   clear:
     RAILS_ENV: production
-    SPECIES_API_URL: https://www.speciesplus.net/api/v1
+    # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
+    # than the old public www.speciesplus.net — internal-only *.internal.unep-wcmc.org
+    # hostnames don't resolve from inside sibling containers (only host-level /etc/hosts).
+    SPECIES_API_URL: https://preflight.speciesplus.net/api/v1
     CERTIFICATE_PATH: "" # Deprecated
     MAILER_HOST: https://cites-compliance-tool-sapi-web-prod-01.internal.unep-wcmc.org
