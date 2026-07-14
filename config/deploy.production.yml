@@ -30,6 +30,11 @@ builder:
 env:
   clear:
     RAILS_ENV: production
+    # This lower-traffic app needs one Puma worker on the shared VM. Remove the
+    # explicit value after Puma 5+ if the default single-process mode is desired.
+    WEB_CONCURRENCY: 1
+    # The database pool reads this value, so keep it equal to Puma's threads.
+    RAILS_MAX_THREADS: 5
     # Points at our new Proxmox SAPI via the Cloudflare Tunnel preflight domain rather
     # than the old public www.speciesplus.net — internal-only *.internal.unep-wcmc.org
     # hostnames don't resolve from inside sibling containers (only host-level /etc/hosts).
