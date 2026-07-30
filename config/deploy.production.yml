@@ -10,6 +10,7 @@ servers:
     proxy:
       hosts:
         - cites-compliance-tool-sapi-web-prod-01.linode.unep-wcmc.org
+        - cites-trade-tool.speciesplus.net
       ssl: true
       logging:
         request_headers:
@@ -37,7 +38,7 @@ env:
     # hostnames don't resolve from inside sibling containers (only host-level /etc/hosts).
     SPECIES_API_URL: https://sapi-web-prod-01.linode.unep-wcmc.org/api/v1
     CERTIFICATE_PATH: "" # Deprecated
-    MAILER_HOST: https://cites-compliance-tool-sapi-web-prod-01.linode.unep-wcmc.org
+    MAILER_HOST: https://cites-trade-tool.speciesplus.net
 
 # kamal-proxy daemon settings (top level = the shared proxy container itself,
 # distinct from the per-role `proxy:` blocks above which configure routing).
