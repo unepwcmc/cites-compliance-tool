@@ -21,14 +21,25 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+# Puma 3 does not read WEB_CONCURRENCY automatically. This directive lets
+# production select multiple processes while the zero fallback preserves
+# single-mode development. Remove it after upgrading to Puma 5 or newer,
+# where WEB_CONCURRENCY configures workers without a DSL directive.
+workers ENV.fetch("WEB_CONCURRENCY") { 0 }
 
-# Use the `preload_app!` method when specifying a `workers` number.
-# This directive tells Puma to first boot the application and load code
-# before forking the application. This takes advantage of Copy On Write
-# process behavior so workers use less memory.
-#
-# preload_app!
+# Puma 3 does not automatically preload clustered workers. Loading Rails before
+# forking lets workers share boot-time memory through copy-on-write on the
+# shared VM. Remove this after upgrading to Puma 5 or newer, which automatically
+# preloads when WEB_CONCURRENCY enables multiple workers.
+preload_app!
+
+on_worker_boot do
+  # Rails 5.2 can inherit the master's PostgreSQL pool when Puma preloads before
+  # forking, so every worker must replace it with a process-local pool. Review
+  # and remove this after upgrading to Rails 7.1+ and Puma 5+, once a clustered
+  # boot test confirms the framework gives each worker separate connections.
+  ActiveRecord::Base.establish_connection
+end
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
