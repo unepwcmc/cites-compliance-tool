@@ -1,3 +1,11 @@
+### 0.1.0
+
+* Deploy via Kamal rather than Capistrano
+
+### 0.0.5
+
+* Add more available years in dashboard dropdown
+
 ### 0.0.4
 
 * Remove reference to polyfill.io
