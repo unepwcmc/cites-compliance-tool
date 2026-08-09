@@ -157,7 +157,8 @@ GEM
     pg (0.21.0)
     powerpack (0.1.2)
     public_suffix (3.0.2)
-    puma (3.11.4)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     rack (2.0.5)
     rack-proxy (0.6.4)
       rack
@@ -289,7 +290,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.0)
   rbnacl (>= 3.2, < 5.0)
   rubocop (~> 0.58.0)
